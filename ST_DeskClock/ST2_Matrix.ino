@@ -11,27 +11,27 @@ static volatile uint8_t led_matrix[WIDTH][8];
 
 void
 led_draw(
-	uint8_t col,
-	uint8_t row,
-	uint8_t bright
+   uint8_t col,
+   uint8_t row,
+   uint8_t bright
 )
 {
-	led_matrix[col][row] = bright;
+   led_matrix[col][row] = bright;
 }
 
 
 void
 led_draw_col(
-	uint8_t col,
-	uint8_t bits,
-	uint8_t bright
+   uint8_t col,
+   uint8_t bits,
+   uint8_t bright
 )
 {
-	for (uint8_t row=0, mask=1; row < 7 ; row++, mask <<=1)
-	{
-		uint8_t bit = bits & mask;
-		led_draw(col, row, bit ? bright : 0);
-	}
+   for (uint8_t row=0, mask=1; row < 7 ; row++, mask <<=1)
+   {
+      uint8_t bit = bits & mask;
+      led_draw(col, row, bit ? bright : 0);
+   }
 }
 
 
@@ -47,21 +47,21 @@ led_draw_col(
  */
 static void
 led_decoder_select(
-	unsigned decoder
+   unsigned decoder
 )
 {
-	uint8_t bits = B1100; // default to off
+   uint8_t bits = B1100; // default to off
 
-	if (decoder == 1)
-		bits = B0100;
-	else
-	if (decoder == 2)
-		bits = B1000;
-	else
-	if (decoder == 3)
-		bits = B0000;
+   if (decoder == 1)
+      bits = B0100;
+   else
+   if (decoder == 2)
+      bits = B1000;
+   else
+   if (decoder == 3)
+      bits = B0000;
 
-	PORTC = (PORTC & B11110011) | bits;
+   PORTC = (PORTC & B11110011) | bits;
 }
 
 
@@ -70,11 +70,11 @@ led_decoder_select(
  */
 static void
 led_column_select(
-	unsigned column
+   unsigned column
 )
 {
-	column &= 0x7;
-	PORTD = (PORTD & B10001111) | (column << 4);
+   column &= 0x7;
+   PORTD = (PORTD & B10001111) | (column << 4);
 }
 
 
@@ -84,10 +84,10 @@ led_column_select(
  */
 static void
 led_output(
-	uint8_t bits
+   uint8_t bits
 )
 {
-	PORTB = (PORTB & 0x80) | (bits & 0x7F);
+   PORTB = (PORTB & 0x80) | (bits & 0x7F);
 }
 
 
@@ -96,7 +96,7 @@ led_output(
 /*
  * Used by STII Small Desk Clock.
  *
- * Only light one ROW (and one column) ie one pixel at a time. 
+ * Only light one ROW (and one column) ie one pixel at a time.
  * lower current draw, but lower refresh rate.
  *
  * Where:
@@ -114,61 +114,61 @@ led_output(
  */
 void
 LEDupdateTHREE()
-{  
-	static uint8_t row_mask = 0;
-	static uint8_t row = 0;
-	static uint8_t column = 0;
+{
+   static uint8_t row_mask = 0;
+   static uint8_t row = 0;
+   static uint8_t column = 0;
 
-	if (row_mask != 0)
-	{
-		// Read the pixel data for the current column and output
-		// the one pixel that is currently high.
-		row_mask >>= 1;
-		uint8_t bright = led_matrix[column][--row];
+   if (row_mask != 0)
+   {
+      // Read the pixel data for the current column and output
+      // the one pixel that is currently high.
+      row_mask >>= 1;
+      uint8_t bright = led_matrix[column][--row];
 #define reverse_video 0
-		if (reverse_video)
-			bright = 0xFF - bright;
+      if (reverse_video)
+         bright = 0xFF - bright;
 
-		if (bright)
-			led_output(row_mask);
-		else
-			led_output(0);
+      if (bright)
+         led_output(row_mask);
+      else
+         led_output(0);
 
-    
-		// hold the LED on for a scaled period of time
-		// (with interrupts disabled, since this is in
-		// an ISR) and then turn it off.
-		// This is lame, but avoids glitching brightness.
-		for (uint8_t i = 0; i < bright ; i++)
-		{
-			__asm__ __volatile__("nop");
-			__asm__ __volatile__("nop");
-		}
-		led_output(0);
-		for (uint8_t i = bright; i != 0 ; i++)
-		{
-			__asm__ __volatile__("nop");
-			__asm__ __volatile__("nop");
-		}
 
-		return;
-	}
+      // hold the LED on for a scaled period of time
+      // (with interrupts disabled, since this is in
+      // an ISR) and then turn it off.
+      // This is lame, but avoids glitching brightness.
+      for (uint8_t i = 0; i < bright ; i++)
+      {
+         __asm__ __volatile__("nop");
+         __asm__ __volatile__("nop");
+      }
+      led_output(0);
+      for (uint8_t i = bright; i != 0 ; i++)
+      {
+         __asm__ __volatile__("nop");
+         __asm__ __volatile__("nop");
+      }
 
-	// Turn off before we switch columns and decoders
-	led_output(0);
+      return;
+   }
 
-	// We've displayed the entire row; prep for next column
-	row_mask = 0x80;
-	row = 7;
+   // Turn off before we switch columns and decoders
+   led_output(0);
 
-	if (++column > 19)
-		column = 0;
+   // We've displayed the entire row; prep for next column
+   row_mask = 0x80;
+   row = 7;
 
-	// Each matrix has eight columns (from 0 to 7)
-	const unsigned decoder_id = (column / 8) + 1;
-	const unsigned decoder_column = column % 8;
-	
-	led_decoder_select(decoder_id);
-	led_column_select(decoder_column);
+   if (++column > 19)
+      column = 0;
+
+   // Each matrix has eight columns (from 0 to 7)
+   const unsigned decoder_id = (column / 8) + 1;
+   const unsigned decoder_column = column % 8;
+
+   led_decoder_select(decoder_id);
+   led_column_select(decoder_column);
 
 }

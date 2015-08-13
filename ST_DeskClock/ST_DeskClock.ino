@@ -16,13 +16,13 @@
  * This code is provided as is. No guaranties or warranties are given
  * in any form. It is your responsibilty to determine this codes
  * suitability for your application.
- * 
+ *
  * Changes:
  * A. Modified LEDupdateTHREE() void used by ST:2 Watch to function
  * with the new circuits in the Solder:Time Desk Clock
  * B. Modified port dirctions on some pins to deal with new circuits.
  * C. Changed sleep mode into a "change back to display time" mode
- */ 
+ */
 
 #include <Wire.h>
 #include <EEPROM.h>
@@ -149,10 +149,10 @@ boolean A_PM_NotAM_flag = false;
   int CurrentTime = 0;
   int TotalTime = 0;
 
-uint8_t SWDigit4 = 0;  
-uint8_t SWDigit3 = 0;   
-uint8_t SWDigit2 = 0; 
-uint8_t SWDigit1 = 0; 
+uint8_t SWDigit4 = 0;
+uint8_t SWDigit3 = 0;
+uint8_t SWDigit2 = 0;
+uint8_t SWDigit1 = 0;
 
 int SWMINUTES = 0;
 int SWSECONDS = 0;
@@ -178,23 +178,23 @@ const int digitoffset = 95;                // 95             // was 16
 
 // Constants
 // DS1337+ Address locations
-#define		RTCDS1337	B01101000               // was B11010000  
-#define		RTCCONT		B00001110		//; Control
-#define		RTCSTATUS       B00001111		//; Status
+#define     RTCDS1337   B01101000               // was B11010000
+#define     RTCCONT     B00001110      //; Control
+#define     RTCSTATUS       B00001111     //; Status
 
-//#define		RTC_HSEC	B00000001		//; Hundredth of a secound
-#define		RTC_SEC		B00000000		//; Seconds
-#define		RTC_MIN		B00000001		//; Minuites
-#define		RTC_HOUR	B00000010		//; Hours
+//#define      RTC_HSEC B00000001      //; Hundredth of a secound
+#define     RTC_SEC     B00000000      //; Seconds
+#define     RTC_MIN     B00000001      //; Minuites
+#define     RTC_HOUR B00000010      //; Hours
 
-#define		RTC_DAY  	B00000011		//; Day
-#define		RTC_DATE	B00000100		//; Date
-#define		RTC_MONTH	B00000101		//; Month
-#define		RTC_YEAR	B00000110		//; Year
+#define     RTC_DAY     B00000011      //; Day
+#define     RTC_DATE B00000100      //; Date
+#define     RTC_MONTH   B00000101      //; Month
+#define     RTC_YEAR B00000110      //; Year
 
-#define		RTC_ALARM1SEC	B00000111		//; Seconds
-#define		RTC_ALARM1MIN	B00001000		//; Minuites
-#define		RTC_ALARM1HOUR	B00001001		//; Hours
+#define     RTC_ALARM1SEC  B00000111      //; Seconds
+#define     RTC_ALARM1MIN  B00001000      //; Minuites
+#define     RTC_ALARM1HOUR B00001001      //; Hours
 #define         RTC_ALARM1DATE  B00001010               //; Date
 
 // Fonts have been moved to font.c
