@@ -37,6 +37,37 @@
 #define WIDTH 20
 #define HEIGHT 8
 
+// Constants
+// DS1337+ Address locations
+#define RTCDS1337      B01101000 // was B11010000
+#define RTCCONT        B00001110 //; Control
+#define RTCSTATUS      B00001111 //; Status
+
+// #define RTC_HSEC       B00000001      //; Hundredth of a secound
+#define RTC_SEC        B00000000 //; Seconds
+#define RTC_MIN        B00000001 //; Minuites
+#define RTC_HOUR       B00000010 //; Hours
+#define RTC_DAY        B00000011 //; Day
+#define RTC_DATE       B00000100 //; Date
+#define RTC_MONTH      B00000101 //; Month
+#define RTC_YEAR       B00000110 //; Year
+#define RTC_ALARM1SEC  B00000111 //; Seconds
+#define RTC_ALARM1MIN  B00001000 //; Minuites
+#define RTC_ALARM1HOUR B00001001 //; Hours
+#define RTC_ALARM1DATE B00001010 //; Date
+
+// Fonts have been moved to font.c
+
+/// Font offset
+#define ASCII_OFFSET 0x20
+
+#define blinkTime 500                                   // was 1000
+
+#define BUTTON1    2
+#define BUTTON2    3
+#define MODEBUTTON 2
+#define SETBUTTON  3
+
 // Worm animation
 int c =0;
 int y = 3;
@@ -73,7 +104,6 @@ boolean blinkFlag = false;
 boolean blinkON = true;
 boolean blinkHour = false;
 boolean blinkMin = false;
-#define blinkTime 500                                   // was 1000
 
 boolean displayFLAG = true;
 
@@ -83,10 +113,6 @@ unsigned long SleepLimit = 6000;
 boolean SleepEnable = true;
 int UpdateTime = 0;
 
-#define BUTTON1 2
-#define MODEBUTTON 2
-#define BUTTON2 3
-#define SETBUTTON 3
 boolean bval = false;
 
 //char Str1[] = "Hi";
@@ -173,30 +199,6 @@ volatile boolean MINDOWN = false;
 volatile boolean TFH = false;
 
 const int digitoffset = 95;                // 95             // was 16
-
-// Constants
-// DS1337+ Address locations
-#define RTCDS1337      B01101000 // was B11010000
-#define RTCCONT        B00001110 //; Control
-#define RTCSTATUS      B00001111 //; Status
-
-// #define RTC_HSEC       B00000001      //; Hundredth of a secound
-#define RTC_SEC        B00000000 //; Seconds
-#define RTC_MIN        B00000001 //; Minuites
-#define RTC_HOUR       B00000010 //; Hours
-#define RTC_DAY        B00000011 //; Day
-#define RTC_DATE       B00000100 //; Date
-#define RTC_MONTH      B00000101 //; Month
-#define RTC_YEAR       B00000110 //; Year
-#define RTC_ALARM1SEC  B00000111 //; Seconds
-#define RTC_ALARM1MIN  B00001000 //; Minuites
-#define RTC_ALARM1HOUR B00001001 //; Hours
-#define RTC_ALARM1DATE B00001010 //; Date
-
-// Fonts have been moved to font.c
-
-/// Font offset
-#define ASCII_OFFSET 0x20
 
 extern const uint8_t LETTERS[][5];
 extern const uint8_t GRAPHIC[][5];
