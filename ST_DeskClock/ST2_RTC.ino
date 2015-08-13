@@ -522,5 +522,3 @@ void TwelveTwentyFourConvert()
 
 
 }
-
-

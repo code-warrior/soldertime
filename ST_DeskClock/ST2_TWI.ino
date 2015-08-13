@@ -22,4 +22,3 @@ void I2C_RX(byte devicerx, byte regaddrx)                                       
     i2cData = Wire.read();
   }
 }
-
