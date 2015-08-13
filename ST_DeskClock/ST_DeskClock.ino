@@ -33,12 +33,9 @@
 #include <avr/power.h>
 #include <avr/wdt.h>
 
-/** Overall width of the LED screen */
+// Overall width and height of the LED screen
 #define WIDTH 20
-
-/** Overlal height of the LED screen */
 #define HEIGHT 8
-
 
 // Worm animation
 int c =0;
