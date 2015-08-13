@@ -61,11 +61,11 @@ int MAXSTATE = 6;
 boolean NextStateRequest = false;
 boolean NextSUBStateRequest = false;
 boolean JustWokeUpFlag = false;
-boolean JustWokeUpFlag2= false;
+boolean JustWokeUpFlag2 = false;
 boolean OptionModeFlag = false;
 
 int ROWBITINDEX = 0;
-int scrollCounter =0;
+int scrollCounter = 0;
 int ScrollLoops = 3;
 int scrollSpeed = 300;                                    // was 1200
 int blinkCounter = 0;
@@ -73,7 +73,7 @@ boolean blinkFlag = false;
 boolean blinkON = true;
 boolean blinkHour = false;
 boolean blinkMin = false;
-#define blinkTime  500                                   // was 1000
+#define blinkTime 500                                   // was 1000
 
 boolean displayFLAG = true;
 
@@ -87,7 +87,7 @@ int UpdateTime = 0;
 #define MODEBUTTON 2
 #define BUTTON2 3
 #define SETBUTTON 3
-boolean  bval = false;
+boolean bval = false;
 
 //char Str1[] = "Hi";
 char IncomingMessage[24];
@@ -101,11 +101,15 @@ int MessagePointer = 0;
 int StartWindow = 0;
 int IncomingLoaded =0;
 
+char days[7][4] =
+   {
+      "Sun","Mon","Tue","Wed","Thr","Fri","Sat"
+   };
 
-char days[7][4] = {
-  "Sun","Mon","Tue","Wed","Thr","Fri","Sat"};
-char months[12][4] = {
-  "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+char months[12][4] =
+   {
+      "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
+   };
 
 // Time Variables
 uint8_t HourTens = 1;
@@ -115,17 +119,16 @@ uint8_t MinOnes = 0;
 uint8_t SecTens = 0;
 uint8_t SecOnes = 0;
 
-uint8_t Days =1;
+uint8_t Days = 1;
 uint8_t DateOnes = 1;
-uint8_t DateTens =0;
-uint8_t MonthOnes =1;
+uint8_t DateTens = 0;
+uint8_t MonthOnes = 1;
 uint8_t MonthTens = 1;
 uint8_t YearsOnes = 2;
 uint8_t YearsTens = 1;
 
-uint8_t DayCode =1;
-uint8_t MonthCode =1;
-
+uint8_t DayCode = 1;
+uint8_t MonthCode = 1;
 
 boolean TH_Not24_flag = true;
 boolean PM_NotAM_flag = false;
@@ -142,9 +145,9 @@ boolean A_TH_Not24_flag = true;
 boolean A_PM_NotAM_flag = false;
 
 // StopWatch
-  int OldTime = 0;
-  int CurrentTime = 0;
-  int TotalTime = 0;
+int OldTime = 0;
+int CurrentTime = 0;
+int TotalTime = 0;
 
 uint8_t SWDigit4 = 0;
 uint8_t SWDigit3 = 0;
@@ -165,34 +168,30 @@ boolean ALARMON = false;
 
 boolean scrollDirFlag = false;
 
-
 volatile boolean MINUP = false;
 volatile boolean MINDOWN = false;
 volatile boolean TFH = false;
 
 const int digitoffset = 95;                // 95             // was 16
 
-
 // Constants
 // DS1337+ Address locations
-#define     RTCDS1337   B01101000               // was B11010000
-#define     RTCCONT     B00001110      //; Control
-#define     RTCSTATUS       B00001111     //; Status
+#define RTCDS1337      B01101000 // was B11010000
+#define RTCCONT        B00001110 //; Control
+#define RTCSTATUS      B00001111 //; Status
 
-//#define      RTC_HSEC B00000001      //; Hundredth of a secound
-#define     RTC_SEC     B00000000      //; Seconds
-#define     RTC_MIN     B00000001      //; Minuites
-#define     RTC_HOUR B00000010      //; Hours
-
-#define     RTC_DAY     B00000011      //; Day
-#define     RTC_DATE B00000100      //; Date
-#define     RTC_MONTH   B00000101      //; Month
-#define     RTC_YEAR B00000110      //; Year
-
-#define     RTC_ALARM1SEC  B00000111      //; Seconds
-#define     RTC_ALARM1MIN  B00001000      //; Minuites
-#define     RTC_ALARM1HOUR B00001001      //; Hours
-#define         RTC_ALARM1DATE  B00001010               //; Date
+// #define RTC_HSEC       B00000001      //; Hundredth of a secound
+#define RTC_SEC        B00000000 //; Seconds
+#define RTC_MIN        B00000001 //; Minuites
+#define RTC_HOUR       B00000010 //; Hours
+#define RTC_DAY        B00000011 //; Day
+#define RTC_DATE       B00000100 //; Date
+#define RTC_MONTH      B00000101 //; Month
+#define RTC_YEAR       B00000110 //; Year
+#define RTC_ALARM1SEC  B00000111 //; Seconds
+#define RTC_ALARM1MIN  B00001000 //; Minuites
+#define RTC_ALARM1HOUR B00001001 //; Hours
+#define RTC_ALARM1DATE B00001010 //; Date
 
 // Fonts have been moved to font.c
 
