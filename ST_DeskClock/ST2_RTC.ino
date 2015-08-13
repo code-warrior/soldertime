@@ -6,33 +6,33 @@ void checktime()
   uint8_t temp =0;
 
   I2C_RX(RTCDS1337,RTC_SEC);
-  SecOnes = i2cData & B00001111;                   //
+  SecOnes = i2cData & B00001111;
 
-  SecTens = i2cData & B01110000;                   //
+  SecTens = i2cData & B01110000;
   SecTens = SecTens >> 4;
 
 
   I2C_RX(RTCDS1337,RTC_MIN);
-  MinOnes = i2cData & B00001111;                   //
+  MinOnes = i2cData & B00001111;
 
-  MinTens = i2cData & B01110000;                   //
+  MinTens = i2cData & B01110000;
   MinTens = MinTens >> 4;
 
   I2C_RX(RTCDS1337,RTC_HOUR);
-  HourOnes = i2cData & B00001111;                   //
+  HourOnes = i2cData & B00001111;
 
   TH_Not24_flag = bitRead(i2cData, 6);                   // False on RTC when 24 mode selected
   PM_NotAM_flag = bitRead(i2cData, 5);
 
   if(TH_Not24_flag == true)
   {
-    HourTens = i2cData & B00010000;                   //
+    HourTens = i2cData & B00010000;
     HourTens = HourTens >> 4;
 
   }
   else
   {
-    HourTens = i2cData & B00110000;                   //
+    HourTens = i2cData & B00110000;
     HourTens = HourTens >> 4;
   }
 }
@@ -45,10 +45,10 @@ void checkDate()
 
   int temp = 0;
   I2C_RX(RTCDS1337,RTC_DAY);
-  Days = i2cData & B00000111;                   //
+  Days = i2cData & B00000111;
 
   I2C_RX(RTCDS1337,RTC_MONTH);
-  MonthCode = i2cData & B00001111;                   //
+  MonthCode = i2cData & B00001111;
 
   temp = (i2cData & B00010000) >> 4;
   if(temp)
@@ -57,7 +57,7 @@ void checkDate()
   }
 
   I2C_RX(RTCDS1337,RTC_DATE);
-  DateOnes = i2cData & B00001111;                   //
+  DateOnes = i2cData & B00001111;
   DateTens = (i2cData & B00110000) >> 4;
 
 }
@@ -94,7 +94,6 @@ void settimeNEW(uint8_t setselect)                     // both min digits or bot
     break;
 
 
-    // -----------------------------------------------
 
   case 2:
     HourOnes = HourOnes +1;
@@ -156,7 +155,7 @@ void settimeNEW(uint8_t setselect)                     // both min digits or bot
     {
       Days = 1;
     }
-    temp = Days & B00000111;                   //
+    temp = Days & B00000111;
     I2C_TX(RTCDS1337,RTC_DAY,temp);
     break;
 
@@ -438,20 +437,20 @@ void TwelveTwentyFourConvert()
   int temp = 0;
 
   I2C_RX(RTCDS1337,RTC_HOUR);
-  HourOnes = i2cData & B00001111;                   //
+  HourOnes = i2cData & B00001111;
 
   //  TH_Not24_flag = bitRead(i2cData, 6);                   // False on RTC when 24 mode selected
   //  PM_NotAM_flag = bitRead(i2cData, 5);
 
   if(TH_Not24_flag)
   {
-    HourTens = i2cData & B00010000;                   //
+    HourTens = i2cData & B00010000;
     HourTens = HourTens >> 4;
 
   }
   else
   {
-    HourTens = i2cData & B00110000;                   //
+    HourTens = i2cData & B00110000;
     HourTens = HourTens >> 4;
   }
 
@@ -516,7 +515,6 @@ void TwelveTwentyFourConvert()
     bitWrite(temp, 6, TH_Not24_flag);
     I2C_TX(RTCDS1337,RTC_HOUR,temp);
 
-    // ---
 
   }
 
