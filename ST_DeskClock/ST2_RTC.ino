@@ -41,24 +41,23 @@ void checktime()
  * ********************************************************************************/
 void checkDate()
 {
+   int temp = 0;
 
-  int temp = 0;
-  I2C_RX(RTCDS1337,RTC_DAY);
-  Days = i2cData & B00000111;
+   I2C_RX(RTCDS1337, RTC_DAY);
+   Days = i2cData & B00000111;
 
-  I2C_RX(RTCDS1337,RTC_MONTH);
-  MonthCode = i2cData & B00001111;
+   I2C_RX(RTCDS1337, RTC_MONTH);
+   MonthCode = i2cData & B00001111;
 
-  temp = (i2cData & B00010000) >> 4;
-  if(temp)
-  {
-    MonthCode = MonthCode +10;                           // Convert BCD month into interger month
-  }
+   temp = (i2cData & B00010000) >> 4;
 
-  I2C_RX(RTCDS1337,RTC_DATE);
-  DateOnes = i2cData & B00001111;
-  DateTens = (i2cData & B00110000) >> 4;
+   if (temp) {
+      MonthCode += 10; // Convert BCD month into integer month
+   }
 
+   I2C_RX(RTCDS1337, RTC_DATE);
+   DateOnes = i2cData & B00001111;
+   DateTens = (i2cData & B00110000) >> 4;
 }
 
 /** *********************************************************************************
