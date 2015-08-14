@@ -161,15 +161,16 @@ uint8_t alarm_hour_ones_place = 2;
 uint8_t AMinTens = 0;
 uint8_t AMinOnes = 0;
 
-// StopWatch
-int OldTime = 0;
-int CurrentTime = 0;
-int TotalTime = 0;
-
+// Some stopwatch variables
 uint8_t stop_watch_digit_4 = 0;
 uint8_t stop_watch_digit_3 = 0;
 uint8_t stop_watch_digit_2 = 0;
 uint8_t stop_watch_digit_1 = 0;
+
+// StopWatch
+int OldTime = 0;
+int CurrentTime = 0;
+int TotalTime = 0;
 
 int SWMINUTES = 0;
 int SWSECONDS = 0;
