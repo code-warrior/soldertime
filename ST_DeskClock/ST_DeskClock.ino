@@ -166,7 +166,7 @@ int OldTime = 0;
 int CurrentTime = 0;
 int TotalTime = 0;
 
-uint8_t SWDigit4 = 0;
+uint8_t stop_watch_digit_4 = 0;
 uint8_t SWDigit3 = 0;
 uint8_t SWDigit2 = 0;
 uint8_t SWDigit1 = 0;
