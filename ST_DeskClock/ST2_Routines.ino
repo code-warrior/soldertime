@@ -69,7 +69,7 @@ void DisplayTimeSub()
   UpdateTime = UpdateTime + 1;
   if(UpdateTime > 10000)
   {
-    checktime();
+    check_time();
     check_date();
     UpdateTime = 0;
   }
@@ -84,7 +84,7 @@ void DisplayTimeSub()
     blinkMin = false;
     blinkHour = false;
 
-    checktime();
+    check_time();
     check_date();
 
     if(!JustWokeUpFlag2)
@@ -101,7 +101,7 @@ void DisplayTimeSub()
 
   case 1:              // Time
 
-//    checktime();
+//    check_time();
     writeTime(HourTens, HourOnes, MinTens, MinOnes);
     break;
 
