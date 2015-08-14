@@ -39,7 +39,7 @@ void checktime()
  *  Check Date
  *
  * ********************************************************************************/
-void checkDate()
+void check_date()
 {
    int temp = 0;
 

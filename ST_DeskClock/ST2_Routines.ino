@@ -70,7 +70,7 @@ void DisplayTimeSub()
   if(UpdateTime > 10000)
   {
     checktime();
-    checkDate();
+    check_date();
     UpdateTime = 0;
   }
 
@@ -85,7 +85,7 @@ void DisplayTimeSub()
     blinkHour = false;
 
     checktime();
-    checkDate();
+    check_date();
 
     if(!JustWokeUpFlag2)
     {
@@ -106,17 +106,17 @@ void DisplayTimeSub()
     break;
 
   case 2:              // Day
- //   checkDate();
+ //   check_date();
     displayStringDay(Days -1);
     break;
 
   case 3:              // Month
- //   checkDate();
+ //   check_date();
     displayMonth(MonthCode-1);
     break;
 
   case 4:              // Date
- //   checkDate();
+ //   check_date();
     displayDate();
     delay(100);
     break;
