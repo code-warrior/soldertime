@@ -5,38 +5,33 @@
  * ********************************************************************************/
 void checktime()
 {
-  uint8_t temp =0;
+   uint8_t temp = 0;
 
-  I2C_RX(RTCDS1337,RTC_SEC);
-  SecOnes = i2cData & B00001111;
+   I2C_RX(RTCDS1337,RTC_SEC);
+   SecOnes = i2cData & B00001111;
 
-  SecTens = i2cData & B01110000;
-  SecTens = SecTens >> 4;
+   SecTens = i2cData & B01110000;
+   SecTens = SecTens >> 4;
 
+   I2C_RX(RTCDS1337,RTC_MIN);
+   MinOnes = i2cData & B00001111;
 
-  I2C_RX(RTCDS1337,RTC_MIN);
-  MinOnes = i2cData & B00001111;
+   MinTens = i2cData & B01110000;
+   MinTens = MinTens >> 4;
 
-  MinTens = i2cData & B01110000;
-  MinTens = MinTens >> 4;
+   I2C_RX(RTCDS1337,RTC_HOUR);
+   HourOnes = i2cData & B00001111;
 
-  I2C_RX(RTCDS1337,RTC_HOUR);
-  HourOnes = i2cData & B00001111;
+   TH_Not24_flag = bitRead(i2cData, 6); // False on RTC when 24 mode selected
+   PM_NotAM_flag = bitRead(i2cData, 5);
 
-  TH_Not24_flag = bitRead(i2cData, 6);                   // False on RTC when 24 mode selected
-  PM_NotAM_flag = bitRead(i2cData, 5);
-
-  if(TH_Not24_flag == true)
-  {
-    HourTens = i2cData & B00010000;
-    HourTens = HourTens >> 4;
-
-  }
-  else
-  {
-    HourTens = i2cData & B00110000;
-    HourTens = HourTens >> 4;
-  }
+   if (true == TH_Not24_flag) {
+      HourTens = i2cData & B00010000;
+      HourTens = HourTens >> 4;
+   } else {
+      HourTens = i2cData & B00110000;
+      HourTens = HourTens >> 4;
+   }
 }
 
 /** *********************************************************************************
