@@ -508,12 +508,12 @@ void StopWatch()
 
     // Convert Total Time to digits
     stop_watch_minutes = TotalTime / 60;
-    SWSECONDS = TotalTime % 60;
+    stop_watch_seconds = TotalTime % 60;
 
     SWDigit4 = stop_watch_minutes / 10;
     SWDigit3 = stop_watch_minutes % 10;
-    SWDigit2 = SWSECONDS / 10;
-    SWDigit1 = SWSECONDS % 10;
+    SWDigit2 = stop_watch_seconds / 10;
+    SWDigit1 = stop_watch_seconds % 10;
 
     writeTime(SWDigit4, SWDigit3, SWDigit2, SWDigit1);
 
@@ -549,12 +549,12 @@ void StopWatch()
 
     // Convert Total Time to digits
     stop_watch_minutes = TotalTime / 60;
-    SWSECONDS = TotalTime % 60;
+    stop_watch_seconds = TotalTime % 60;
 
     SWDigit4 = stop_watch_minutes / 10;
     SWDigit3 = stop_watch_minutes % 10;
-    SWDigit2 = SWSECONDS / 10;
-    SWDigit1 = SWSECONDS % 10;
+    SWDigit2 = stop_watch_seconds / 10;
+    SWDigit1 = stop_watch_seconds % 10;
 
     writeTime(SWDigit4, SWDigit3, SWDigit2, SWDigit1);
 
