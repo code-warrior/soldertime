@@ -158,8 +158,8 @@ uint8_t AMPMALARMDOTS = 0;
 // Alarm
 uint8_t alarm_hour_tens_place = 1;
 uint8_t alarm_hour_ones_place = 2;
-uint8_t AMinTens = 0;
-uint8_t AMinOnes = 0;
+uint8_t alarm_minute_tens_place = 0;
+uint8_t alarm_minute_ones_place = 0;
 
 // Some stopwatch variables
 uint8_t stop_watch_digit_4 = 0;
@@ -171,9 +171,6 @@ uint8_t stop_watch_digit_1 = 0;
 int OldTime = 0;
 int CurrentTime = 0;
 int TotalTime = 0;
-
-int SWMINUTES = 0;
-int SWSECONDS = 0;
 
 int dayIndex = 0;
 
