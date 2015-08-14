@@ -211,7 +211,7 @@ void settimeNEW(uint8_t setselect)                     // both min digits or bot
  *  12:00 — Start Time
  *
  * ********************************************************************************/
-void SetStartTime()
+void set_start_time()
 {
    uint8_t temp = 0;
 
