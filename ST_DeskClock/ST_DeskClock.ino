@@ -169,7 +169,7 @@ int TotalTime = 0;
 uint8_t stop_watch_digit_4 = 0;
 uint8_t stop_watch_digit_3 = 0;
 uint8_t stop_watch_digit_2 = 0;
-uint8_t SWDigit1 = 0;
+uint8_t stop_watch_digit_1 = 0;
 
 int SWMINUTES = 0;
 int SWSECONDS = 0;
