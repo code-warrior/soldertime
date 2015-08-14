@@ -55,27 +55,40 @@
 #define RTC_ALARM1MIN  B00001000 //; Minuites
 #define RTC_ALARM1HOUR B00001001 //; Hours
 #define RTC_ALARM1DATE B00001010 //; Date
-
-// Fonts have been moved to font.c
-
-/// Font offset
-#define ASCII_OFFSET 0x20
-
-#define blinkTime 500                                   // was 1000
-
-#define BUTTON1    2
-#define BUTTON2    3
-#define MODEBUTTON 2
-#define SETBUTTON  3
+#define ASCII_OFFSET   0x20      // Font offset
+#define blinkTime      500       // was 1000
+#define BUTTON1        2
+#define BUTTON2        3
+#define MODEBUTTON     2
+#define SETBUTTON      3
 
 // Worm animation
 int c =0;
 int y = 3;
 int target = 3;
 int targdist =0;
-boolean targdir = true;
 int wormlenght = 15;
+
+boolean targdir = true;
 boolean soundeffect = false;
+boolean NextStateRequest = false;
+boolean NextSUBStateRequest = false;
+boolean JustWokeUpFlag = false;
+boolean JustWokeUpFlag2 = false;
+boolean OptionModeFlag = false;
+boolean blinkFlag = false;
+boolean blinkON = true;
+boolean blinkHour = false;
+boolean blinkMin = false;
+boolean displayFLAG = true;
+boolean SleepEnable = true;
+boolean bval = false;
+boolean TH_Not24_flag = true;
+boolean NewTimeFormate = TH_Not24_flag;
+boolean PM_NotAM_flag = false;
+boolean A_TH_Not24_flag = true;
+boolean A_PM_NotAM_flag = false;
+boolean scrollDirFlag = false;
 
 // int  i  =0;
 // int  i2  =0;
@@ -89,31 +102,18 @@ uint8_t i2cData = 0;
 int STATE = 0;
 int SUBSTATE = 0;
 int MAXSTATE = 6;
-boolean NextStateRequest = false;
-boolean NextSUBStateRequest = false;
-boolean JustWokeUpFlag = false;
-boolean JustWokeUpFlag2 = false;
-boolean OptionModeFlag = false;
 
 int ROWBITINDEX = 0;
 int scrollCounter = 0;
 int ScrollLoops = 3;
 int scrollSpeed = 300;                                    // was 1200
 int blinkCounter = 0;
-boolean blinkFlag = false;
-boolean blinkON = true;
-boolean blinkHour = false;
-boolean blinkMin = false;
-
-boolean displayFLAG = true;
 
 unsigned long SleepTimer;
 unsigned long currentMillis;
 unsigned long SleepLimit = 6000;
-boolean SleepEnable = true;
-int UpdateTime = 0;
 
-boolean bval = false;
+int UpdateTime = 0;
 
 //char Str1[] = "Hi";
 char IncomingMessage[24];
@@ -144,7 +144,6 @@ uint8_t MinTens = 0;
 uint8_t MinOnes = 0;
 uint8_t SecTens = 0;
 uint8_t SecOnes = 0;
-
 uint8_t Days = 1;
 uint8_t DateOnes = 1;
 uint8_t DateTens = 0;
@@ -152,13 +151,8 @@ uint8_t MonthOnes = 1;
 uint8_t MonthTens = 1;
 uint8_t YearsOnes = 2;
 uint8_t YearsTens = 1;
-
 uint8_t DayCode = 1;
 uint8_t MonthCode = 1;
-
-boolean TH_Not24_flag = true;
-boolean PM_NotAM_flag = false;
-boolean NewTimeFormate = TH_Not24_flag;
 uint8_t AMPMALARMDOTS = 0;
 
 // Alarm
@@ -166,9 +160,6 @@ uint8_t AHourTens  = 1;
 uint8_t AHourOnes = 2;
 uint8_t AMinTens = 0;
 uint8_t AMinOnes = 0;
-
-boolean A_TH_Not24_flag = true;
-boolean A_PM_NotAM_flag = false;
 
 // StopWatch
 int OldTime = 0;
@@ -191,8 +182,6 @@ boolean NextStateFlag = false;
 boolean SetTimeFlag = false;
 boolean ALARM1FLAG = false;
 boolean ALARMON = false;
-
-boolean scrollDirFlag = false;
 
 volatile boolean MINUP = false;
 volatile boolean MINDOWN = false;
