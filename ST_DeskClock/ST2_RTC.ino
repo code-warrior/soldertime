@@ -350,29 +350,29 @@ void setAlarm(uint8_t setselect)                                // both min digi
 
 
   case 2:
-    AHourOnes = AHourOnes +1;
+    alarm_hour_ones_place = alarm_hour_ones_place + 1;
 
 // -----------*
     if(A_TH_Not24_flag)
 //                                                                    12 hours mode increment
     {
 
-    if(AHourOnes >9 )
+    if(alarm_hour_ones_place >9 )
     {
-      AHourOnes = 0;
+      alarm_hour_ones_place = 0;
       alarm_hour_tens_place = 1;
     }
 
-   if((AHourOnes ==2) &&  (alarm_hour_tens_place == 1))
+   if((alarm_hour_ones_place ==2) &&  (alarm_hour_tens_place == 1))
     {
       A_PM_NotAM_flag = !A_PM_NotAM_flag;
     }
 
-    if((AHourOnes >2) &&  (alarm_hour_tens_place == 1))
+    if((alarm_hour_ones_place >2) &&  (alarm_hour_tens_place == 1))
     {
 //      PM_NotAM_flag = !PM_NotAM_flag;
       alarm_hour_tens_place = 0;
-      AHourOnes = 1;
+      alarm_hour_ones_place = 1;
     }
 
     }
@@ -380,15 +380,15 @@ void setAlarm(uint8_t setselect)                                // both min digi
 //                                                                    24 hours mode increment - S
     {
 
-    if((AHourOnes >9) && (alarm_hour_tens_place < 2))
+    if((alarm_hour_ones_place >9) && (alarm_hour_tens_place < 2))
     {
-      AHourOnes = 0;
+      alarm_hour_ones_place = 0;
       alarm_hour_tens_place = alarm_hour_tens_place +1;
     }
 
-     if((alarm_hour_tens_place ==2) && (AHourOnes == 4))
+     if((alarm_hour_tens_place ==2) && (alarm_hour_ones_place == 4))
     {
-      AHourOnes = 0;
+      alarm_hour_ones_place = 0;
       alarm_hour_tens_place = 0;
     }
     }
@@ -396,9 +396,9 @@ void setAlarm(uint8_t setselect)                                // both min digi
 // -----------*
 
 /*
-    if(AHourOnes >9)
+    if(alarm_hour_ones_place >9)
     {
-      AHourOnes = 0;
+      alarm_hour_ones_place = 0;
       alarm_hour_tens_place = alarm_hour_tens_place +1;
       if((alarm_hour_tens_place >1) && (A_TH_Not24_flag))
       {
@@ -413,7 +413,7 @@ void setAlarm(uint8_t setselect)                                // both min digi
       }
     }
 */
-    temp = (alarm_hour_tens_place << 4) + AHourOnes;
+    temp = (alarm_hour_tens_place << 4) + alarm_hour_ones_place;
     if(A_TH_Not24_flag)
     {
       bitWrite(temp, 5, A_PM_NotAM_flag);

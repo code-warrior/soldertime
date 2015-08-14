@@ -351,7 +351,7 @@ void setAlarmSub()
 
   case 2:
     blinkMin = true;
-    writeTime(alarm_hour_tens_place, AHourOnes, AMinTens, AMinOnes);
+    writeTime(alarm_hour_tens_place, alarm_hour_ones_place, AMinTens, AMinOnes);
     if(NextSUBStateRequest)
     {
       setAlarm(1);
@@ -368,7 +368,7 @@ void setAlarmSub()
 
   case 3:
     blinkHour = true;
-    writeTime(alarm_hour_tens_place, AHourOnes, AMinTens, AMinOnes);
+    writeTime(alarm_hour_tens_place, alarm_hour_ones_place, AMinTens, AMinOnes);
     if(NextSUBStateRequest)
     {
       setAlarm(2);
