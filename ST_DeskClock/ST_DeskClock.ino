@@ -158,7 +158,7 @@ uint8_t AMPMALARMDOTS = 0;
 // Alarm
 uint8_t alarm_hour_tens_place = 1;
 uint8_t alarm_hour_ones_place = 2;
-uint8_t AMinTens = 0;
+uint8_t alarm_minute_tens_place = 0;
 uint8_t AMinOnes = 0;
 
 // StopWatch

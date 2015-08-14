@@ -337,14 +337,14 @@ void setAlarm(uint8_t setselect)                                // both min digi
     {
       AMinOnes = 0;
 
-      AMinTens = AMinTens +1;
-      if(AMinTens >5)
+      alarm_minute_tens_place = alarm_minute_tens_place +1;
+      if(alarm_minute_tens_place >5)
       {
-        AMinTens = 0;
+        alarm_minute_tens_place = 0;
       }
     }
 
-    temp = (AMinTens << 4) + AMinOnes;
+    temp = (alarm_minute_tens_place << 4) + AMinOnes;
     I2C_TX(RTCDS1337,RTC_ALARM1MIN,temp);
     break;
 
