@@ -210,6 +210,9 @@ void settimeNEW(uint8_t setselect)                     // both min digits or bot
  *
  *  12:00 — Start Time
  *
+ *  THIS FUNCTION MIGHT NOT BE BEING USED IN THIS PROJECT.
+ *  — Roy Vanegas, 14 August 2015
+ *
  * ********************************************************************************/
 void set_start_time()
 {
