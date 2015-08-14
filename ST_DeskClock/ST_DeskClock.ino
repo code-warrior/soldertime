@@ -167,6 +167,9 @@ uint8_t stop_watch_digit_3 = 0;
 uint8_t stop_watch_digit_2 = 0;
 uint8_t stop_watch_digit_1 = 0;
 
+uint8_t stop_watch_minutes = 0;
+uint8_t stop_watch_seconds = 0;
+
 // StopWatch
 int OldTime = 0;
 int CurrentTime = 0;
