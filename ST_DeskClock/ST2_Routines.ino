@@ -507,11 +507,11 @@ void StopWatch()
     }
 
     // Convert Total Time to digits
-    SWMINUTES = TotalTime / 60;
+    stop_watch_minutes = TotalTime / 60;
     SWSECONDS = TotalTime % 60;
 
-    SWDigit4 = SWMINUTES / 10;
-    SWDigit3 = SWMINUTES % 10;
+    SWDigit4 = stop_watch_minutes / 10;
+    SWDigit3 = stop_watch_minutes % 10;
     SWDigit2 = SWSECONDS / 10;
     SWDigit1 = SWSECONDS % 10;
 
@@ -548,11 +548,11 @@ void StopWatch()
     }
 
     // Convert Total Time to digits
-    SWMINUTES = TotalTime / 60;
+    stop_watch_minutes = TotalTime / 60;
     SWSECONDS = TotalTime % 60;
 
-    SWDigit4 = SWMINUTES / 10;
-    SWDigit3 = SWMINUTES % 10;
+    SWDigit4 = stop_watch_minutes / 10;
+    SWDigit3 = stop_watch_minutes % 10;
     SWDigit2 = SWSECONDS / 10;
     SWDigit1 = SWSECONDS % 10;
 

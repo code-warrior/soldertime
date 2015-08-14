@@ -171,7 +171,7 @@ uint8_t SWDigit3 = 0;
 uint8_t SWDigit2 = 0;
 uint8_t SWDigit1 = 0;
 
-int SWMINUTES = 0;
+int stop_watch_minutes = 0;
 int SWSECONDS = 0;
 
 int dayIndex = 0;
