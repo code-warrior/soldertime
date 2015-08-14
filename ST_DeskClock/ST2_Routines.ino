@@ -507,13 +507,13 @@ void StopWatch()
     }
 
     // Convert Total Time to digits
-    SWMINUTES = TotalTime / 60;
-    SWSECONDS = TotalTime % 60;
+    stop_watch_minutes = TotalTime / 60;
+    stop_watch_seconds = TotalTime % 60;
 
-    stop_watch_digit_4 = SWMINUTES / 10;
-    stop_watch_digit_3 = SWMINUTES % 10;
-    stop_watch_digit_2 = SWSECONDS / 10;
-    stop_watch_digit_1 = SWSECONDS % 10;
+    stop_watch_digit_4 = stop_watch_minutes / 10;
+    stop_watch_digit_3 = stop_watch_minutes % 10;
+    stop_watch_digit_2 = stop_watch_seconds / 10;
+    stop_watch_digit_1 = stop_watch_seconds % 10;
 
     writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, stop_watch_digit_1);
 
@@ -548,13 +548,13 @@ void StopWatch()
     }
 
     // Convert Total Time to digits
-    SWMINUTES = TotalTime / 60;
-    SWSECONDS = TotalTime % 60;
+    stop_watch_minutes = TotalTime / 60;
+    stop_watch_seconds = TotalTime % 60;
 
-    stop_watch_digit_4 = SWMINUTES / 10;
-    stop_watch_digit_3 = SWMINUTES % 10;
-    stop_watch_digit_2 = SWSECONDS / 10;
-    stop_watch_digit_1 = SWSECONDS % 10;
+    stop_watch_digit_4 = stop_watch_minutes / 10;
+    stop_watch_digit_3 = stop_watch_minutes % 10;
+    stop_watch_digit_2 = stop_watch_seconds / 10;
+    stop_watch_digit_1 = stop_watch_seconds % 10;
 
     writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, stop_watch_digit_1);
 
