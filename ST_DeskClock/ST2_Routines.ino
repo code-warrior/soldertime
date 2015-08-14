@@ -452,7 +452,7 @@ void StopWatch()
     TotalTime = 0;
     stop_watch_digit_4 = 0;
     stop_watch_digit_3 = 0;
-    SWDigit2 = 0;
+    stop_watch_digit_2 = 0;
     SWDigit1 = 0;
 
     blinkON = true;
@@ -466,12 +466,12 @@ void StopWatch()
     delay(500);
 
     clearmatrix();
-    writeTime(stop_watch_digit_4, stop_watch_digit_3, SWDigit2, SWDigit1);
+    writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, SWDigit1);
 
     break;
 
   case 1:                                                          // Waiting for "Start" button to be pressed
-    writeTime(stop_watch_digit_4, stop_watch_digit_3, SWDigit2, SWDigit1);
+    writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, SWDigit1);
 
     if(NextSUBStateRequest)
     {
@@ -512,10 +512,10 @@ void StopWatch()
 
     stop_watch_digit_4 = SWMINUTES / 10;
     stop_watch_digit_3 = SWMINUTES % 10;
-    SWDigit2 = SWSECONDS / 10;
+    stop_watch_digit_2 = SWSECONDS / 10;
     SWDigit1 = SWSECONDS % 10;
 
-    writeTime(stop_watch_digit_4, stop_watch_digit_3, SWDigit2, SWDigit1);
+    writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, SWDigit1);
 
     if(NextSUBStateRequest)
     {
@@ -553,10 +553,10 @@ void StopWatch()
 
     stop_watch_digit_4 = SWMINUTES / 10;
     stop_watch_digit_3 = SWMINUTES % 10;
-    SWDigit2 = SWSECONDS / 10;
+    stop_watch_digit_2 = SWSECONDS / 10;
     SWDigit1 = SWSECONDS % 10;
 
-    writeTime(stop_watch_digit_4, stop_watch_digit_3, SWDigit2, SWDigit1);
+    writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, SWDigit1);
 
     if(NextSUBStateRequest)
     {
