@@ -253,16 +253,18 @@ void set_alarm_time() // Just for testing set to 12:01 PM
  * ********************************************************************************/
 void CheckAlarm()
 {
-  uint8_t temp =0;
-  I2C_RX(RTCDS1337,RTCSTATUS);
-  ALARM1FLAG = bitRead(i2cData, 0);
+   uint8_t temp = 0;
+   I2C_RX(RTCDS1337, RTCSTATUS);
+   ALARM1FLAG = bitRead(i2cData, 0);
 
-  if(ALARM1FLAG)
-  {
-    temp =i2cData;
-    bitClear(temp, 0);
-    I2C_TX(RTCDS1337,RTCSTATUS,temp);
-  }
+
+   if (ALARM1FLAG) {
+      temp = i2cData;
+
+      bitClear(temp, 0);
+
+      I2C_TX(RTCDS1337, RTCSTATUS, temp);
+   }
 }
 
 /** *********************************************************************************
