@@ -857,7 +857,7 @@ void graphican()
     sub_state =1;
     scrollCounter = 0;
     scrollSpeed = 200;
-    //  soundeffect = false;
+    //  sound_effect = false;
     y = 3;
     target =  1;
     targdist = 0;
@@ -899,7 +899,7 @@ void graphican()
         {
           target_direction = !target_direction;
           targdist = - target;
-          if(soundeffect)
+          if(sound_effect)
           {
             beepsound(4000,10);
           }
@@ -918,7 +918,7 @@ void graphican()
         {
           target_direction = !target_direction;
           targdist = - target;
-          if(soundeffect)
+          if(sound_effect)
           {
             beepsound(5000,10);
           }
@@ -957,7 +957,7 @@ void graphican()
 
     if(OptionModeFlag)
     {
-      soundeffect = !soundeffect;
+      sound_effect = !sound_effect;
     }
 
     scrollCounter = scrollCounter +1;

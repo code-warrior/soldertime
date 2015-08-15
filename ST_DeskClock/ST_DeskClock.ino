@@ -60,7 +60,7 @@
 #define MAX_STATE      6
 
 boolean target_direction = true;
-boolean soundeffect = false;
+boolean sound_effect = false;
 boolean NextStateRequest = false;
 boolean NextSUBStateRequest = false;
 boolean JustWokeUpFlag = false;
