@@ -97,7 +97,7 @@ uint8_t i2cData = 0;
 // int nextcounter = 0;
 
 int STATE = 0;
-int SUBSTATE = 0;
+int sub_state = 0;
 
 int scrollCounter = 0;
 int ScrollLoops = 3;

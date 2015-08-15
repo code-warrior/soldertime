@@ -7,12 +7,12 @@
 void NextState()
 {
   STATE = STATE + 1;
-  SUBSTATE = 0;
+  sub_state = 0;
   NextStateRequest = false;
   if(STATE > MAX_STATE)
   {
     STATE = 0;
-    SUBSTATE = 0;
+    sub_state = 0;
   }
 }
 
@@ -53,15 +53,15 @@ void DisplayTimeSub()
 
   if(NextStateRequest)
   {
-    SUBSTATE =99;
+    sub_state =99;
   }
 
   if(NextSUBStateRequest)
   {
-    SUBSTATE = SUBSTATE +1;
-    if(SUBSTATE>4)
+    sub_state = sub_state +1;
+    if(sub_state>4)
     {
-      SUBSTATE =1;
+      sub_state =1;
     }
     NextSUBStateRequest = false;
   }
@@ -75,10 +75,10 @@ void DisplayTimeSub()
   }
 
 
-  switch (SUBSTATE)
+  switch (sub_state)
   {
   case 0:                // Start Display Time
-    SUBSTATE = 1;
+    sub_state = 1;
     blinkON = true;
     blinkFlag = false;
     blinkMin = false;
@@ -141,11 +141,11 @@ void setTimeSub()
 {
 
 
-  switch (SUBSTATE)
+  switch (sub_state)
   {
   case 0:                // Start SET Time
     displayString("Set?");
-    SUBSTATE = 1;
+    sub_state = 1;
     NextSUBStateRequest = false;
 
 
@@ -154,14 +154,14 @@ void setTimeSub()
   case 1:                                                          // Ask user if they want to set time
     if(NextSUBStateRequest)
     {
-      SUBSTATE = 2;
+      sub_state = 2;
       NextSUBStateRequest = false;
       blinkFlag = true;
     }
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
 
@@ -180,7 +180,7 @@ void setTimeSub()
     if(NextStateRequest)
     {
       blinkMin = false;
-      SUBSTATE =3;
+      sub_state =3;
       NextStateRequest = false;
     }
     break;
@@ -197,7 +197,7 @@ void setTimeSub()
     if(NextStateRequest)
     {
       blinkHour = false;
-      SUBSTATE =4;
+      sub_state =4;
       NextStateRequest = false;
     }
 
@@ -213,7 +213,7 @@ void setTimeSub()
 
     if(NextStateRequest)
     {
-      SUBSTATE =5;
+      sub_state =5;
       NextStateRequest = false;
     }
 
@@ -229,7 +229,7 @@ void setTimeSub()
 
     if(NextStateRequest)
     {
-      SUBSTATE =6;
+      sub_state =6;
       NextStateRequest = false;
     }
     break;
@@ -243,7 +243,7 @@ void setTimeSub()
     }
     if(NextStateRequest)
     {
-      SUBSTATE =8;
+      sub_state =8;
       NextStateRequest = false;
     }
     break;
@@ -260,7 +260,7 @@ void setTimeSub()
 
      if(NextStateRequest)
      {
-     SUBSTATE =8;
+     sub_state =8;
      NextStateRequest = false;
      }
      break;
@@ -268,7 +268,7 @@ void setTimeSub()
 
   case 8:
     new_time_format = TH_Not24_flag;                                // Pre-set before toggle
-    SUBSTATE =9;
+    sub_state =9;
     break;
 
 
@@ -294,7 +294,7 @@ void setTimeSub()
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
 
@@ -316,11 +316,11 @@ void setAlarmSub()
 {
 
 
-  switch (SUBSTATE)
+  switch (sub_state)
   {
   case 0:                // Start SET Alarm
     displayString("ALM?");
-    SUBSTATE = 1;
+    sub_state = 1;
     NextSUBStateRequest = false;
 
 
@@ -332,7 +332,7 @@ void setAlarmSub()
       //      displayString("A ON");
       //      delay(250);
       //      ALARMON = true;
-      SUBSTATE = 2;
+      sub_state = 2;
       NextSUBStateRequest = false;
       blinkFlag = true;
     }
@@ -343,7 +343,7 @@ void setAlarmSub()
       //      delay(500);
       //      enable_alarm_1(false);
       //      ALARMON = false;
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
 
@@ -361,7 +361,7 @@ void setAlarmSub()
     if(NextStateRequest)
     {
       blinkMin = false;
-      SUBSTATE =3;
+      sub_state =3;
       NextStateRequest = false;
     }
     break;
@@ -378,7 +378,7 @@ void setAlarmSub()
     if(NextStateRequest)
     {
       blinkMin = false;
-      SUBSTATE =4;
+      sub_state =4;
       NextStateRequest = false;
       //      enable_alarm_1(true);
     }
@@ -412,7 +412,7 @@ void setAlarmSub()
     if(NextStateRequest)
     {
       blinkMin = false;
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
       if(ALARMON)
       {
@@ -441,7 +441,7 @@ void setAlarmSub()
 void StopWatch()
 {
 
-  switch (SUBSTATE)
+  switch (sub_state)
   {
   case 0:                                                          // Stop Watch Set-up
 
@@ -460,7 +460,7 @@ void StopWatch()
     blinkMin = false;
     blinkHour = false;
 
-    SUBSTATE = 1;
+    sub_state = 1;
     NextSUBStateRequest = false;
     displayString("Stop");
     delay(500);
@@ -475,7 +475,7 @@ void StopWatch()
 
     if(NextSUBStateRequest)
     {
-      SUBSTATE = 2;
+      sub_state = 2;
       NextSUBStateRequest = false;
       SleepEnable = false;
       currentMillis = millis();
@@ -484,7 +484,7 @@ void StopWatch()
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
 
@@ -519,14 +519,14 @@ void StopWatch()
 
     if(NextSUBStateRequest)
     {
-      SUBSTATE = 1;
+      sub_state = 1;
       NextSUBStateRequest = false;
       SleepEnable = true;
     }
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
     break;
@@ -560,14 +560,14 @@ void StopWatch()
 
     if(NextSUBStateRequest)
     {
-      SUBSTATE = 1;
+      sub_state = 1;
       NextSUBStateRequest = false;
       SleepEnable = true;
     }
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
     break;
@@ -590,7 +590,7 @@ void StopWatch()
 void DisplaySerialData()
 {
   int temp =0;
-  switch (SUBSTATE)
+  switch (sub_state)
   {
 
   case 0:                                                          // Display Set-up
@@ -608,7 +608,7 @@ void DisplaySerialData()
     if(IncomingMessIndex == 0 || IncomingMessIndex > 27)
     {
       MessagePointer = 0;
-      SUBSTATE =3;
+      sub_state =3;
       char Str2[] = "SpikenzieLabs";
       for(int i =0; i <= sizeof(Str2); i ++)                            // Show default Scrolling message
       {
@@ -620,7 +620,7 @@ void DisplaySerialData()
     else
     {
       MessagePointer= 0;
-      SUBSTATE = 3;
+      sub_state = 3;
       SleepEnable = true;
     }
 
@@ -631,7 +631,7 @@ void DisplaySerialData()
     {
       ResetScrollMessage();
 
-      SUBSTATE = 2;
+      sub_state = 2;
       NextSUBStateRequest = false;
       power_usart0_enable();
       Serial.begin(57600);
@@ -640,7 +640,7 @@ void DisplaySerialData()
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
     break;
@@ -695,11 +695,11 @@ shortloop:
 
     if(IncomingMessIndex == 0)
     {
-      SUBSTATE = 99;
+      sub_state = 99;
     }
     else
     {
-      SUBSTATE = 3;
+      sub_state = 3;
       FILLEEPROM();
       OptionModeFlag = false;
 
@@ -736,7 +736,7 @@ shortloop:
       IncomingMax = MessagePointer;
     }
 
-    SUBSTATE = 4;
+    sub_state = 4;
     ScrollLoops = 3;
     SleepEnable = true;
 
@@ -794,13 +794,13 @@ shortloop:
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
 
     if(OptionModeFlag)
     {
-      SUBSTATE =1;
+      sub_state =1;
       displayString("NEW?");
       delay(250);
     }
@@ -850,11 +850,11 @@ void graphican()
 
   int temp =0;
   //  int rand = 0;
-  switch (SUBSTATE)
+  switch (sub_state)
   {
 
   case 0:
-    SUBSTATE =1;
+    sub_state =1;
     scrollCounter = 0;
     scrollSpeed = 200;
     //  soundeffect = false;
@@ -951,7 +951,7 @@ void graphican()
 
     if(NextStateRequest)
     {
-      SUBSTATE =99;
+      sub_state =99;
       NextStateRequest = false;
     }
 

@@ -39,7 +39,7 @@ void GoToSleep()
 //    SetDigit = 4;
 
     STATE = 0;
-    SUBSTATE = 0;
+    sub_state = 0;
     JustWokeUpFlag = true;
 
 //    check_alarm();

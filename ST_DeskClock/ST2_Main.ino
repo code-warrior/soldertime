@@ -13,14 +13,14 @@ static void check_sleep_timer(void)
    if (SleepEnable && (currentMillis - SleepTimer) > SleepLimit) {
       // New for ST Desk Clock - goto Time vs Sleep
       if (STATE == 1) {
-         SUBSTATE = 1;
+         sub_state = 1;
          blinkON = true;
          blinkFlag = false;
          blinkMin = false;
          blinkHour = false;
       } else {
          STATE= 1; // was STATE= 99;
-         SUBSTATE = 0;
+         sub_state = 0;
          clearmatrix();
       }
 
@@ -194,7 +194,7 @@ void loop() {
 
       if (NextSUBStateRequest || NextStateRequest) {
          STATE = 0;
-         SUBSTATE = 0;
+         sub_state = 0;
          // NextStateFlag = true;
          NextStateRequest = false;
          NextSUBStateRequest = false;
@@ -210,7 +210,7 @@ void loop() {
       GoToSleep();
       SleepTimer = millis();
       STATE = 0;
-      SUBSTATE = 0;
+      sub_state = 0;
 
       break;
    }
