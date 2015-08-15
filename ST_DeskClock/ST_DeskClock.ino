@@ -57,7 +57,7 @@
 #define RTC_ALARM1DATE B00001010 //; Date
 #define ASCII_OFFSET   0x20      // Font offset
 #define BLINK_TIME      500       // was 1000
-#define MODEBUTTON     2
+#define MODE_BUTTON     2
 #define SETBUTTON      3
 
 // Worm animation

@@ -31,7 +31,7 @@ static void check_sleep_timer(void)
 // Test for Mode Button Press
 static void check_mode_button(void)
 {
-   if (digitalRead(MODEBUTTON)) {
+   if (digitalRead(MODE_BUTTON)) {
       return;
    }
 
@@ -67,7 +67,7 @@ static void check_mode_button(void)
       }
 
       // wait for them to stop holding the button
-      if (!digitalRead(MODEBUTTON)) {
+      if (!digitalRead(MODE_BUTTON)) {
          break;
       }
    }
@@ -93,7 +93,7 @@ static void check_set_button(void)
 
    while (1) {
       // this is repeated from above; can be merged?
-      if (!digitalRead(MODEBUTTON)) {
+      if (!digitalRead(MODE_BUTTON)) {
          OptionModeFlag = true;
          NextStateRequest = false;
          NextSUBStateRequest = false;

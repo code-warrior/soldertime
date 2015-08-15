@@ -1003,7 +1003,7 @@ void lamptest()
           }
         }
 
-        bval = !digitalRead(MODEBUTTON);
+        bval = !digitalRead(MODE_BUTTON);
         if(bval)
         {
           break;
@@ -1013,7 +1013,7 @@ void lamptest()
    led_draw_col(i, 0, 0);
         delay(lamptestspeed / 5);
       }
-      bval = !digitalRead(MODEBUTTON);
+      bval = !digitalRead(MODE_BUTTON);
     }
     while(!bval);
     }
