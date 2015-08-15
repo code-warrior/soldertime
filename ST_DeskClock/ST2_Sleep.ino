@@ -46,7 +46,7 @@ void GoToSleep()
  //   if(ALARM1FLAG)
 //    {
 //      ALARM1FLAG = false;
-//      EnableAlarm1(false);
+//      enable_alarm_1(false);
 //      STATE = 90;
 //    }
 

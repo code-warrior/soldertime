@@ -271,7 +271,7 @@ void check_alarm()
  *  Enable Alarm
  *
  * ********************************************************************************/
-void EnableAlarm1(boolean onoff) // Trigger on Hours & Minutes Match
+void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
 {
    uint8_t temp = 0;
 

@@ -42,7 +42,7 @@ static void check_mode_button(void)
    if (ALARM1FLAG) {
       ALARM1FLAG = false;
       ALARMON = false;
-      EnableAlarm1(false);
+      enable_alarm_1(false);
       STATE = 90;
       JustWokeUpFlag = false;
    } else {

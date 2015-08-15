@@ -341,7 +341,7 @@ void setAlarmSub()
     {
       //      displayString("AOFF");
       //      delay(500);
-      //      EnableAlarm1(false);
+      //      enable_alarm_1(false);
       //      ALARMON = false;
       SUBSTATE =99;
       NextStateRequest = false;
@@ -380,7 +380,7 @@ void setAlarmSub()
       blinkMin = false;
       SUBSTATE =4;
       NextStateRequest = false;
-      //      EnableAlarm1(true);
+      //      enable_alarm_1(true);
     }
     break;
 
@@ -416,11 +416,11 @@ void setAlarmSub()
       NextStateRequest = false;
       if(ALARMON)
       {
-        EnableAlarm1(true);
+        enable_alarm_1(true);
       }
       else
       {
-        EnableAlarm1(false);
+        enable_alarm_1(false);
       }
     }
 
