@@ -39,7 +39,7 @@
 
 // Constants
 // DS1337+ Address locations
-#define RTCDS1337      B01101000 // was B11010000
+#define RTC_DS1337      B01101000 // was B11010000
 #define RTCCONT        B00001110 //; Control
 #define RTCSTATUS      B00001111 //; Status
 

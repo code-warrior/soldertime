@@ -492,7 +492,7 @@ void StopWatch()
 
   case 2:                                                          // Stop Watch Running
 
- //   I2C_RX(RTCDS1337,RTC_SEC);
+ //   I2C_RX(RTC_DS1337,RTC_SEC);
  //   CurrentTime =i2cData & B00001111;
  currentMillis = millis();
     if((currentMillis - SleepTimer) >= 1000)
@@ -535,7 +535,7 @@ void StopWatch()
 // Not using this RTC version since it seems too power hungery due to constant I2C polling
   case 2:                                                          // Stop Watch Running
 
-    I2C_RX(RTCDS1337,RTC_SEC);
+    I2C_RX(RTC_DS1337,RTC_SEC);
     CurrentTime =i2cData & B00001111;
     if(CurrentTime != OldTime)
     {
