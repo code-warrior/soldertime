@@ -231,22 +231,19 @@ void set_start_time()
  *  Set Alarm
  *
  * ********************************************************************************/
-void SetAlarmTime()                              // Just for testing set to 12:01 PM
+void SetAlarmTime() // Just for testing set to 12:01 PM
 {
-  uint8_t temp =0;
-
-  HourTens = 1;
-  HourOnes = 2;
-  temp = (HourTens << 4) + HourOnes;
-  bitWrite(temp, 5, A_PM_NotAM_flag);
-  bitWrite(temp, 6, A_TH_Not24_flag);
-
-  I2C_TX(RTCDS1337,RTC_ALARM1HOUR,temp);
-
-  MinTens = 0;
-  MinOnes = 1;
-  temp = (MinTens << 4) + MinOnes;
-  I2C_TX(RTCDS1337,RTC_ALARM1MIN,temp);
+   uint8_t temp = 0;
+   HourTens = 1;
+   HourOnes = 2;
+   MinTens = 0;
+   MinOnes = 1;
+   temp = (HourTens << 4) + HourOnes;
+   bitWrite(temp, 5, A_PM_NotAM_flag);
+   bitWrite(temp, 6, A_TH_Not24_flag);
+   I2C_TX(RTCDS1337,RTC_ALARM1HOUR,temp);
+   temp = (MinTens << 4) + MinOnes;
+   I2C_TX(RTCDS1337, RTC_ALARM1MIN, temp);
 }
 
 /** *********************************************************************************
