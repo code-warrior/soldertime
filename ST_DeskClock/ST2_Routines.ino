@@ -287,7 +287,7 @@ void setTimeSub()
     {
       new_time_format = !new_time_format;
       NextSUBStateRequest = false;
-      TwelveTwentyFourConvert();
+      twelve_twenty_four_convert();
       A_TH_Not24_flag = new_time_format;
     }
 

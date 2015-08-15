@@ -409,7 +409,7 @@ void set_alarm(uint8_t setselect)
  *  Toggle Twelve- and Twenty-Four hour time
  *
  * ********************************************************************************/
-void TwelveTwentyFourConvert()
+void twelve_twenty_four_convert()
 {
    int temphours = 0;
    int temp = 0;
