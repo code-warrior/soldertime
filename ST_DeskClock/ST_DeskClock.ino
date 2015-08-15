@@ -59,13 +59,6 @@
 #define SET_BUTTON     3
 #define MAX_STATE      6
 
-// Worm animation
-int c = 0;
-int y = 3;
-int target = 3;
-int targdist = 0;
-int worm_length = 15;
-
 boolean targdir = true;
 boolean soundeffect = false;
 boolean NextStateRequest = false;
@@ -87,34 +80,43 @@ boolean A_TH_Not24_flag = true;
 boolean A_PM_NotAM_flag = false;
 boolean scrollDirFlag = false;
 
+//boolean MODEOVERRIDEFLAG = false;
+boolean NextStateFlag = false;
+boolean SetTimeFlag = false;
+boolean ALARM1FLAG = false;
+boolean ALARMON = false;
+
+
 // int  i  =0;
 // int  i2  =0;
 // int  vite = 2;
 // uint8_t incro = 0;
 // uint8_t column = 0;
+//uint8_t SetDigit  = 4;
 uint8_t TEXT = 65;
 uint8_t i2cData = 0;
 // int nextcounter = 0;
 
+// Worm animation
+int c = 0;
+int y = 3;
+int target = 3;
+int targdist = 0;
+int worm_length = 15;
 int state = 0;
 int sub_state = 0;
-
 int scrollCounter = 0;
 int ScrollLoops = 3;
 int scrollSpeed = 300;                                    // was 1200
 int blinkCounter = 0;
-
-unsigned long SleepTimer;
-unsigned long currentMillis;
-unsigned long SleepLimit = 6000;
-
 int UpdateTime = 0;
 
-//char Str1[] = "Hi";
-char IncomingMessage[24];
-char MessageRead;
-//uint8_t INBYTE;
-uint8_t Message[275];
+// StopWatch
+int OldTime = 0;
+int CurrentTime = 0;
+int TotalTime = 0;
+int dayIndex = 0;
+
 int IncomingIndex = 0;
 int IncomingMessIndex = 0;
 int IncomingMax = 0;
@@ -122,11 +124,13 @@ int MessagePointer = 0;
 int StartWindow = 0;
 int IncomingLoaded = 0;
 
+//char Str1[] = "Hi";
+char IncomingMessage[24];
+char MessageRead;
 char days[7][4] =
    {
       "Sun","Mon","Tue","Wed","Thr","Fri","Sat"
    };
-
 char months[12][4] =
    {
       "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
@@ -165,19 +169,12 @@ uint8_t stop_watch_digit_1 = 0;
 uint8_t stop_watch_minutes = 0;
 uint8_t stop_watch_seconds = 0;
 
-// StopWatch
-int OldTime = 0;
-int CurrentTime = 0;
-int TotalTime = 0;
+//uint8_t INBYTE;
+uint8_t Message[275];
 
-int dayIndex = 0;
-
-//uint8_t SetDigit  = 4;
-//boolean MODEOVERRIDEFLAG = false;
-boolean NextStateFlag = false;
-boolean SetTimeFlag = false;
-boolean ALARM1FLAG = false;
-boolean ALARMON = false;
+unsigned long SleepTimer;
+unsigned long currentMillis;
+unsigned long SleepLimit = 6000;
 
 volatile boolean MINUP = false;
 volatile boolean MINDOWN = false;
