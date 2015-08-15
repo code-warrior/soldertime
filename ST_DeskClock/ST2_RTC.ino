@@ -214,17 +214,14 @@ void set_time_new(uint8_t setselect)
 void set_start_time()
 {
    uint8_t temp = 0;
-
    HourTens = 1;
    HourOnes = 2;
+   MinTens = 0;
+   MinOnes = 0;
    temp = (HourTens << 4) + HourOnes;
    bitWrite(temp, 5, PM_NotAM_flag);
    bitWrite(temp, 6, TH_Not24_flag);
-
    I2C_TX(RTCDS1337, RTC_HOUR, temp);
-
-   MinTens = 0;
-   MinOnes = 0;
    temp = (MinTens << 4) + MinOnes;
    I2C_TX(RTCDS1337, RTC_MIN, temp);
 }
