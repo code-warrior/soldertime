@@ -56,7 +56,7 @@
 #define RTC_ALARM1HOUR B00001001 //; Hours
 #define RTC_ALARM1DATE B00001010 //; Date
 #define ASCII_OFFSET   0x20      // Font offset
-#define blink_time      500       // was 1000
+#define BLINK_TIME      500       // was 1000
 #define BUTTON1        2
 #define BUTTON2        3
 #define MODEBUTTON     2
