@@ -267,14 +267,14 @@ void setTimeSub()
      */
 
   case 8:
-    NewTimeFormate = TH_Not24_flag;                                // Pre-set before toggle
+    new_time_format = TH_Not24_flag;                                // Pre-set before toggle
     SUBSTATE =9;
     break;
 
 
   case 9:                                                          // Select 12 or 24 hour clock
 
-    if(NewTimeFormate)
+    if(new_time_format)
     {
       displayString("12 h");
     }
@@ -285,10 +285,10 @@ void setTimeSub()
 
     if(NextSUBStateRequest)
     {
-      NewTimeFormate = !NewTimeFormate;
+      new_time_format = !new_time_format;
       NextSUBStateRequest = false;
       TwelveTwentyFourConvert();
-      A_TH_Not24_flag = NewTimeFormate;
+      A_TH_Not24_flag = new_time_format;
     }
 
 

@@ -479,7 +479,7 @@ void TwelveTwentyFourConvert()
     }
 
     // Common finish conversion section
-    TH_Not24_flag = NewTimeFormate;
+    TH_Not24_flag = new_time_format;
     HourTens = temphours / 10;
     HourOnes = temphours % 10;
 
