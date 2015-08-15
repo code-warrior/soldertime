@@ -231,7 +231,7 @@ void set_start_time()
  *  Set Alarm
  *
  * ********************************************************************************/
-void SetAlarmTime() // Just for testing set to 12:01 PM
+void set_alarm_time() // Just for testing set to 12:01 PM
 {
    uint8_t temp = 0;
    HourTens = 1;

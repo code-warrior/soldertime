@@ -76,7 +76,7 @@ void setup()
    delay(500);
    clearmatrix();
 
-   SetAlarmTime(); // for testing
+   set_alarm_time(); // for testing
    EnableAlarm1(false); // for testing
 
    SleepTimer = millis();
