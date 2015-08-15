@@ -884,7 +884,7 @@ void graphican()
         if(target> 3)
         {
           target = 0;
-          // targdir = false;
+          // target_direction = false;
           targdist = 0;
 
         }
@@ -892,12 +892,12 @@ void graphican()
       }
 
 
-      if(targdir)
+      if(target_direction)
       {                                                        // Going up
 
         if(targdist == target)
         {
-          targdir = !targdir;
+          target_direction = !target_direction;
           targdist = - target;
           if(soundeffect)
           {
@@ -916,7 +916,7 @@ void graphican()
 
         if(targdist == target)
         {
-          targdir = !targdir;
+          target_direction = !target_direction;
           targdist = - target;
           if(soundeffect)
           {

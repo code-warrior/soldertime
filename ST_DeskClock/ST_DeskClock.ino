@@ -59,7 +59,7 @@
 #define SET_BUTTON     3
 #define MAX_STATE      6
 
-boolean targdir = true;
+boolean target_direction = true;
 boolean soundeffect = false;
 boolean NextStateRequest = false;
 boolean NextSUBStateRequest = false;
