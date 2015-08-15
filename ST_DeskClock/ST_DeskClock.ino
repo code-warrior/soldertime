@@ -39,11 +39,11 @@
 
 // Constants
 // DS1337+ Address locations
-#define RTC_DS1337      B01101000 // was B11010000
-#define RTC_CONT        B00001110 //; Control
+#define RTC_DS1337     B01101000 // was B11010000
+#define RTC_CONT       B00001110 //; Control
 #define RTC_STATUS     B00001111 //; Status
 
-// #define RTC_HSEC       B00000001      //; Hundredth of a secound
+// #define RTC_HSEC    B00000001 //; Hundredth of a secound
 #define RTC_SEC        B00000000 //; Seconds
 #define RTC_MIN        B00000001 //; Minuites
 #define RTC_HOUR       B00000010 //; Hours
