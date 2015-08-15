@@ -58,7 +58,7 @@ static void check_mode_button(void)
 
    while (1) {
       // check for simultaneous mode and set buttons
-      if (!digitalRead(SETBUTTON)) {
+      if (!digitalRead(SET_BUTTON)) {
          OptionModeFlag = true;
          NextStateRequest = false;
          NextSUBStateRequest = false;
@@ -79,7 +79,7 @@ static void check_mode_button(void)
 // Test for SET Button Press
 static void check_set_button(void)
 {
-   if (digitalRead(SETBUTTON)) {
+   if (digitalRead(SET_BUTTON)) {
       return;
    }
 
@@ -102,7 +102,7 @@ static void check_set_button(void)
       }
 
       // wait for them to stop holding the button
-      if (digitalRead(SETBUTTON)) {
+      if (digitalRead(SET_BUTTON)) {
          break;
       }
    }
@@ -177,17 +177,17 @@ void loop() {
       displayString("Beep");
 
       if (blinkON) {
-         pinMode(SETBUTTON, OUTPUT);
-         tone(SETBUTTON,4000) ;
+         pinMode(SET_BUTTON, OUTPUT);
+         tone(SET_BUTTON,4000) ;
          delay(100);
-         noTone(SETBUTTON);
-         digitalWrite(SETBUTTON, HIGH);
+         noTone(SET_BUTTON);
+         digitalWrite(SET_BUTTON, HIGH);
       }
 
 #if ARDUINO >= 101
-   pinMode(SETBUTTON, INPUT_PULLUP);
+   pinMode(SET_BUTTON, INPUT_PULLUP);
 #else
-   pinMode(SETBUTTON, INPUT);
+   pinMode(SET_BUTTON, INPUT);
 #endif
 
       delay(250);

@@ -58,7 +58,7 @@
 #define ASCII_OFFSET   0x20      // Font offset
 #define BLINK_TIME      500       // was 1000
 #define MODE_BUTTON     2
-#define SETBUTTON      3
+#define SET_BUTTON      3
 
 // Worm animation
 int c = 0;

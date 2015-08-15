@@ -29,18 +29,18 @@ void beepsound(int freq, int freqlenght)
 {
   // freq was 4000
   // freqlenght was 100
-  pinMode(SETBUTTON, OUTPUT);
-  tone(SETBUTTON,freq,freqlenght);
+  pinMode(SET_BUTTON, OUTPUT);
+  tone(SET_BUTTON,freq,freqlenght);
   delay(freqlenght);
-  noTone(SETBUTTON);
-  digitalWrite(SETBUTTON, HIGH);
+  noTone(SET_BUTTON);
+  digitalWrite(SET_BUTTON, HIGH);
 
   #if ARDUINO >= 101
-  pinMode(SETBUTTON, INPUT_PULLUP);
-//  digitalWrite(SETBUTTON, HIGH);
+  pinMode(SET_BUTTON, INPUT_PULLUP);
+//  digitalWrite(SET_BUTTON, HIGH);
   #else
-//  digitalWrite(SETBUTTON, HIGH);
-  pinMode(SETBUTTON, INPUT);
+//  digitalWrite(SET_BUTTON, HIGH);
+  pinMode(SET_BUTTON, INPUT);
   #endif
 
 }
@@ -676,7 +676,7 @@ shortloop:
       }
     }
 
-    bval = !digitalRead(SETBUTTON);
+    bval = !digitalRead(SET_BUTTON);
     if(!bval)
     {
       goto shortloop;
@@ -688,7 +688,7 @@ shortloop:
 
       while(bval)
       {
-        bval = !digitalRead(SETBUTTON);
+        bval = !digitalRead(SET_BUTTON);
       }
       delay(100);
     }
@@ -980,7 +980,7 @@ void lamptest()
 {
   int lamptestspeed = 250;
   clearmatrix();
-  bval = !digitalRead(SETBUTTON);
+  bval = !digitalRead(SET_BUTTON);
   if(bval)
   {
     do
@@ -992,7 +992,7 @@ void lamptest()
         {
      led_draw(i, y, 0xFF);
           delay(lamptestspeed / 10);
-          bval = !digitalRead(SETBUTTON);
+          bval = !digitalRead(SET_BUTTON);
           if(bval)
           {
             lamptestspeed = lamptestspeed -1;
