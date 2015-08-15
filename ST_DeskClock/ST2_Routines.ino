@@ -6,12 +6,12 @@
 
 void NextState()
 {
-  STATE = STATE + 1;
+  state = state + 1;
   sub_state = 0;
   NextStateRequest = false;
-  if(STATE > MAX_STATE)
+  if(state > MAX_STATE)
   {
-    STATE = 0;
+    state = 0;
     sub_state = 0;
   }
 }
@@ -1194,14 +1194,14 @@ writeTime(
    AMPMALARMDOTS = 0;
 
    // Alarm dot (top left) Do not display while setting alarm
-   if (ALARMON && (STATE == 1))
+   if (ALARMON && (state == 1))
       bitSet(AMPMALARMDOTS,6);
 
    // AM / PM dot (bottom left) (Display or Set Time)
-   if(PM_NotAM_flag && (STATE == 1 || STATE == 2) && TH_Not24_flag)
+   if(PM_NotAM_flag && (state == 1 || state == 2) && TH_Not24_flag)
       bitSet(AMPMALARMDOTS,0);
 
    // AM / PM dot (bottom left) (Set Alarm Time)
-   if(A_PM_NotAM_flag && (STATE == 3) && TH_Not24_flag)
+   if(A_PM_NotAM_flag && (state == 3) && TH_Not24_flag)
       bitSet(AMPMALARMDOTS,0);
 }

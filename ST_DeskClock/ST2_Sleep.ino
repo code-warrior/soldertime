@@ -38,7 +38,7 @@ void GoToSleep()
     SetTimeFlag = false;
 //    SetDigit = 4;
 
-    STATE = 0;
+    state = 0;
     sub_state = 0;
     JustWokeUpFlag = true;
 
@@ -47,7 +47,7 @@ void GoToSleep()
 //    {
 //      ALARM1FLAG = false;
 //      enable_alarm_1(false);
-//      STATE = 90;
+//      state = 90;
 //    }
 
 //    displayString("Wake");

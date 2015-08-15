@@ -12,14 +12,14 @@ static void check_sleep_timer(void)
 
    if (SleepEnable && (currentMillis - SleepTimer) > SleepLimit) {
       // New for ST Desk Clock - goto Time vs Sleep
-      if (STATE == 1) {
+      if (state == 1) {
          sub_state = 1;
          blinkON = true;
          blinkFlag = false;
          blinkMin = false;
          blinkHour = false;
       } else {
-         STATE= 1; // was STATE= 99;
+         state= 1; // was state= 99;
          sub_state = 0;
          clearmatrix();
       }
@@ -43,7 +43,7 @@ static void check_mode_button(void)
       ALARM1FLAG = false;
       ALARMON = false;
       enable_alarm_1(false);
-      STATE = 90;
+      state = 90;
       JustWokeUpFlag = false;
    } else {
       if (JustWokeUpFlag) {
@@ -136,9 +136,9 @@ void loop() {
    check_blink();
 
    // these should be moved into function pointers.
-   switch (STATE) {
+   switch (state) {
    case 0: // Set-Up
-      STATE = 1;
+      state = 1;
 
       break;
 
@@ -193,7 +193,7 @@ void loop() {
       delay(250);
 
       if (NextSUBStateRequest || NextStateRequest) {
-         STATE = 0;
+         state = 0;
          sub_state = 0;
          // NextStateFlag = true;
          NextStateRequest = false;
@@ -209,7 +209,7 @@ void loop() {
       clearmatrix();
       GoToSleep();
       SleepTimer = millis();
-      STATE = 0;
+      state = 0;
       sub_state = 0;
 
       break;
