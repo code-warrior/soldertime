@@ -67,7 +67,7 @@ int c = 0;
 int y = 3;
 int target = 3;
 int targdist = 0;
-int wormlenght = 15;
+int worm_length = 15;
 
 boolean targdir = true;
 boolean soundeffect = false;

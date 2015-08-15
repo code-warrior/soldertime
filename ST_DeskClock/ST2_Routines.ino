@@ -936,13 +936,13 @@ void graphican()
 
       // --
       led_draw_col(c, temp, 0xFF);
-      if((c-wormlenght)<0)
+      if((c-worm_length)<0)
       {
-        led_draw_col(19-((wormlenght-1)-c), 0, 0);
+        led_draw_col(19-((worm_length-1)-c), 0, 0);
       }
       else
       {
-        led_draw_col(c-wormlenght, 0, 0);
+        led_draw_col(c-worm_length, 0, 0);
       }
       scrollCounter = 0;
     }
