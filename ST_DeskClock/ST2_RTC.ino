@@ -257,7 +257,6 @@ void check_alarm()
    I2C_RX(RTCDS1337, RTCSTATUS);
    ALARM1FLAG = bitRead(i2cData, 0);
 
-
    if (ALARM1FLAG) {
       temp = i2cData;
 
@@ -272,49 +271,43 @@ void check_alarm()
  *  Enable Alarm
  *
  * ********************************************************************************/
-void EnableAlarm1(boolean onoff)                                            // Trigger on Hours & Minutes Match
+void EnableAlarm1(boolean onoff) // Trigger on Hours & Minutes Match
 {
-  uint8_t temp =0;
+   uint8_t temp = 0;
 
-  // Adjust for Hours - Minutes Trigger -S
-  I2C_RX(RTCDS1337,RTC_ALARM1SEC);
-  temp =i2cData;
-  bitClear(temp, 7);
-  I2C_TX(RTCDS1337,RTC_ALARM1SEC,temp);
+   // Adjust for Hours - Minutes Trigger -S
+   I2C_RX(RTCDS1337, RTC_ALARM1SEC);
+   temp = i2cData;
+   bitClear(temp, 7);
+   I2C_TX(RTCDS1337, RTC_ALARM1SEC, temp);
+   I2C_RX(RTCDS1337, RTC_ALARM1MIN);
+   temp = i2cData;
+   bitClear(temp, 7);
+   I2C_TX(RTCDS1337, RTC_ALARM1MIN, temp);
+   I2C_RX(RTCDS1337, RTC_ALARM1HOUR);
+   temp = i2cData;
+   bitClear(temp, 7);
+   I2C_TX(RTCDS1337, RTC_ALARM1HOUR, temp);
+   I2C_RX(RTCDS1337, RTC_ALARM1DATE);
+   temp = i2cData;
+   bitSet(temp, 7);
+   I2C_TX(RTCDS1337, RTC_ALARM1DATE, temp);
 
-  I2C_RX(RTCDS1337,RTC_ALARM1MIN);
-  temp =i2cData;
-  bitClear(temp, 7);
-  I2C_TX(RTCDS1337,RTC_ALARM1MIN,temp);
+   // Adjust for Hours - Minutes Trigger -E
+   I2C_RX(RTCDS1337, RTCCONT); // Enable Alarm Pin on RTC
+   temp = i2cData;
 
-  I2C_RX(RTCDS1337,RTC_ALARM1HOUR);
-  temp =i2cData;
-  bitClear(temp, 7);
-  I2C_TX(RTCDS1337,RTC_ALARM1HOUR,temp);
+   if (onoff) {
+      bitSet(temp, 0);
+   } else {
+      bitClear(temp, 0);
+   }
 
-  I2C_RX(RTCDS1337,RTC_ALARM1DATE);
-  temp =i2cData;
-  bitSet(temp, 7);
-  I2C_TX(RTCDS1337,RTC_ALARM1DATE,temp);
-  // Adjust for Hours - Minutes Trigger -E
-
-  I2C_RX(RTCDS1337,RTCCONT);                                  // Enable Alarm Pin on RTC
-  temp =i2cData;
-
-  if(onoff)
-  {
-    bitSet(temp, 0);
-  }
-  else
-  {
-    bitClear(temp, 0);
-  }
-  I2C_TX(RTCDS1337,RTCCONT,temp);
-
-  I2C_RX(RTCDS1337,RTCSTATUS);                                // Clear Alarm RTC internal Alarm Flag
-  temp =i2cData;
-  bitClear(temp, 0);
-  I2C_TX(RTCDS1337,RTCSTATUS,temp);
+   I2C_TX(RTCDS1337, RTCCONT, temp);
+   I2C_RX(RTCDS1337, RTCSTATUS); // Clear Alarm RTC internal Alarm Flag
+   temp = i2cData;
+   bitClear(temp, 0);
+   I2C_TX(RTCDS1337, RTCSTATUS, temp);
 }
 
 /** *********************************************************************************
