@@ -63,10 +63,10 @@
 #define SETBUTTON      3
 
 // Worm animation
-int c =0;
+int c = 0;
 int y = 3;
 int target = 3;
-int targdist =0;
+int targdist = 0;
 int wormlenght = 15;
 
 boolean targdir = true;
@@ -121,11 +121,11 @@ char MessageRead;
 //uint8_t INBYTE;
 uint8_t Message[275];
 int IncomingIndex = 0;
-int IncomingMessIndex =0;
+int IncomingMessIndex = 0;
 int IncomingMax = 0;
 int MessagePointer = 0;
 int StartWindow = 0;
-int IncomingLoaded =0;
+int IncomingLoaded = 0;
 
 char days[7][4] =
    {
