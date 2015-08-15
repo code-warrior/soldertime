@@ -71,7 +71,6 @@ void settimeNEW(uint8_t setselect)
 {
    uint8_t temp = 0;
 
-
    switch (setselect) {
    case 1:
       MinOnes += 1;
@@ -251,8 +250,6 @@ void SetAlarmTime()                              // Just for testing set to 12:0
   MinOnes = 1;
   temp = (MinTens << 4) + MinOnes;
   I2C_TX(RTCDS1337,RTC_ALARM1MIN,temp);
-
-
 }
 
 /** *********************************************************************************
@@ -272,7 +269,6 @@ void CheckAlarm()
     bitClear(temp, 0);
     I2C_TX(RTCDS1337,RTCSTATUS,temp);
   }
-
 }
 
 /** *********************************************************************************
@@ -353,7 +349,6 @@ void setAlarm(uint8_t setselect)                                // both min digi
     I2C_TX(RTCDS1337,RTC_ALARM1MIN,temp);
     break;
 
-
   case 2:
     alarm_hour_ones_place = alarm_hour_ones_place + 1;
 
@@ -428,7 +423,6 @@ void setAlarm(uint8_t setselect)                                // both min digi
     I2C_TX(RTCDS1337,RTC_ALARM1HOUR,temp);
     break;
   }
-
 }
 
 /** *********************************************************************************
@@ -503,7 +497,6 @@ void TwelveTwentyFourConvert()
                    temphours = temphours + 12;
                  }
         }
-
     }
 
     // Common finish conversion section
@@ -520,9 +513,5 @@ void TwelveTwentyFourConvert()
 
     bitWrite(temp, 6, TH_Not24_flag);
     I2C_TX(RTCDS1337,RTC_HOUR,temp);
-
-
   }
-
-
 }
