@@ -254,7 +254,7 @@ void set_alarm_time() // Just for testing set to 12:01 PM
 void check_alarm()
 {
    uint8_t temp = 0;
-   I2C_RX(RTC_DS1337, RTCSTATUS);
+   I2C_RX(RTC_DS1337, RTC_STATUS);
    ALARM1FLAG = bitRead(i2cData, 0);
 
    if (ALARM1FLAG) {
@@ -262,7 +262,7 @@ void check_alarm()
 
       bitClear(temp, 0);
 
-      I2C_TX(RTC_DS1337, RTCSTATUS, temp);
+      I2C_TX(RTC_DS1337, RTC_STATUS, temp);
    }
 }
 
@@ -304,10 +304,10 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
    }
 
    I2C_TX(RTC_DS1337, RTC_CONT, temp);
-   I2C_RX(RTC_DS1337, RTCSTATUS); // Clear Alarm RTC internal Alarm Flag
+   I2C_RX(RTC_DS1337, RTC_STATUS); // Clear Alarm RTC internal Alarm Flag
    temp = i2cData;
    bitClear(temp, 0);
-   I2C_TX(RTC_DS1337, RTCSTATUS, temp);
+   I2C_TX(RTC_DS1337, RTC_STATUS, temp);
 }
 
 /** *********************************************************************************
