@@ -42,7 +42,7 @@ void GoToSleep()
     SUBSTATE = 0;
     JustWokeUpFlag = true;
 
-//    CheckAlarm();
+//    check_alarm();
  //   if(ALARM1FLAG)
 //    {
 //      ALARM1FLAG = false;

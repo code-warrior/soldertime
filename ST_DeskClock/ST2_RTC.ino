@@ -251,7 +251,7 @@ void set_alarm_time() // Just for testing set to 12:01 PM
  *  Check Alarm
  *
  * ********************************************************************************/
-void CheckAlarm()
+void check_alarm()
 {
    uint8_t temp = 0;
    I2C_RX(RTCDS1337, RTCSTATUS);

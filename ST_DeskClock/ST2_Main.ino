@@ -36,7 +36,7 @@ static void check_mode_button(void)
    }
 
    if (ALARMON) {
-      CheckAlarm();
+      check_alarm();
    }
 
    if (ALARM1FLAG) {
