@@ -26,9 +26,7 @@
 
 #include <Wire.h>
 #include <EEPROM.h>
-
 #include <TimerOne.h>
-
 #include <avr/sleep.h>
 #include <avr/power.h>
 #include <avr/wdt.h>
@@ -56,9 +54,9 @@
 #define RTC_ALARM1HOUR B00001001 //; Hours
 #define RTC_ALARM1DATE B00001010 //; Date
 #define ASCII_OFFSET   0x20      // Font offset
-#define BLINK_TIME      500       // was 1000
-#define MODE_BUTTON     2
-#define SET_BUTTON      3
+#define BLINK_TIME     500       // was 1000
+#define MODE_BUTTON    2
+#define SET_BUTTON     3
 
 // Worm animation
 int c = 0;
