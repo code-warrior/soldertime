@@ -173,7 +173,7 @@ void setTimeSub()
     writeTime(HourTens, HourOnes, MinTens, MinOnes);
     if(NextSUBStateRequest)
     {
-      set_start_new(1);
+      set_time_new(1);
       NextSUBStateRequest = false;
     }
 
@@ -190,7 +190,7 @@ void setTimeSub()
     writeTime(HourTens, HourOnes, MinTens, MinOnes);
     if(NextSUBStateRequest)
     {
-      set_start_new(2);
+      set_time_new(2);
       NextSUBStateRequest = false;
     }
 
@@ -207,7 +207,7 @@ void setTimeSub()
     displayStringDay(Days -1);
     if(NextSUBStateRequest)
     {
-      set_start_new(3);
+      set_time_new(3);
       NextSUBStateRequest = false;
     }
 
@@ -223,7 +223,7 @@ void setTimeSub()
     displayMonth(MonthCode-1);
     if(NextSUBStateRequest)
     {
-      set_start_new(4);
+      set_time_new(4);
       NextSUBStateRequest = false;
     }
 
@@ -238,7 +238,7 @@ void setTimeSub()
     displayDate();
     if(NextSUBStateRequest)
     {
-      set_start_new(5);
+      set_time_new(5);
       NextSUBStateRequest = false;
     }
     if(NextStateRequest)
@@ -254,7 +254,7 @@ void setTimeSub()
 
      if(NextSUBStateRequest)
      {
-     set_start_new(6);
+     set_time_new(6);
      NextSUBStateRequest = false;
      }
 
