@@ -676,8 +676,8 @@ shortloop:
       }
     }
 
-    bval = !digitalRead(SET_BUTTON);
-    if(!bval)
+    button_value = !digitalRead(SET_BUTTON);
+    if(!button_value)
     {
       goto shortloop;
     }
@@ -686,9 +686,9 @@ shortloop:
     {
       //Timer1.attachInterrupt(LEDupdateTWO);
 
-      while(bval)
+      while(button_value)
       {
-        bval = !digitalRead(SET_BUTTON);
+        button_value = !digitalRead(SET_BUTTON);
       }
       delay(100);
     }
@@ -980,8 +980,8 @@ void lamptest()
 {
   int lamptestspeed = 250;
   clearmatrix();
-  bval = !digitalRead(SET_BUTTON);
-  if(bval)
+  button_value = !digitalRead(SET_BUTTON);
+  if(button_value)
   {
     do
     {
@@ -992,8 +992,8 @@ void lamptest()
         {
      led_draw(i, y, 0xFF);
           delay(lamptestspeed / 10);
-          bval = !digitalRead(SET_BUTTON);
-          if(bval)
+          button_value = !digitalRead(SET_BUTTON);
+          if(button_value)
           {
             lamptestspeed = lamptestspeed -1;
             if(lamptestspeed== 0)
@@ -1003,8 +1003,8 @@ void lamptest()
           }
         }
 
-        bval = !digitalRead(MODE_BUTTON);
-        if(bval)
+        button_value = !digitalRead(MODE_BUTTON);
+        if(button_value)
         {
           break;
         }
@@ -1013,9 +1013,9 @@ void lamptest()
    led_draw_col(i, 0, 0);
         delay(lamptestspeed / 5);
       }
-      bval = !digitalRead(MODE_BUTTON);
+      button_value = !digitalRead(MODE_BUTTON);
     }
-    while(!bval);
+    while(!button_value);
     }
   }
 
