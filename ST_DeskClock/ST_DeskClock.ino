@@ -57,6 +57,7 @@
 #define BLINK_TIME     500       // was 1000
 #define MODE_BUTTON    2
 #define SET_BUTTON     3
+#define MAX_STATE      6
 
 // Worm animation
 int c = 0;
@@ -97,7 +98,6 @@ uint8_t i2cData = 0;
 
 int STATE = 0;
 int SUBSTATE = 0;
-int MAXSTATE = 6;
 
 int ROWBITINDEX = 0;
 int scrollCounter = 0;

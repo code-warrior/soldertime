@@ -1,15 +1,15 @@
 //*******************************************************************************************************************
 //                                                 Helper - State incrementor
 //*******************************************************************************************************************
-// Increments the Main state to the next state upto MAXSTATE
-// If you add more States increase MAXSTATE to match.
+// Increments the Main state to the next state upto MAX_STATE
+// If you add more States increase MAX_STATE to match.
 
 void NextState()
 {
   STATE = STATE + 1;
   SUBSTATE = 0;
   NextStateRequest = false;
-  if(STATE > MAXSTATE)
+  if(STATE > MAX_STATE)
   {
     STATE = 0;
     SUBSTATE = 0;
