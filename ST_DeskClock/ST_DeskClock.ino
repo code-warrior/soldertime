@@ -40,7 +40,7 @@
 // Constants
 // DS1337+ Address locations
 #define RTC_DS1337      B01101000 // was B11010000
-#define RTCCONT        B00001110 //; Control
+#define RTC_CONT        B00001110 //; Control
 #define RTCSTATUS      B00001111 //; Status
 
 // #define RTC_HSEC       B00000001      //; Hundredth of a secound

@@ -294,7 +294,7 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
    I2C_TX(RTC_DS1337, RTC_ALARM1DATE, temp);
 
    // Adjust for Hours - Minutes Trigger -E
-   I2C_RX(RTC_DS1337, RTCCONT); // Enable Alarm Pin on RTC
+   I2C_RX(RTC_DS1337, RTC_CONT); // Enable Alarm Pin on RTC
    temp = i2cData;
 
    if (onoff) {
@@ -303,7 +303,7 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
       bitClear(temp, 0);
    }
 
-   I2C_TX(RTC_DS1337, RTCCONT, temp);
+   I2C_TX(RTC_DS1337, RTC_CONT, temp);
    I2C_RX(RTC_DS1337, RTCSTATUS); // Clear Alarm RTC internal Alarm Flag
    temp = i2cData;
    bitClear(temp, 0);
