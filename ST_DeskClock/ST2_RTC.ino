@@ -314,104 +314,94 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
  *
  *  Set Alarm Time
  *
+ *  both min digits or both hour digits (advance one at a time)
+ *
  * ********************************************************************************/
-void setAlarm(uint8_t setselect)                                // both min digits or both hour digits (advance one at a time)
+void setAlarm(uint8_t setselect)
 {
-  uint8_t temp =0;
-  switch(setselect)
-  {
+   uint8_t temp = 0;
 
-  case 1:
-    alarm_minute_ones_place = alarm_minute_ones_place +1;
-    if(alarm_minute_ones_place >9)
-    {
-      alarm_minute_ones_place = 0;
+   switch (setselect) {
+   case 1:
+      alarm_minute_ones_place += 1;
 
-      alarm_minute_tens_place = alarm_minute_tens_place +1;
-      if(alarm_minute_tens_place >5)
-      {
-        alarm_minute_tens_place = 0;
+      if (alarm_minute_ones_place > 9) {
+         alarm_minute_ones_place = 0;
+
+         alarm_minute_tens_place += 1;
+
+         if (alarm_minute_tens_place > 5) {
+            alarm_minute_tens_place = 0;
+         }
       }
-    }
 
-    temp = (alarm_minute_tens_place << 4) + alarm_minute_ones_place;
-    I2C_TX(RTCDS1337,RTC_ALARM1MIN,temp);
-    break;
+      temp = (alarm_minute_tens_place << 4) + alarm_minute_ones_place;
 
-  case 2:
-    alarm_hour_ones_place = alarm_hour_ones_place + 1;
+      I2C_TX(RTCDS1337, RTC_ALARM1MIN, temp);
 
-// -----------*
-    if(A_TH_Not24_flag)
-//                                                                    12 hours mode increment
-    {
+      break;
 
-    if(alarm_hour_ones_place >9 )
-    {
-      alarm_hour_ones_place = 0;
-      alarm_hour_tens_place = 1;
-    }
+   case 2:
+      alarm_hour_ones_place += 1;
 
-   if((alarm_hour_ones_place ==2) &&  (alarm_hour_tens_place == 1))
-    {
-      A_PM_NotAM_flag = !A_PM_NotAM_flag;
-    }
+      // -----------*
+      if (A_TH_Not24_flag) { // 12 hours mode increment
+         if (alarm_hour_ones_place > 9) {
+            alarm_hour_ones_place = 0;
+            alarm_hour_tens_place = 1;
+         }
 
-    if((alarm_hour_ones_place >2) &&  (alarm_hour_tens_place == 1))
-    {
-//      PM_NotAM_flag = !PM_NotAM_flag;
-      alarm_hour_tens_place = 0;
-      alarm_hour_ones_place = 1;
-    }
+         if ((2 == alarm_hour_ones_place) && (1 == alarm_hour_tens_place)) {
+            A_PM_NotAM_flag = !A_PM_NotAM_flag;
+         }
 
-    }
-    else
-//                                                                    24 hours mode increment - S
-    {
+         if ((alarm_hour_ones_place > 2) && (1 == alarm_hour_tens_place)) {
+            // PM_NotAM_flag = !PM_NotAM_flag;
+            alarm_hour_tens_place = 0;
+            alarm_hour_ones_place = 1;
+         }
+      } else { // 24 hours mode increment - S
+         if ((alarm_hour_ones_place > 9) && (alarm_hour_tens_place < 2)) {
+            alarm_hour_ones_place = 0;
+            alarm_hour_tens_place += 1;
+         }
 
-    if((alarm_hour_ones_place >9) && (alarm_hour_tens_place < 2))
-    {
-      alarm_hour_ones_place = 0;
-      alarm_hour_tens_place = alarm_hour_tens_place +1;
-    }
+         if ((2 == alarm_hour_tens_place) && (4 == alarm_hour_ones_place)) {
+            alarm_hour_ones_place = 0;
+            alarm_hour_tens_place = 0;
+         }
+      }
 
-     if((alarm_hour_tens_place ==2) && (alarm_hour_ones_place == 4))
-    {
-      alarm_hour_ones_place = 0;
-      alarm_hour_tens_place = 0;
-    }
-    }
-//                                                                    24 hours mode increment - E
+// 24 hours mode increment - E
 // -----------*
 
 /*
-    if(alarm_hour_ones_place >9)
-    {
-      alarm_hour_ones_place = 0;
-      alarm_hour_tens_place = alarm_hour_tens_place +1;
-      if((alarm_hour_tens_place >1) && (A_TH_Not24_flag))
-      {
-        alarm_hour_tens_place = 0;
-      }
-      else
-      {
-        if(alarm_hour_tens_place >2)
-        {
-          alarm_hour_tens_place = 0;
-        }
-      }
-    }
-*/
-    temp = (alarm_hour_tens_place << 4) + alarm_hour_ones_place;
-    if(A_TH_Not24_flag)
-    {
-      bitWrite(temp, 5, A_PM_NotAM_flag);
-    }
+      if (alarm_hour_ones_place > 9) {
+         alarm_hour_ones_place = 0;
+         alarm_hour_tens_place += 1;
 
-    bitWrite(temp, 6, A_TH_Not24_flag);
-    I2C_TX(RTCDS1337,RTC_ALARM1HOUR,temp);
-    break;
-  }
+         if ((alarm_hour_tens_place > 1) && (A_TH_Not24_flag)) {
+            alarm_hour_tens_place = 0;
+         } else {
+            if (alarm_hour_tens_place > 2) {
+               alarm_hour_tens_place = 0;
+            }
+         }
+      }
+*/
+
+      temp = (alarm_hour_tens_place << 4) + alarm_hour_ones_place;
+
+      if (A_TH_Not24_flag) {
+         bitWrite(temp, 5, A_PM_NotAM_flag);
+      }
+
+      bitWrite(temp, 6, A_TH_Not24_flag);
+
+      I2C_TX(RTCDS1337, RTC_ALARM1HOUR, temp);
+
+      break;
+   }
 }
 
 /** *********************************************************************************
