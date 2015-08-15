@@ -354,7 +354,7 @@ void setAlarmSub()
     writeTime(alarm_hour_tens_place, alarm_hour_ones_place, alarm_minute_tens_place, alarm_minute_ones_place);
     if(NextSUBStateRequest)
     {
-      setAlarm(1);
+      set_alarm(1);
       NextSUBStateRequest = false;
     }
 
@@ -371,7 +371,7 @@ void setAlarmSub()
     writeTime(alarm_hour_tens_place, alarm_hour_ones_place, alarm_minute_tens_place, alarm_minute_ones_place);
     if(NextSUBStateRequest)
     {
-      setAlarm(2);
+      set_alarm(2);
       NextSUBStateRequest = false;
     }
 

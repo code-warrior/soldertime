@@ -317,7 +317,7 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
  *  both min digits or both hour digits (advance one at a time)
  *
  * ********************************************************************************/
-void setAlarm(uint8_t setselect)
+void set_alarm(uint8_t setselect)
 {
    uint8_t temp = 0;
 
