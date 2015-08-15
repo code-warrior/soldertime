@@ -67,7 +67,7 @@ void check_date()
  * both min digits or both hour digits (advance one at a time)
  *
  * ********************************************************************************/
-void settimeNEW(uint8_t setselect)
+void set_start_new(uint8_t setselect)
 {
    uint8_t temp = 0;
 
