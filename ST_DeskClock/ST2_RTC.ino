@@ -64,146 +64,144 @@ void check_date()
  *
  *  Set Time – New
  *
+ * both min digits or both hour digits (advance one at a time)
+ *
  * ********************************************************************************/
-void settimeNEW(uint8_t setselect)                     // both min digits or both hour digits (advance one at a time)
+void settimeNEW(uint8_t setselect)
 {
-  uint8_t temp =0;
-  switch(setselect)
-  {
+   uint8_t temp = 0;
 
-  case 1:
-    MinOnes = MinOnes +1;
-    if(MinOnes >9)
-    {
-      MinOnes = 0;
 
-      MinTens = MinTens +1;
-      if(MinTens >5)
-      {
-        MinTens = 0;
+   switch (setselect) {
+   case 1:
+      MinOnes += 1;
+
+      if (MinOnes > 9) {
+         MinOnes = 0;
+
+         MinTens += 1;
+
+         if (MinTens > 5) {
+            MinTens = 0;
+         }
+
+         // temp = (MinTens << 4) + MinOnes;
+         // I2C_TX(RTCDS1337,RTC_MIN,temp);
       }
 
-      //   temp = (MinTens << 4) + MinOnes;
-      //   I2C_TX(RTCDS1337,RTC_MIN,temp);
+      temp = (MinTens << 4) + MinOnes;
+
+      I2C_TX(RTCDS1337, RTC_MIN, temp);
+
+      break;
+
+   case 2:
+      HourOnes += 1;
+
+      // 12 hours mode increment
+      if (TH_Not24_flag) {
+         if(HourOnes > 9) {
+            HourOnes = 0;
+            HourTens = 1;
+         }
+
+      if ((2 == HourOnes) &&  (1 == HourTens)) {
+         PM_NotAM_flag = !PM_NotAM_flag;
+      }
+
+      if ((HourOnes > 2) &&  (1 == HourTens)) {
+         // PM_NotAM_flag = !PM_NotAM_flag;
+         HourTens = 0;
+         HourOnes = 1;
+      }
+   } else { // 24 hours mode increment - S
+      if ((HourOnes > 9) && (HourTens < 2)) {
+         HourOnes = 0;
+         HourTens += 1;
+      }
+
+      if ((2 == HourTens) && (4 == HourOnes)) {
+         HourOnes = 0;
+         HourTens = 0;
+      }
     }
 
-    temp = (MinTens << 4) + MinOnes;
-    I2C_TX(RTCDS1337,RTC_MIN,temp);
-    break;
+   // 24 hours mode increment - E
 
+   temp = (HourTens << 4) + HourOnes;
 
-
-  case 2:
-    HourOnes = HourOnes +1;
-
-    if(TH_Not24_flag)
-//                                                                    12 hours mode increment
-    {
-
-    if(HourOnes >9 )
-    {
-      HourOnes = 0;
-      HourTens = 1;
-    }
-
-   if((HourOnes ==2) &&  (HourTens == 1))
-    {
-      PM_NotAM_flag = !PM_NotAM_flag;
-    }
-
-    if((HourOnes >2) &&  (HourTens == 1))
-    {
-//      PM_NotAM_flag = !PM_NotAM_flag;
-      HourTens = 0;
-      HourOnes = 1;
-    }
-
-    }
-    else
-//                                                                    24 hours mode increment - S
-    {
-
-    if((HourOnes >9) && (HourTens < 2))
-    {
-      HourOnes = 0;
-      HourTens = HourTens +1;
-    }
-
-     if((HourTens ==2) && (HourOnes == 4))
-    {
-      HourOnes = 0;
-      HourTens = 0;
-    }
-    }
-//                                                                    24 hours mode increment - E
-
-    temp = (HourTens << 4) + HourOnes;
-    if(TH_Not24_flag)
-    {
+   if (TH_Not24_flag) {
       bitWrite(temp, 5, PM_NotAM_flag);
-    }
+   }
 
-    bitWrite(temp, 6, TH_Not24_flag);
-    I2C_TX(RTCDS1337,RTC_HOUR,temp);
-    break;
+   bitWrite(temp, 6, TH_Not24_flag);
 
-  case 3:
-    Days = Days +1 ;
-    if(Days>7)
-    {
-      Days = 1;
-    }
-    temp = Days & B00000111;
-    I2C_TX(RTCDS1337,RTC_DAY,temp);
-    break;
+   I2C_TX(RTCDS1337, RTC_HOUR, temp);
 
-  case 4:
-    temp = 0;
-    MonthCode = MonthCode +1 ;
-    if(MonthCode >12)
-    {
-      MonthCode = 1;
-    }
-    if(MonthCode>9)
-    {
-      temp = MonthCode - 10;
-      // MonthCode = MonthCode & B00001111;
-      bitSet(temp, 4);                                      // Convert int to BCD
-    }
-    else
-    {
-      temp = MonthCode & B00001111;
-    }
+   break;
 
-    I2C_TX(RTCDS1337,RTC_MONTH,temp);
-    break;
+   case 3:
+      Days += 1;
 
-  case 5:    // Date
-
-    //   I2C_RX(RTCDS1337,RTC_DATE);
-    //   DateOnes = i2cData & B00001111;
-    //   DateTens = (i2cData & B00110000) >> 4;
-    DateOnes = DateOnes + 1;
-    if((DateTens == 3) && (DateOnes > 1))
-    {
-      DateOnes = 1;
-      DateTens =0;
-    }
-    else
-    {
-      if(DateOnes>9)
-      {
-        DateOnes = 0;
-        DateTens = DateTens +1;
+      if (Days > 7) {
+         Days = 1;
       }
-    }
-    temp = (DateOnes & B00001111) | ((DateTens << 4) & B00110000);
-    I2C_TX(RTCDS1337,RTC_DATE,temp);
-    break;
 
-  case 6:     // year
-    break;
-  }
+      temp = Days & B00000111;
+
+      I2C_TX(RTCDS1337, RTC_DAY, temp);
+
+      break;
+
+   case 4:
+      temp = 0;
+
+      MonthCode += 1;
+
+      if (MonthCode > 12) {
+         MonthCode = 1;
+      }
+
+      if (MonthCode > 9) {
+         temp = MonthCode - 10;
+
+         // MonthCode = MonthCode & B00001111;
+
+         bitSet(temp, 4); // Convert int to BCD
+      } else {
+         temp = MonthCode & B00001111;
+      }
+
+      I2C_TX(RTCDS1337, RTC_MONTH, temp);
+
+      break;
+
+  case 5: // Date
+
+      //   I2C_RX(RTCDS1337,RTC_DATE);
+      //   DateOnes = i2cData & B00001111;
+      //   DateTens = (i2cData & B00110000) >> 4;
+
+      DateOnes = DateOnes + 1;
+
+      if ((3 == DateTens) && (DateOnes > 1)) {
+         DateOnes = 1;
+         DateTens = 0;
+      } else {
+         if (DateOnes > 9) {
+            DateOnes = 0;
+            DateTens += 1;
+         }
+       }
+
+      temp = (DateOnes & B00001111) | ((DateTens << 4) & B00110000);
+      I2C_TX(RTCDS1337, RTC_DATE, temp);
+
+      break;
+
+   case 6: // year
+      break;
+   }
 }
 
 /** *********************************************************************************
