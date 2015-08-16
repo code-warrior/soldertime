@@ -1,7 +1,7 @@
 //*******************************************************************************************************************
 //                                                 Helper - State incrementor
 //*******************************************************************************************************************
-// Increments the Main state to the next state upto MAX_STATE
+// Increments the Main state to the next state up to MAX_STATE
 // If you add more States increase MAX_STATE to match.
 
 void NextState()
