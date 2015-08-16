@@ -331,7 +331,7 @@ void setAlarmSub()
     {
       //      displayString("A ON");
       //      delay(250);
-      //      ALARMON = true;
+      //      alarm_is_on = true;
       sub_state = 2;
       NextSUBStateRequest = false;
       blinkFlag = true;
@@ -342,7 +342,7 @@ void setAlarmSub()
       //      displayString("AOFF");
       //      delay(500);
       //      enable_alarm_1(false);
-      //      ALARMON = false;
+      //      alarm_is_on = false;
       sub_state =99;
       NextStateRequest = false;
     }
@@ -385,7 +385,7 @@ void setAlarmSub()
     break;
 
   case 4:
-    if(ALARMON)
+    if(alarm_is_on)
     {
 //      displayString("A ON");
       displayGraphic(1,0,5);
@@ -404,7 +404,7 @@ void setAlarmSub()
 
     if(NextSUBStateRequest)
     {
-      ALARMON = !ALARMON;
+      alarm_is_on = !alarm_is_on;
       NextSUBStateRequest = false;
     }
 
@@ -414,7 +414,7 @@ void setAlarmSub()
       blinkMin = false;
       sub_state =99;
       NextStateRequest = false;
-      if(ALARMON)
+      if(alarm_is_on)
       {
         enable_alarm_1(true);
       }
@@ -1194,7 +1194,7 @@ writeTime(
    AMPMALARMDOTS = 0;
 
    // Alarm dot (top left) Do not display while setting alarm
-   if (ALARMON && (state == 1))
+   if (alarm_is_on && (state == 1))
       bitSet(AMPMALARMDOTS,6);
 
    // AM / PM dot (bottom left) (Display or Set Time)

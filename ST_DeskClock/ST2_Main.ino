@@ -35,13 +35,13 @@ static void check_mode_button(void)
       return;
    }
 
-   if (ALARMON) {
+   if (alarm_is_on) {
       check_alarm();
    }
 
    if (ALARM1FLAG) {
       ALARM1FLAG = false;
-      ALARMON = false;
+      alarm_is_on = false;
       enable_alarm_1(false);
       state = 90;
       JustWokeUpFlag = false;
