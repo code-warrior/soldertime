@@ -53,12 +53,18 @@
 #define RTC_ALARM1MIN  B00001000 //; Minuites
 #define RTC_ALARM1HOUR B00001001 //; Hours
 #define RTC_ALARM1DATE B00001010 //; Date
-#define ASCII_OFFSET   0x20      // Font offset
-#define BLINK_TIME     500       // was 1000
+
+// Buttons
 #define MODE_BUTTON    2
 #define SET_BUTTON     3
+
 #define MAX_STATE      6
-#define DIGITAL_OFFSET 95        // was “int digitoffset = 95” w/a val of 16 at one point
+
+// Offsets
+#define DIGITAL_OFFSET 95   // was “int digitoffset = 95” w/a val of 16 at one point
+#define ASCII_OFFSET   0x20 // Font offset
+
+#define BLINK_TIME     500  // was 1000
 
 boolean target_direction = true;
 boolean sound_effect = false;
@@ -158,7 +164,6 @@ uint8_t stop_watch_digit_4 = 0;
 uint8_t stop_watch_digit_3 = 0;
 uint8_t stop_watch_digit_2 = 0;
 uint8_t stop_watch_digit_1 = 0;
-
 uint8_t stop_watch_minutes = 0;
 uint8_t stop_watch_seconds = 0;
 
