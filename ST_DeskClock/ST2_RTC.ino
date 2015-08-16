@@ -8,28 +8,28 @@ void check_time()
    uint8_t temp = 0;
 
    I2C_RX(RTC_DS1337,RTC_SEC);
-   SecOnes = i2cData & B00001111;
+   SecOnes = data_received_on_i2c & B00001111;
 
-   SecTens = i2cData & B01110000;
+   SecTens = data_received_on_i2c & B01110000;
    SecTens = SecTens >> 4;
 
    I2C_RX(RTC_DS1337,RTC_MIN);
-   MinOnes = i2cData & B00001111;
+   MinOnes = data_received_on_i2c & B00001111;
 
-   MinTens = i2cData & B01110000;
+   MinTens = data_received_on_i2c & B01110000;
    MinTens = MinTens >> 4;
 
    I2C_RX(RTC_DS1337,RTC_HOUR);
-   HourOnes = i2cData & B00001111;
+   HourOnes = data_received_on_i2c & B00001111;
 
-   TH_Not24_flag = bitRead(i2cData, 6); // False on RTC when 24 mode selected
-   PM_NotAM_flag = bitRead(i2cData, 5);
+   TH_Not24_flag = bitRead(data_received_on_i2c, 6); // False on RTC when 24 mode selected
+   PM_NotAM_flag = bitRead(data_received_on_i2c, 5);
 
    if (true == TH_Not24_flag) {
-      HourTens = i2cData & B00010000;
+      HourTens = data_received_on_i2c & B00010000;
       HourTens = HourTens >> 4;
    } else {
-      HourTens = i2cData & B00110000;
+      HourTens = data_received_on_i2c & B00110000;
       HourTens = HourTens >> 4;
    }
 }
@@ -44,20 +44,20 @@ void check_date()
    int temp = 0;
 
    I2C_RX(RTC_DS1337, RTC_DAY);
-   Days = i2cData & B00000111;
+   Days = data_received_on_i2c & B00000111;
 
    I2C_RX(RTC_DS1337, RTC_MONTH);
-   MonthCode = i2cData & B00001111;
+   MonthCode = data_received_on_i2c & B00001111;
 
-   temp = (i2cData & B00010000) >> 4;
+   temp = (data_received_on_i2c & B00010000) >> 4;
 
    if (temp) {
       MonthCode += 10; // Convert BCD month into integer month
    }
 
    I2C_RX(RTC_DS1337, RTC_DATE);
-   DateOnes = i2cData & B00001111;
-   DateTens = (i2cData & B00110000) >> 4;
+   DateOnes = data_received_on_i2c & B00001111;
+   DateTens = (data_received_on_i2c & B00110000) >> 4;
 }
 
 /** *********************************************************************************
@@ -178,8 +178,8 @@ void set_time_new(uint8_t setselect)
   case 5: // Date
 
       //   I2C_RX(RTC_DS1337,RTC_DATE);
-      //   DateOnes = i2cData & B00001111;
-      //   DateTens = (i2cData & B00110000) >> 4;
+      //   DateOnes = data_received_on_i2c & B00001111;
+      //   DateTens = (data_received_on_i2c & B00110000) >> 4;
 
       DateOnes = DateOnes + 1;
 
@@ -255,10 +255,10 @@ void check_alarm()
 {
    uint8_t temp = 0;
    I2C_RX(RTC_DS1337, RTC_STATUS);
-   ALARM1FLAG = bitRead(i2cData, 0);
+   ALARM1FLAG = bitRead(data_received_on_i2c, 0);
 
    if (ALARM1FLAG) {
-      temp = i2cData;
+      temp = data_received_on_i2c;
 
       bitClear(temp, 0);
 
@@ -277,25 +277,25 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
 
    // Adjust for Hours - Minutes Trigger -S
    I2C_RX(RTC_DS1337, RTC_ALARM1SEC);
-   temp = i2cData;
+   temp = data_received_on_i2c;
    bitClear(temp, 7);
    I2C_TX(RTC_DS1337, RTC_ALARM1SEC, temp);
    I2C_RX(RTC_DS1337, RTC_ALARM1MIN);
-   temp = i2cData;
+   temp = data_received_on_i2c;
    bitClear(temp, 7);
    I2C_TX(RTC_DS1337, RTC_ALARM1MIN, temp);
    I2C_RX(RTC_DS1337, RTC_ALARM1HOUR);
-   temp = i2cData;
+   temp = data_received_on_i2c;
    bitClear(temp, 7);
    I2C_TX(RTC_DS1337, RTC_ALARM1HOUR, temp);
    I2C_RX(RTC_DS1337, RTC_ALARM1DATE);
-   temp = i2cData;
+   temp = data_received_on_i2c;
    bitSet(temp, 7);
    I2C_TX(RTC_DS1337, RTC_ALARM1DATE, temp);
 
    // Adjust for Hours - Minutes Trigger -E
    I2C_RX(RTC_DS1337, RTC_CONT); // Enable Alarm Pin on RTC
-   temp = i2cData;
+   temp = data_received_on_i2c;
 
    if (onoff) {
       bitSet(temp, 0);
@@ -305,7 +305,7 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
 
    I2C_TX(RTC_DS1337, RTC_CONT, temp);
    I2C_RX(RTC_DS1337, RTC_STATUS); // Clear Alarm RTC internal Alarm Flag
-   temp = i2cData;
+   temp = data_received_on_i2c;
    bitClear(temp, 0);
    I2C_TX(RTC_DS1337, RTC_STATUS, temp);
 }
@@ -416,16 +416,16 @@ void twelve_twenty_four_convert()
 
    I2C_RX(RTC_DS1337, RTC_HOUR);
 
-   HourOnes = i2cData & B00001111;
+   HourOnes = data_received_on_i2c & B00001111;
 
-   // TH_Not24_flag = bitRead(i2cData, 6); // False on RTC when 24 mode selected
-   // PM_NotAM_flag = bitRead(i2cData, 5);
+   // TH_Not24_flag = bitRead(data_received_on_i2c, 6); // False on RTC when 24 mode selected
+   // PM_NotAM_flag = bitRead(data_received_on_i2c, 5);
 
    if (TH_Not24_flag) {
-      HourTens = i2cData & B00010000;
+      HourTens = data_received_on_i2c & B00010000;
       HourTens = HourTens >> 4;
    } else {
-      HourTens = i2cData & B00110000;
+      HourTens = data_received_on_i2c & B00110000;
       HourTens = HourTens >> 4;
    }
 

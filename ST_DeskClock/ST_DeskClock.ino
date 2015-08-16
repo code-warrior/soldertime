@@ -88,7 +88,7 @@ boolean ALARM1FLAG = false;
 boolean ALARMON = false;
 
 uint8_t TEXT = 65;
-uint8_t i2cData = 0;
+uint8_t data_received_on_i2c = 0;
 
 // Worm animation
 int c = 0;
