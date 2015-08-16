@@ -87,16 +87,8 @@ boolean SetTimeFlag = false;
 boolean ALARM1FLAG = false;
 boolean ALARMON = false;
 
-
-// int  i  =0;
-// int  i2  =0;
-// int  vite = 2;
-// uint8_t incro = 0;
-// uint8_t column = 0;
-//uint8_t SetDigit  = 4;
 uint8_t TEXT = 65;
 uint8_t i2cData = 0;
-// int nextcounter = 0;
 
 // Worm animation
 int c = 0;
