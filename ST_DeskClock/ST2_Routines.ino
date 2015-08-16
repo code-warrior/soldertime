@@ -1080,7 +1080,7 @@ draw_small_digit(
    {
       led_draw_col(
          column+i,
-         LETTERS[digit+digitoffset][i+1],
+         LETTERS[digit+DIGITAL_OFFSET][i+1],
          blinkON && blinking ? 0 : 0xFF
       );
    }

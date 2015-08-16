@@ -58,6 +58,7 @@
 #define MODE_BUTTON    2
 #define SET_BUTTON     3
 #define MAX_STATE      6
+#define DIGITAL_OFFSET 95        // was “int digitoffset = 95” w/a val of 16 at one point
 
 boolean target_direction = true;
 boolean sound_effect = false;
@@ -179,8 +180,6 @@ unsigned long SleepLimit = 6000;
 volatile boolean MINUP = false;
 volatile boolean MINDOWN = false;
 volatile boolean TFH = false;
-
-const int digitoffset = 95;                // 95             // was 16
 
 extern const uint8_t LETTERS[][5];
 extern const uint8_t GRAPHIC[][5];
