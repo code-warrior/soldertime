@@ -87,7 +87,7 @@ boolean SetTimeFlag = false;
 boolean ALARM1FLAG = false;
 boolean alarm_is_on = false;
 
-uint8_t TEXT = 65;
+uint8_t received_incoming_message = 65;
 uint8_t data_received_on_i2c = 0;
 
 // Worm animation

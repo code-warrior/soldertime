@@ -716,10 +716,10 @@ shortloop:
 
     for(int i = 0;i<=IncomingMessIndex-1;i ++)
     {
-      TEXT = IncomingMessage[i] - ASCII_OFFSET;
+      received_incoming_message = IncomingMessage[i] - ASCII_OFFSET;
       for(int y =0;y<5;y++)
       {
-        Message[MessagePointer] = LETTERS[TEXT][y];
+        Message[MessagePointer] = LETTERS[received_incoming_message][y];
         MessagePointer = MessagePointer +1;
       }
 
