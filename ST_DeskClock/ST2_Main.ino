@@ -51,7 +51,7 @@ static void check_mode_button(void)
          JustWokeUpFlag = false;
          JustWokeUpFlag2 = true;
       } else {
-         NextStateRequest = true;
+         next_state_requested = true;
          clearmatrix();
       }
    }
@@ -60,7 +60,7 @@ static void check_mode_button(void)
       // check for simultaneous mode and set buttons
       if (!digitalRead(SET_BUTTON)) {
          OptionModeFlag = true;
-         NextStateRequest = false;
+         next_state_requested = false;
          NextSUBStateRequest = false;
          displayString("SPEC");
          delay(300);
@@ -95,7 +95,7 @@ static void check_set_button(void)
       // this is repeated from above; can be merged?
       if (!digitalRead(MODE_BUTTON)) {
          OptionModeFlag = true;
-         NextStateRequest = false;
+         next_state_requested = false;
          NextSUBStateRequest = false;
          displayString("SPEC");
          delay(300);
@@ -192,11 +192,11 @@ void loop() {
 
       delay(250);
 
-      if (NextSUBStateRequest || NextStateRequest) {
+      if (NextSUBStateRequest || next_state_requested) {
          state = 0;
          sub_state = 0;
          // NextStateFlag = true;
-         NextStateRequest = false;
+         next_state_requested = false;
          NextSUBStateRequest = false;
          blinkFlag = false;
       }

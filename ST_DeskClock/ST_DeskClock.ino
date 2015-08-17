@@ -68,7 +68,7 @@
 
 boolean target_direction = true;
 boolean sound_effect = false;
-boolean NextStateRequest = false;
+boolean next_state_requested = false;
 boolean NextStateFlag = false;
 boolean NextSUBStateRequest = false;
 boolean JustWokeUpFlag = false;

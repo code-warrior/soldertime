@@ -8,7 +8,7 @@ void NextState()
 {
   state = state + 1;
   sub_state = 0;
-  NextStateRequest = false;
+  next_state_requested = false;
   if(state > MAX_STATE)
   {
     state = 0;
@@ -51,7 +51,7 @@ void beepsound(int freq, int freqlenght)
 void DisplayTimeSub()
 {
 
-  if(NextStateRequest)
+  if(next_state_requested)
   {
     sub_state =99;
   }
@@ -159,10 +159,10 @@ void setTimeSub()
       blinkFlag = true;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     break;
@@ -177,11 +177,11 @@ void setTimeSub()
       NextSUBStateRequest = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       blinkMin = false;
       sub_state =3;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
     break;
 
@@ -194,11 +194,11 @@ void setTimeSub()
       NextSUBStateRequest = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       blinkHour = false;
       sub_state =4;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     break;
@@ -211,10 +211,10 @@ void setTimeSub()
       NextSUBStateRequest = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =5;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     break;
@@ -227,10 +227,10 @@ void setTimeSub()
       NextSUBStateRequest = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =6;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
     break;
 
@@ -241,10 +241,10 @@ void setTimeSub()
       set_time_new(5);
       NextSUBStateRequest = false;
     }
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =8;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
     break;
 
@@ -258,10 +258,10 @@ void setTimeSub()
      NextSUBStateRequest = false;
      }
 
-     if(NextStateRequest)
+     if(next_state_requested)
      {
      sub_state =8;
-     NextStateRequest = false;
+     next_state_requested = false;
      }
      break;
      */
@@ -292,10 +292,10 @@ void setTimeSub()
     }
 
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     break;
@@ -337,14 +337,14 @@ void setAlarmSub()
       blinkFlag = true;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       //      displayString("AOFF");
       //      delay(500);
       //      enable_alarm_1(false);
       //      alarm_is_on = false;
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     break;
@@ -358,11 +358,11 @@ void setAlarmSub()
       NextSUBStateRequest = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       blinkMin = false;
       sub_state =3;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
     break;
 
@@ -375,11 +375,11 @@ void setAlarmSub()
       NextSUBStateRequest = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       blinkMin = false;
       sub_state =4;
-      NextStateRequest = false;
+      next_state_requested = false;
       //      enable_alarm_1(true);
     }
     break;
@@ -409,11 +409,11 @@ void setAlarmSub()
     }
 
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       blinkMin = false;
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
       if(alarm_is_on)
       {
         enable_alarm_1(true);
@@ -482,10 +482,10 @@ void StopWatch()
       SleepTimer = currentMillis;                                  // Using Long SleepTimer variable for timing not sleep
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     break;
@@ -524,10 +524,10 @@ void StopWatch()
       SleepEnable = true;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
     break;
 
@@ -565,10 +565,10 @@ void StopWatch()
       SleepEnable = true;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
     break;
 */
@@ -599,7 +599,7 @@ void DisplaySerialData()
 
 
     NextSUBStateRequest = false;
-    NextStateRequest = false;
+    next_state_requested = false;
     OptionModeFlag = false;
     displayString("Text");
     delay(250);
@@ -638,10 +638,10 @@ void DisplaySerialData()
       SleepEnable = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
     break;
 
@@ -792,10 +792,10 @@ shortloop:
       NextSUBStateRequest = false;
     }
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     if(OptionModeFlag)
@@ -949,10 +949,10 @@ void graphican()
 
 
 
-    if(NextStateRequest)
+    if(next_state_requested)
     {
       sub_state =99;
-      NextStateRequest = false;
+      next_state_requested = false;
     }
 
     if(OptionModeFlag)

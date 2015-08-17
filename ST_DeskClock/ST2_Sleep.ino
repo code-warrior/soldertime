@@ -32,7 +32,7 @@ void GoToSleep()
 //    MODEOVERRIDEFLAG = false;
     NextStateFlag = false;
 
-    NextStateRequest = false;
+    next_state_requested = false;
     NextSUBStateRequest = false;
 
     SetTimeFlag = false;
