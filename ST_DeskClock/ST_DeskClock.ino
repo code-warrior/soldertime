@@ -69,6 +69,7 @@
 boolean target_direction = true;
 boolean sound_effect = false;
 boolean NextStateRequest = false;
+boolean NextStateFlag = false;
 boolean NextSUBStateRequest = false;
 boolean JustWokeUpFlag = false;
 boolean JustWokeUpFlag2 = false;
@@ -86,12 +87,10 @@ boolean PM_NotAM_flag = false;
 boolean A_TH_Not24_flag = true;
 boolean A_PM_NotAM_flag = false;
 boolean scrollDirFlag = false;
-
-//boolean MODEOVERRIDEFLAG = false;
-boolean NextStateFlag = false;
 boolean SetTimeFlag = false;
 boolean ALARM1FLAG = false;
 boolean alarm_is_on = false;
+//boolean MODEOVERRIDEFLAG = false;
 
 uint8_t received_incoming_message = 65;
 uint8_t data_received_on_i2c = 0;
