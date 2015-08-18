@@ -49,7 +49,7 @@ static void check_mode_button(void)
       if (JustWokeUpFlag) {
          // Used to supress "Time" text from showing when waking up.
          JustWokeUpFlag = false;
-         JustWokeUpFlag2 = true;
+         just_woke_up_flag_2 = true;
       } else {
          next_state_requested = true;
          clearmatrix();

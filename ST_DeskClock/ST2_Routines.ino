@@ -87,13 +87,13 @@ void DisplayTimeSub()
     check_time();
     check_date();
 
-    if(!JustWokeUpFlag2)
+    if(!just_woke_up_flag_2)
     {
     displayString("Time");
     }
     else
     {
-      JustWokeUpFlag2 = false;
+      just_woke_up_flag_2 = false;
     }
     delay(250);
     clearmatrix();
