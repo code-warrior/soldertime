@@ -105,7 +105,7 @@ int state = 0;
 int sub_state = 0;
 int scrollCounter = 0;
 int ScrollLoops = 3;
-int scrollSpeed = 300;                                    // was 1200
+int scroll_speed = 300;
 int blinkCounter = 0;
 int UpdateTime = 0;
 

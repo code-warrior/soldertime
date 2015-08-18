@@ -748,7 +748,7 @@ shortloop:
   case 4:
 
     scrollCounter = scrollCounter +1;
-    if(scrollCounter>scrollSpeed)
+    if(scrollCounter>scroll_speed)
     {
 
       if(ScrollLoops > 0)
@@ -783,10 +783,10 @@ shortloop:
 
     if(NextSUBStateRequest)
     {
-      scrollSpeed = scrollSpeed + 50;
-      if(scrollSpeed>400)
+      scroll_speed = scroll_speed + 50;
+      if(scroll_speed>400)
       {
-        scrollSpeed = 100;
+        scroll_speed = 100;
       }
       scrollCounter= 0;
       NextSUBStateRequest = false;
@@ -856,7 +856,7 @@ void graphican()
   case 0:
     sub_state =1;
     scrollCounter = 0;
-    scrollSpeed = 200;
+    scroll_speed = 200;
     //  sound_effect = false;
     y = 3;
     target =  1;
@@ -867,7 +867,7 @@ void graphican()
 
   case 1:
 
-    if(scrollCounter>scrollSpeed)
+    if(scrollCounter>scroll_speed)
     {
 
       c= c +1;
