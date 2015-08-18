@@ -110,7 +110,7 @@ int blinkCounter = 0;
 int UpdateTime = 0;
 
 // StopWatch
-int OldTime = 0;
+int old_time = 0;
 int CurrentTime = 0;
 int TotalTime = 0;
 int dayIndex = 0;

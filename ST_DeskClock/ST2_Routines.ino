@@ -447,7 +447,7 @@ void StopWatch()
 
 
 
-    OldTime = 0;
+    old_time = 0;
     CurrentTime = 0;
     TotalTime = 0;
     stop_watch_digit_4 = 0;
@@ -497,7 +497,7 @@ void StopWatch()
  currentMillis = millis();
     if((currentMillis - SleepTimer) >= 1000)
     {
- //     OldTime = CurrentTime;
+ //     old_time = CurrentTime;
        SleepTimer = currentMillis;
       TotalTime = TotalTime + 1;
       if(TotalTime > 5999)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
@@ -537,9 +537,9 @@ void StopWatch()
 
     I2C_RX(RTC_DS1337,RTC_SEC);
     CurrentTime =data_received_on_i2c & B00001111;
-    if(CurrentTime != OldTime)
+    if(CurrentTime != old_time)
     {
-      OldTime = CurrentTime;
+      old_time = CurrentTime;
       TotalTime = TotalTime + 1;
       if(TotalTime > 5940)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
       {
