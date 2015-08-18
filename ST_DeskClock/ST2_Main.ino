@@ -10,7 +10,7 @@ static void check_sleep_timer(void)
    currentMillis = millis();
    OptionModeFlag = false;
 
-   if (SleepEnable && (currentMillis - SleepTimer) > SleepLimit) {
+   if (SleepEnable && (currentMillis - SleepTimer) > SLEEP_LIMIT) {
       // New for ST Desk Clock - goto Time vs Sleep
       if (state == 1) {
          sub_state = 1;

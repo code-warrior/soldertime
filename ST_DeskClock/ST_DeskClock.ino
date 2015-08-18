@@ -65,6 +65,7 @@
 #define ASCII_OFFSET   0x20 // Font offset
 
 #define BLINK_TIME     500  // was 1000
+#define SLEEP_LIMIT    6000
 
 boolean target_direction = true;
 boolean sound_effect = false;
@@ -170,7 +171,6 @@ uint8_t Message[275];
 
 unsigned long SleepTimer;
 unsigned long currentMillis;
-unsigned long SleepLimit = 6000;
 
 volatile boolean MINUP = false;
 volatile boolean MINDOWN = false;
