@@ -449,7 +449,7 @@ void StopWatch()
 
     old_time = 0;
     current_time = 0;
-    TotalTime = 0;
+    total_time = 0;
     stop_watch_digit_4 = 0;
     stop_watch_digit_3 = 0;
     stop_watch_digit_2 = 0;
@@ -499,16 +499,16 @@ void StopWatch()
     {
  //     old_time = current_time;
        SleepTimer = currentMillis;
-      TotalTime = TotalTime + 1;
-      if(TotalTime > 5999)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
+      total_time = total_time + 1;
+      if(total_time > 5999)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
       {
-        TotalTime = 0;
+        total_time = 0;
       }
     }
 
     // Convert Total Time to digits
-    stop_watch_minutes = TotalTime / 60;
-    stop_watch_seconds = TotalTime % 60;
+    stop_watch_minutes = total_time / 60;
+    stop_watch_seconds = total_time % 60;
 
     stop_watch_digit_4 = stop_watch_minutes / 10;
     stop_watch_digit_3 = stop_watch_minutes % 10;
@@ -540,16 +540,16 @@ void StopWatch()
     if(current_time != old_time)
     {
       old_time = current_time;
-      TotalTime = TotalTime + 1;
-      if(TotalTime > 5940)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
+      total_time = total_time + 1;
+      if(total_time > 5940)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
       {
-        TotalTime = 0;
+        total_time = 0;
       }
     }
 
     // Convert Total Time to digits
-    stop_watch_minutes = TotalTime / 60;
-    stop_watch_seconds = TotalTime % 60;
+    stop_watch_minutes = total_time / 60;
+    stop_watch_seconds = total_time % 60;
 
     stop_watch_digit_4 = stop_watch_minutes / 10;
     stop_watch_digit_3 = stop_watch_minutes % 10;
