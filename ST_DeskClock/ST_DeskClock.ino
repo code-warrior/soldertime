@@ -1,4 +1,4 @@
-/** \file
+/**
  * Solder:Time Desk Clock
  * SpikenzieLabs.com
  *
@@ -7,21 +7,23 @@
  * VERSION 1.1
  *
  * Brief:
- * Sketch used in the Solder: Time Desk Clock Kit, more info and build
- * instructions at http://www.spikenzielabs.com/stdc
+ * Sketch used in the Solder:Time Desk Clock Kit. More info and instructions at
+ * http://www.spikenzielabs.com/stdc
  *
  * Updated information at http://trmm.net/SolderTime_Desk_Clock
  *
- *  LEGAL:
- * This code is provided as is. No guaranties or warranties are given
- * in any form. It is your responsibilty to determine this codes
- * suitability for your application.
+ * LEGAL:
+ * This code is provided as is. No guaranties or warranties are given in any form.
+ * It is your responsibility to determine this codes suitability for your
+ * application.
  *
  * Changes:
- * A. Modified LEDupdateTHREE() void used by ST:2 Watch to function
- * with the new circuits in the Solder:Time Desk Clock
- * B. Modified port dirctions on some pins to deal with new circuits.
- * C. Changed sleep mode into a "change back to display time" mode
+ * A. Modified LEDupdateTHREE() void used by ST:2 Watch to function with the new
+ *    circuits in the Solder:Time Desk Clock.
+ *
+ * B. Modified port directions on some pins to deal with new circuits.
+ *
+ * C. Changed sleep mode into a “change back to display time” mode.
  */
 
 #include <Wire.h>
