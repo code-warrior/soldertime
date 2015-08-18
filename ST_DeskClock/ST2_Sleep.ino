@@ -40,7 +40,7 @@ void GoToSleep()
 
     state = 0;
     sub_state = 0;
-    JustWokeUpFlag = true;
+    just_woke_up_flag_1 = true;
 
 //    check_alarm();
  //   if(ALARM1FLAG)

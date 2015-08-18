@@ -44,11 +44,11 @@ static void check_mode_button(void)
       alarm_is_on = false;
       enable_alarm_1(false);
       state = 90;
-      JustWokeUpFlag = false;
+      just_woke_up_flag_1 = false;
    } else {
-      if (JustWokeUpFlag) {
+      if (just_woke_up_flag_1) {
          // Used to supress "Time" text from showing when waking up.
-         JustWokeUpFlag = false;
+         just_woke_up_flag_1 = false;
          just_woke_up_flag_2 = true;
       } else {
          next_state_requested = true;
