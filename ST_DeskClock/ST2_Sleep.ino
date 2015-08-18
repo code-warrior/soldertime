@@ -30,7 +30,7 @@ void GoToSleep()
 
     blinkFlag = false;                                                         // Incase sleep started during time set
 //    MODEOVERRIDEFLAG = false;
-    NextStateFlag = false;
+    next_state_flag = false;
 
     next_state_requested = false;
     NextSUBStateRequest = false;

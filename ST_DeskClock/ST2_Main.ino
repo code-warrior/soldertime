@@ -195,7 +195,7 @@ void loop() {
       if (NextSUBStateRequest || next_state_requested) {
          state = 0;
          sub_state = 0;
-         // NextStateFlag = true;
+         // next_state_flag = true;
          next_state_requested = false;
          NextSUBStateRequest = false;
          blinkFlag = false;
