@@ -1191,17 +1191,17 @@ writeTime(
    draw_small_digit(12, dig3, blinkMin);
    draw_small_digit(16, dig4, blinkMin);
 
-   AMPMALARMDOTS = 0;
+   am_pm_alarm_dots = 0;
 
    // Alarm dot (top left) Do not display while setting alarm
    if (alarm_is_on && (state == 1))
-      bitSet(AMPMALARMDOTS,6);
+      bitSet(am_pm_alarm_dots,6);
 
    // AM / PM dot (bottom left) (Display or Set Time)
    if(PM_NotAM_flag && (state == 1 || state == 2) && TH_Not24_flag)
-      bitSet(AMPMALARMDOTS,0);
+      bitSet(am_pm_alarm_dots,0);
 
    // AM / PM dot (bottom left) (Set Alarm Time)
    if(A_PM_NotAM_flag && (state == 3) && TH_Not24_flag)
-      bitSet(AMPMALARMDOTS,0);
+      bitSet(am_pm_alarm_dots,0);
 }

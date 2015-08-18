@@ -150,7 +150,7 @@ uint8_t YearsOnes = 2;
 uint8_t YearsTens = 1;
 uint8_t DayCode = 1;
 uint8_t MonthCode = 1;
-uint8_t AMPMALARMDOTS = 0;
+uint8_t am_pm_alarm_dots = 0;
 
 // Alarm
 uint8_t alarm_hour_tens_place = 1;
