@@ -174,7 +174,6 @@ unsigned long currentMillis;
 
 volatile boolean MINUP = false;
 volatile boolean MINDOWN = false;
-volatile boolean TFH = false;
 
 extern const uint8_t LETTERS[][5];
 extern const uint8_t GRAPHIC[][5];
