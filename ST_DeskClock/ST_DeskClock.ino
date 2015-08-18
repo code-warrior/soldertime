@@ -113,7 +113,6 @@ int UpdateTime = 0;
 int old_time = 0;
 int current_time = 0;
 int total_time = 0;
-int dayIndex = 0;
 
 int IncomingIndex = 0;
 int IncomingMessIndex = 0;
