@@ -56,14 +56,14 @@ void DisplayTimeSub()
     sub_state =99;
   }
 
-  if(NextSUBStateRequest)
+  if(next_sub_state_requested)
   {
     sub_state = sub_state +1;
     if(sub_state>4)
     {
       sub_state =1;
     }
-    NextSUBStateRequest = false;
+    next_sub_state_requested = false;
   }
 
   UpdateTime = UpdateTime + 1;
@@ -146,16 +146,16 @@ void setTimeSub()
   case 0:                // Start SET Time
     displayString("Set?");
     sub_state = 1;
-    NextSUBStateRequest = false;
+    next_sub_state_requested = false;
 
 
     break;
 
   case 1:                                                          // Ask user if they want to set time
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       sub_state = 2;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
       blinkFlag = true;
     }
 
@@ -171,10 +171,10 @@ void setTimeSub()
     //    displayString("----");
     blinkMin = true;
     writeTime(HourTens, HourOnes, MinTens, MinOnes);
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       set_time_new(1);
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
     if(next_state_requested)
@@ -188,10 +188,10 @@ void setTimeSub()
   case 3:                                                          // Hours + one
     blinkHour = true;
     writeTime(HourTens, HourOnes, MinTens, MinOnes);
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       set_time_new(2);
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
     if(next_state_requested)
@@ -205,10 +205,10 @@ void setTimeSub()
 
   case 4:                                                          // Day + one
     displayStringDay(Days -1);
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       set_time_new(3);
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
     if(next_state_requested)
@@ -221,10 +221,10 @@ void setTimeSub()
 
   case 5:                                                          //  Month + one
     displayMonth(MonthCode-1);
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       set_time_new(4);
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
     if(next_state_requested)
@@ -236,10 +236,10 @@ void setTimeSub()
 
   case 6:                                                          //  Date + one
     displayDate();
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       set_time_new(5);
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
     if(next_state_requested)
     {
@@ -252,10 +252,10 @@ void setTimeSub()
   case 7:                                                          //  Year + one ** NOTE: not used
      displayString("Year");
 
-     if(NextSUBStateRequest)
+     if(next_sub_state_requested)
      {
      set_time_new(6);
-     NextSUBStateRequest = false;
+     next_sub_state_requested = false;
      }
 
      if(next_state_requested)
@@ -283,10 +283,10 @@ void setTimeSub()
       displayString("24 h");
     }
 
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       new_time_format = !new_time_format;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
       twelve_twenty_four_convert();
       A_TH_Not24_flag = new_time_format;
     }
@@ -321,19 +321,19 @@ void setAlarmSub()
   case 0:                // Start SET Alarm
     displayString("ALM?");
     sub_state = 1;
-    NextSUBStateRequest = false;
+    next_sub_state_requested = false;
 
 
     break;
 
   case 1:                                                          // Ask user if they want to set Alarm
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       //      displayString("A ON");
       //      delay(250);
       //      alarm_is_on = true;
       sub_state = 2;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
       blinkFlag = true;
     }
 
@@ -352,10 +352,10 @@ void setAlarmSub()
   case 2:
     blinkMin = true;
     writeTime(alarm_hour_tens_place, alarm_hour_ones_place, alarm_minute_tens_place, alarm_minute_ones_place);
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       set_alarm(1);
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
     if(next_state_requested)
@@ -369,10 +369,10 @@ void setAlarmSub()
   case 3:
     blinkHour = true;
     writeTime(alarm_hour_tens_place, alarm_hour_ones_place, alarm_minute_tens_place, alarm_minute_ones_place);
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       set_alarm(2);
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
     if(next_state_requested)
@@ -402,10 +402,10 @@ void setAlarmSub()
       displayGraphic(4,14,5);
     }
 
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       alarm_is_on = !alarm_is_on;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
 
@@ -461,7 +461,7 @@ void StopWatch()
     blinkHour = false;
 
     sub_state = 1;
-    NextSUBStateRequest = false;
+    next_sub_state_requested = false;
     displayString("Stop");
     delay(500);
 
@@ -473,10 +473,10 @@ void StopWatch()
   case 1:                                                          // Waiting for "Start" button to be pressed
     writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, stop_watch_digit_1);
 
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       sub_state = 2;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
       SleepEnable = false;
       currentMillis = millis();
       SleepTimer = currentMillis;                                  // Using Long SleepTimer variable for timing not sleep
@@ -517,10 +517,10 @@ void StopWatch()
 
     writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, stop_watch_digit_1);
 
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       sub_state = 1;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
       SleepEnable = true;
     }
 
@@ -558,10 +558,10 @@ void StopWatch()
 
     writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, stop_watch_digit_1);
 
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       sub_state = 1;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
       SleepEnable = true;
     }
 
@@ -598,7 +598,7 @@ void DisplaySerialData()
     ResetScrollMessage();
 
 
-    NextSUBStateRequest = false;
+    next_sub_state_requested = false;
     next_state_requested = false;
     OptionModeFlag = false;
     displayString("Text");
@@ -627,12 +627,12 @@ void DisplaySerialData()
     break;
 
   case 1:
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       ResetScrollMessage();
 
       sub_state = 2;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
       power_usart0_enable();
       Serial.begin(57600);
       SleepEnable = false;
@@ -781,7 +781,7 @@ shortloop:
       scrollCounter= 0;
     }
 
-    if(NextSUBStateRequest)
+    if(next_sub_state_requested)
     {
       scroll_speed = scroll_speed + 50;
       if(scroll_speed>400)
@@ -789,7 +789,7 @@ shortloop:
         scroll_speed = 100;
       }
       scrollCounter= 0;
-      NextSUBStateRequest = false;
+      next_sub_state_requested = false;
     }
 
     if(next_state_requested)
@@ -878,7 +878,7 @@ void graphican()
       // --
 
 
-      if(NextSUBStateRequest)
+      if(next_sub_state_requested)
       {
         target = target +1;
         if(target> 3)
@@ -888,7 +888,7 @@ void graphican()
           targdist = 0;
 
         }
-        NextSUBStateRequest = false;
+        next_sub_state_requested = false;
       }
 
 

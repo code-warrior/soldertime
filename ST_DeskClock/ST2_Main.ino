@@ -61,7 +61,7 @@ static void check_mode_button(void)
       if (!digitalRead(SET_BUTTON)) {
          OptionModeFlag = true;
          next_state_requested = false;
-         NextSUBStateRequest = false;
+         next_sub_state_requested = false;
          displayString("SPEC");
          delay(300);
       }
@@ -88,7 +88,7 @@ static void check_set_button(void)
       return;
    }
 
-   NextSUBStateRequest = true;
+   next_sub_state_requested = true;
    clearmatrix();
 
    while (1) {
@@ -96,7 +96,7 @@ static void check_set_button(void)
       if (!digitalRead(MODE_BUTTON)) {
          OptionModeFlag = true;
          next_state_requested = false;
-         NextSUBStateRequest = false;
+         next_sub_state_requested = false;
          displayString("SPEC");
          delay(300);
       }
@@ -192,12 +192,12 @@ void loop() {
 
       delay(250);
 
-      if (NextSUBStateRequest || next_state_requested) {
+      if (next_sub_state_requested || next_state_requested) {
          state = 0;
          sub_state = 0;
          // next_state_flag = true;
          next_state_requested = false;
-         NextSUBStateRequest = false;
+         next_sub_state_requested = false;
          blinkFlag = false;
       }
 

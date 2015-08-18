@@ -33,7 +33,7 @@ void GoToSleep()
     next_state_flag = false;
 
     next_state_requested = false;
-    NextSUBStateRequest = false;
+    next_sub_state_requested = false;
 
     SetTimeFlag = false;
 //    SetDigit = 4;
