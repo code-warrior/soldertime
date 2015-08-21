@@ -74,7 +74,7 @@ void setup()
 
    displayString("v1.2");
    delay(500);
-   clearmatrix();
+   clear_clock_screen();
 
    set_alarm_time(); // for testing
    enable_alarm_1(false); // for testing

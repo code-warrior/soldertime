@@ -96,7 +96,7 @@ void DisplayTimeSub()
       just_woke_up_flag_2 = false;
     }
     delay(250);
-    clearmatrix();
+    clear_clock_screen();
     break;
 
   case 1:              // Time
@@ -128,7 +128,7 @@ void DisplayTimeSub()
   case 99:              // Exit Display Time
 
     NextState();
-    clearmatrix();
+    clear_clock_screen();
 
     break;
   }
@@ -303,7 +303,7 @@ void setTimeSub()
   case 99:              // Exit Set Time
     blinkFlag = false;
     NextState();
-    clearmatrix();
+    clear_clock_screen();
 
     break;
   }
@@ -429,7 +429,7 @@ void setAlarmSub()
   case 99:              // Exit Set Alarm
     blinkFlag = false;
     NextState();
-    clearmatrix();
+    clear_clock_screen();
 
     break;
   }
@@ -465,7 +465,7 @@ void StopWatch()
     displayString("Stop");
     delay(500);
 
-    clearmatrix();
+    clear_clock_screen();
     writeTime(stop_watch_digit_4, stop_watch_digit_3, stop_watch_digit_2, stop_watch_digit_1);
 
     break;
@@ -575,7 +575,7 @@ void StopWatch()
   case 99:              // Exit Stop Watch Function
 
     NextState();
-    clearmatrix();
+    clear_clock_screen();
 
     sleep_enabled = true;
 
@@ -649,7 +649,7 @@ void DisplaySerialData()
 
   case 2:                                                          // Receive Serial
 
-    clearmatrix();
+    clear_clock_screen();
     // LED MATRIX
     //
     // Port C: C0 to C3 set to high. Columns 17 to 20 of LED matrix - Cathode connection
@@ -812,7 +812,7 @@ shortloop:
     power_usart0_disable();
 
     NextState();
-    clearmatrix();
+    clear_clock_screen();
 
     sleep_enabled = true;
 
@@ -968,7 +968,7 @@ void graphican()
   case 99:              // Exit Graphic Function
 
     NextState();
-    clearmatrix();
+    clear_clock_screen();
 
     break;
 
@@ -979,13 +979,13 @@ void graphican()
 void lamptest()
 {
   int lamptestspeed = 250;
-  clearmatrix();
+  clear_clock_screen();
   button_value = !digitalRead(SET_BUTTON);
   if(button_value)
   {
     do
     {
-      //    clearmatrix();
+      //    clear_clock_screen();
       for(int i = 0; i<20;i++)
       {
         for(int y = 0; y<8;y++)
@@ -1105,7 +1105,7 @@ void displayMonth(int code)
 {
    if (!blinkON)
    {
-      clearmatrix();
+      clear_clock_screen();
       return;
    }
 
@@ -1122,7 +1122,7 @@ void displayStringDay(int day)
 {
    if(!blinkON)
    {
-      clearmatrix();
+      clear_clock_screen();
       return;
    }
 
@@ -1139,7 +1139,7 @@ void displayDate()
 {
    if (!blinkON)
    {
-      clearmatrix();
+      clear_clock_screen();
       return;
    }
 
@@ -1149,9 +1149,9 @@ void displayDate()
 
 
 /*
- * Clear LED Matrix
+ * Clear LED screen
  */
-void clearmatrix()
+void clear_clock_screen()
 {
    for (int i = 0 ; i < WIDTH ; i++) {
       led_draw_col(i, 0, 0);

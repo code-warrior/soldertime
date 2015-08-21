@@ -21,7 +21,7 @@ static void check_sleep_timer(void)
       } else {
          state= 1; // was state= 99;
          sub_state = 0;
-         clearmatrix();
+         clear_clock_screen();
       }
 
       sleep_timer = millis();
@@ -52,7 +52,7 @@ static void check_mode_button(void)
          just_woke_up_flag_2 = true;
       } else {
          next_state_requested = true;
-         clearmatrix();
+         clear_clock_screen();
       }
    }
 
@@ -89,7 +89,7 @@ static void check_set_button(void)
    }
 
    next_sub_state_requested = true;
-   clearmatrix();
+   clear_clock_screen();
 
    while (1) {
       // this is repeated from above; can be merged?
@@ -206,7 +206,7 @@ void loop() {
    case 99: // Sleep
       displayString("Nite");
       delay(500);
-      clearmatrix();
+      clear_clock_screen();
       GoToSleep();
       sleep_timer = millis();
       state = 0;

@@ -52,7 +52,7 @@ void GoToSleep()
 
 //    displayString("Wake");
 //    delay(1000);
-//    clearmatrix();
+//    clear_clock_screen();
 
     sleep_timer = millis();
 
