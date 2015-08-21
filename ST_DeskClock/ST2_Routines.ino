@@ -477,7 +477,7 @@ void StopWatch()
     {
       sub_state = 2;
       next_sub_state_requested = false;
-      SleepEnable = false;
+      sleep_enabled = false;
       current_milliseconds = millis();
       sleep_timer = current_milliseconds;                                  // Using Long sleep_timer variable for timing not sleep
     }
@@ -521,7 +521,7 @@ void StopWatch()
     {
       sub_state = 1;
       next_sub_state_requested = false;
-      SleepEnable = true;
+      sleep_enabled = true;
     }
 
     if(next_state_requested)
@@ -562,7 +562,7 @@ void StopWatch()
     {
       sub_state = 1;
       next_sub_state_requested = false;
-      SleepEnable = true;
+      sleep_enabled = true;
     }
 
     if(next_state_requested)
@@ -577,7 +577,7 @@ void StopWatch()
     NextState();
     clearmatrix();
 
-    SleepEnable = true;
+    sleep_enabled = true;
 
     break;
   }
@@ -621,7 +621,7 @@ void DisplaySerialData()
     {
       MessagePointer= 0;
       sub_state = 3;
-      SleepEnable = true;
+      sleep_enabled = true;
     }
 
     break;
@@ -635,7 +635,7 @@ void DisplaySerialData()
       next_sub_state_requested = false;
       power_usart0_enable();
       Serial.begin(57600);
-      SleepEnable = false;
+      sleep_enabled = false;
     }
 
     if(next_state_requested)
@@ -706,7 +706,7 @@ shortloop:
 
     }
     sleep_timer = millis();
-    SleepEnable = true;
+    sleep_enabled = true;
     Serial.end();
     power_usart0_disable();
 
@@ -738,7 +738,7 @@ shortloop:
 
     sub_state = 4;
     ScrollLoops = 3;
-    SleepEnable = true;
+    sleep_enabled = true;
 
 
     break;
@@ -814,7 +814,7 @@ shortloop:
     NextState();
     clearmatrix();
 
-    SleepEnable = true;
+    sleep_enabled = true;
 
     break;
   }
