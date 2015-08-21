@@ -1151,13 +1151,12 @@ void displayDate()
 /*
  * Clear LED Matrix
  */
-void
-clearmatrix()
+void clearmatrix()
 {
-   for (int i=0 ; i<WIDTH ; i++)
+   for (int i = 0 ; i < WIDTH ; i++) {
       led_draw_col(i, 0, 0);
+   }
 }
-
 
 
 /**
