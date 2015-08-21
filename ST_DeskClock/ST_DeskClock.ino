@@ -172,7 +172,7 @@ uint8_t stop_watch_seconds = 0;
 uint8_t Message[275];
 
 unsigned long sleep_timer;
-unsigned long currentMillis;
+unsigned long current_milliseconds;
 
 volatile boolean minute_up = false;
 

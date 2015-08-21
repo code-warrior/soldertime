@@ -478,8 +478,8 @@ void StopWatch()
       sub_state = 2;
       next_sub_state_requested = false;
       SleepEnable = false;
-      currentMillis = millis();
-      sleep_timer = currentMillis;                                  // Using Long sleep_timer variable for timing not sleep
+      current_milliseconds = millis();
+      sleep_timer = current_milliseconds;                                  // Using Long sleep_timer variable for timing not sleep
     }
 
     if(next_state_requested)
@@ -494,11 +494,11 @@ void StopWatch()
 
  //   I2C_RX(RTC_DS1337,RTC_SEC);
  //   current_time =data_received_on_i2c & B00001111;
- currentMillis = millis();
-    if((currentMillis - sleep_timer) >= 1000)
+ current_milliseconds = millis();
+    if((current_milliseconds - sleep_timer) >= 1000)
     {
  //     old_time = current_time;
-       sleep_timer = currentMillis;
+       sleep_timer = current_milliseconds;
       total_time = total_time + 1;
       if(total_time > 5999)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
       {
