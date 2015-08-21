@@ -178,4 +178,4 @@ volatile boolean minute_up = false;
 
 extern const uint8_t LETTERS[][5];
 extern const uint8_t GRAPHIC[][5];
-extern const uint8_t logo[][20];
+extern const uint8_t LOGO[][20];

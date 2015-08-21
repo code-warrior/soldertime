@@ -67,7 +67,7 @@ void setup()
       for (int col = 0 ; col < 20 ; col++)
       {
          //led_draw(col, row, col * 16 + row * 32);
-         led_draw(col, row, logo[row][col]);
+         led_draw(col, row, LOGO[row][col]);
       }
    }
    delay(1000);
