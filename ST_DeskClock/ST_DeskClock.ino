@@ -174,7 +174,7 @@ uint8_t Message[275];
 unsigned long SleepTimer;
 unsigned long currentMillis;
 
-volatile boolean MINUP = false;
+volatile boolean minute_up = false;
 volatile boolean MINDOWN = false;
 
 extern const uint8_t LETTERS[][5];

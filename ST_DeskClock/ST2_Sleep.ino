@@ -120,7 +120,7 @@ void UltraPowerDown(boolean onoff)
 
 void MinuteUP()
 {
-  MINUP = true;
+  minute_up = true;
 }
 
 /*
