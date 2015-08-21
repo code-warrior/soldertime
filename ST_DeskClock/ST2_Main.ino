@@ -10,7 +10,7 @@ static void check_sleep_timer(void)
    currentMillis = millis();
    OptionModeFlag = false;
 
-   if (SleepEnable && (currentMillis - SleepTimer) > SLEEP_LIMIT) {
+   if (SleepEnable && (currentMillis - sleep_timer) > SLEEP_LIMIT) {
       // New for ST Desk Clock - goto Time vs Sleep
       if (state == 1) {
          sub_state = 1;
@@ -24,7 +24,7 @@ static void check_sleep_timer(void)
          clearmatrix();
       }
 
-      SleepTimer = millis();
+      sleep_timer = millis();
    }
 }
 
@@ -73,7 +73,7 @@ static void check_mode_button(void)
    }
 
    delay(100);
-   SleepTimer = millis();
+   sleep_timer = millis();
 }
 
 // Test for SET Button Press
@@ -108,7 +108,7 @@ static void check_set_button(void)
    }
 
    delay(100);
-   SleepTimer = millis();
+   sleep_timer = millis();
 }
 
 // Running Blink counter
@@ -208,7 +208,7 @@ void loop() {
       delay(500);
       clearmatrix();
       GoToSleep();
-      SleepTimer = millis();
+      sleep_timer = millis();
       state = 0;
       sub_state = 0;
 

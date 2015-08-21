@@ -79,5 +79,5 @@ void setup()
    set_alarm_time(); // for testing
    enable_alarm_1(false); // for testing
 
-   SleepTimer = millis();
+   sleep_timer = millis();
 }

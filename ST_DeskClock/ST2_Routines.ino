@@ -479,7 +479,7 @@ void StopWatch()
       next_sub_state_requested = false;
       SleepEnable = false;
       currentMillis = millis();
-      SleepTimer = currentMillis;                                  // Using Long SleepTimer variable for timing not sleep
+      sleep_timer = currentMillis;                                  // Using Long sleep_timer variable for timing not sleep
     }
 
     if(next_state_requested)
@@ -495,10 +495,10 @@ void StopWatch()
  //   I2C_RX(RTC_DS1337,RTC_SEC);
  //   current_time =data_received_on_i2c & B00001111;
  currentMillis = millis();
-    if((currentMillis - SleepTimer) >= 1000)
+    if((currentMillis - sleep_timer) >= 1000)
     {
  //     old_time = current_time;
-       SleepTimer = currentMillis;
+       sleep_timer = currentMillis;
       total_time = total_time + 1;
       if(total_time > 5999)                                     // Over 99 minutes can "not" be displayed (60seconds x 99 = 5940)
       {
@@ -705,7 +705,7 @@ shortloop:
 
 
     }
-    SleepTimer = millis();
+    sleep_timer = millis();
     SleepEnable = true;
     Serial.end();
     power_usart0_disable();
@@ -753,7 +753,7 @@ shortloop:
 
       if(ScrollLoops > 0)
       {
-        SleepTimer = millis();
+        sleep_timer = millis();
       }
 
       IncomingIndex = StartWindow;

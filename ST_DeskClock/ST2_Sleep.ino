@@ -54,7 +54,7 @@ void GoToSleep()
 //    delay(1000);
 //    clearmatrix();
 
-    SleepTimer = millis();
+    sleep_timer = millis();
 
 
 }
@@ -132,5 +132,5 @@ void MinuteDOWN()
 
 void ResetSleepCount()
 {
-      SleepTimer = millis();
+      sleep_timer = millis();
 }
