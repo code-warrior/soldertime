@@ -129,7 +129,7 @@ char IncomingMessage[24];
 char MessageRead;
 char days[7][4] =
    {
-      "Sun","Mon","Tue","Wed","Thr","Fri","Sat"
+      "Sun","Mon","Tue","Wed","Thu","Fri","Sat"
    };
 char months[12][4] =
    {
