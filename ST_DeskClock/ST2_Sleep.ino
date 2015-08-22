@@ -43,9 +43,9 @@ void GoToSleep()
     just_woke_up_flag_1 = true;
 
 //    check_alarm();
- //   if(ALARM1FLAG)
+ //   if(alarm)
 //    {
-//      ALARM1FLAG = false;
+//      alarm = false;
 //      enable_alarm_1(false);
 //      state = 90;
 //    }

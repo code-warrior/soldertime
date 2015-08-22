@@ -39,8 +39,8 @@ static void check_mode_button(void)
       check_alarm();
    }
 
-   if (ALARM1FLAG) {
-      ALARM1FLAG = false;
+   if (alarm) {
+      alarm = false;
       alarm_is_on = false;
       enable_alarm_1(false);
       state = 90;

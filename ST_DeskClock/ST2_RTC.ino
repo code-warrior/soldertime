@@ -255,9 +255,9 @@ void check_alarm()
 {
    uint8_t temp = 0;
    I2C_RX(RTC_DS1337, RTC_STATUS);
-   ALARM1FLAG = bitRead(data_received_on_i2c, 0);
+   alarm = bitRead(data_received_on_i2c, 0);
 
-   if (ALARM1FLAG) {
+   if (alarm) {
       temp = data_received_on_i2c;
 
       bitClear(temp, 0);

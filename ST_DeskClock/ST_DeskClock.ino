@@ -91,7 +91,7 @@ boolean A_TH_Not24_flag = true;
 boolean A_PM_NotAM_flag = false;
 boolean scrollDirFlag = false;
 boolean SetTimeFlag = false;
-boolean ALARM1FLAG = false;
+boolean alarm = false;
 boolean alarm_is_on = false;
 //boolean MODEOVERRIDEFLAG = false;
 
