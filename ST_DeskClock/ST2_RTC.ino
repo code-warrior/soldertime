@@ -7,19 +7,19 @@ void check_time()
 {
    uint8_t temp = 0;
 
-   I2C_RX(RTC_DS1337,RTC_SEC);
+   receive(RTC_DS1337,RTC_SEC);
    SecOnes = data_received_on_i2c & B00001111;
 
    SecTens = data_received_on_i2c & B01110000;
    SecTens = SecTens >> 4;
 
-   I2C_RX(RTC_DS1337,RTC_MIN);
+   receive(RTC_DS1337,RTC_MIN);
    MinOnes = data_received_on_i2c & B00001111;
 
    MinTens = data_received_on_i2c & B01110000;
    MinTens = MinTens >> 4;
 
-   I2C_RX(RTC_DS1337,RTC_HOUR);
+   receive(RTC_DS1337,RTC_HOUR);
    HourOnes = data_received_on_i2c & B00001111;
 
    TH_Not24_flag = bitRead(data_received_on_i2c, 6); // False on RTC when 24 mode selected
@@ -43,10 +43,10 @@ void check_date()
 {
    int temp = 0;
 
-   I2C_RX(RTC_DS1337, RTC_DAY);
+   receive(RTC_DS1337, RTC_DAY);
    Days = data_received_on_i2c & B00000111;
 
-   I2C_RX(RTC_DS1337, RTC_MONTH);
+   receive(RTC_DS1337, RTC_MONTH);
    MonthCode = data_received_on_i2c & B00001111;
 
    temp = (data_received_on_i2c & B00010000) >> 4;
@@ -55,7 +55,7 @@ void check_date()
       MonthCode += 10; // Convert BCD month into integer month
    }
 
-   I2C_RX(RTC_DS1337, RTC_DATE);
+   receive(RTC_DS1337, RTC_DATE);
    DateOnes = data_received_on_i2c & B00001111;
    DateTens = (data_received_on_i2c & B00110000) >> 4;
 }
@@ -177,7 +177,7 @@ void set_time_new(uint8_t setselect)
 
   case 5: // Date
 
-      //   I2C_RX(RTC_DS1337,RTC_DATE);
+      //   receive(RTC_DS1337,RTC_DATE);
       //   DateOnes = data_received_on_i2c & B00001111;
       //   DateTens = (data_received_on_i2c & B00110000) >> 4;
 
@@ -254,7 +254,7 @@ void set_alarm_time() // Just for testing set to 12:01 PM
 void check_alarm()
 {
    uint8_t temp = 0;
-   I2C_RX(RTC_DS1337, RTC_STATUS);
+   receive(RTC_DS1337, RTC_STATUS);
    alarm = bitRead(data_received_on_i2c, 0);
 
    if (alarm) {
@@ -276,25 +276,25 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
    uint8_t temp = 0;
 
    // Adjust for Hours - Minutes Trigger -S
-   I2C_RX(RTC_DS1337, RTC_ALARM1SEC);
+   receive(RTC_DS1337, RTC_ALARM1SEC);
    temp = data_received_on_i2c;
    bitClear(temp, 7);
    transmit(RTC_DS1337, RTC_ALARM1SEC, temp);
-   I2C_RX(RTC_DS1337, RTC_ALARM1MIN);
+   receive(RTC_DS1337, RTC_ALARM1MIN);
    temp = data_received_on_i2c;
    bitClear(temp, 7);
    transmit(RTC_DS1337, RTC_ALARM1MIN, temp);
-   I2C_RX(RTC_DS1337, RTC_ALARM1HOUR);
+   receive(RTC_DS1337, RTC_ALARM1HOUR);
    temp = data_received_on_i2c;
    bitClear(temp, 7);
    transmit(RTC_DS1337, RTC_ALARM1HOUR, temp);
-   I2C_RX(RTC_DS1337, RTC_ALARM1DATE);
+   receive(RTC_DS1337, RTC_ALARM1DATE);
    temp = data_received_on_i2c;
    bitSet(temp, 7);
    transmit(RTC_DS1337, RTC_ALARM1DATE, temp);
 
    // Adjust for Hours - Minutes Trigger -E
-   I2C_RX(RTC_DS1337, RTC_CONT); // Enable Alarm Pin on RTC
+   receive(RTC_DS1337, RTC_CONT); // Enable Alarm Pin on RTC
    temp = data_received_on_i2c;
 
    if (onoff) {
@@ -304,7 +304,7 @@ void enable_alarm_1(boolean onoff) // Trigger on Hours & Minutes Match
    }
 
    transmit(RTC_DS1337, RTC_CONT, temp);
-   I2C_RX(RTC_DS1337, RTC_STATUS); // Clear Alarm RTC internal Alarm Flag
+   receive(RTC_DS1337, RTC_STATUS); // Clear Alarm RTC internal Alarm Flag
    temp = data_received_on_i2c;
    bitClear(temp, 0);
    transmit(RTC_DS1337, RTC_STATUS, temp);
@@ -414,7 +414,7 @@ void twelve_twenty_four_convert()
    int temphours = 0;
    int temp = 0;
 
-   I2C_RX(RTC_DS1337, RTC_HOUR);
+   receive(RTC_DS1337, RTC_HOUR);
 
    HourOnes = data_received_on_i2c & B00001111;
 

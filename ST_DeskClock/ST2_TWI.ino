@@ -9,7 +9,7 @@ void transmit(byte device, byte regadd, byte tx_data)                           
   Wire.endTransmission();
 }
 
-void I2C_RX(byte devicerx, byte regaddrx)                                       // Receive I2C Data
+void receive(byte devicerx, byte regaddrx)                                       // Receive I2C Data
 {
   Wire.beginTransmission(devicerx);
   Wire.write(regaddrx);
