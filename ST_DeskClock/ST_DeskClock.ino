@@ -81,7 +81,6 @@ boolean blinkFlag = false;
 boolean blinkON = true;
 boolean blinkHour = false;
 boolean blinkMin = false;
-boolean displayFLAG = true;
 boolean sleep_enabled = true;
 boolean button_value = false;
 boolean TH_Not24_flag = true;
