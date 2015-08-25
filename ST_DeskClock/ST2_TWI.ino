@@ -1,7 +1,7 @@
 //*******************************************************************************************************************
 //                                                          I2C TX RX
 //*******************************************************************************************************************
-void I2C_TX(byte device, byte regadd, byte tx_data)                              // Transmit I2C Data
+void transmit(byte device, byte regadd, byte tx_data)                              // Transmit I2C Data
 {
   Wire.beginTransmission(device);
   Wire.write(regadd);
