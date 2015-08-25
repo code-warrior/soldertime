@@ -89,7 +89,6 @@ boolean new_time_format = TH_Not24_flag;
 boolean PM_NotAM_flag = false;
 boolean A_TH_Not24_flag = true;
 boolean A_PM_NotAM_flag = false;
-boolean scrollDirFlag = false;
 boolean SetTimeFlag = false;
 boolean alarm = false;
 boolean alarm_is_on = false;
