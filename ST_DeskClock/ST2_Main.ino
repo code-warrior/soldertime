@@ -8,7 +8,7 @@
 static void check_sleep_timer(void)
 {
    current_milliseconds = millis();
-   OptionModeFlag = false;
+   option_mode_flag = false;
 
    if (sleep_enabled && (current_milliseconds - sleep_timer) > SLEEP_LIMIT) {
       // New for ST Desk Clock - goto Time vs Sleep
@@ -59,7 +59,7 @@ static void check_mode_button(void)
    while (1) {
       // check for simultaneous mode and set buttons
       if (!digitalRead(SET_BUTTON)) {
-         OptionModeFlag = true;
+         option_mode_flag = true;
          next_state_requested = false;
          next_sub_state_requested = false;
          displayString("SPEC");
@@ -84,7 +84,7 @@ static void check_set_button(void)
    }
 
    // if the mode button is held down as well, do nothing
-   if (OptionModeFlag) {
+   if (option_mode_flag) {
       return;
    }
 
@@ -94,7 +94,7 @@ static void check_set_button(void)
    while (1) {
       // this is repeated from above; can be merged?
       if (!digitalRead(MODE_BUTTON)) {
-         OptionModeFlag = true;
+         option_mode_flag = true;
          next_state_requested = false;
          next_sub_state_requested = false;
          displayString("SPEC");

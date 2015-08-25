@@ -600,7 +600,7 @@ void DisplaySerialData()
 
     next_sub_state_requested = false;
     next_state_requested = false;
-    OptionModeFlag = false;
+    option_mode_flag = false;
     displayString("Text");
     delay(250);
 
@@ -701,7 +701,7 @@ shortloop:
     {
       sub_state = 3;
       FILLEEPROM();
-      OptionModeFlag = false;
+      option_mode_flag = false;
 
 
     }
@@ -798,7 +798,7 @@ shortloop:
       next_state_requested = false;
     }
 
-    if(OptionModeFlag)
+    if(option_mode_flag)
     {
       sub_state =1;
       displayString("NEW?");
@@ -955,7 +955,7 @@ void graphican()
       next_state_requested = false;
     }
 
-    if(OptionModeFlag)
+    if(option_mode_flag)
     {
       sound_effect = !sound_effect;
     }
