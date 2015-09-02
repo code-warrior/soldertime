@@ -16,21 +16,21 @@ void NextState()
    }
 }
 
-//*******************************************************************************************************************
+//***********************************************************************************
 //                                                             Beep the piezo
-//*******************************************************************************************************************
+//***********************************************************************************
 // NOTE: the piezo uses the same pin as the SET Button input
 // This routine switches the pin to an output during the beeping process
-// (There is a current limited resistor on the board to prevent over current if the Set Button is pressed at
-//  the same time as the pin is driving the piezo.)
+// (There is a current limited resistor on the board to prevent over current if the
+// Set Button is pressed at the same time as the pin is driving the piezo.)
 
-void beepsound(int freq, int freqlenght)
+void beepsound(int freq, int frequency_length)
 {
   // freq was 4000
-  // freqlenght was 100
+  // frequency_length was 100
   pinMode(SET_BUTTON, OUTPUT);
-  tone(SET_BUTTON,freq,freqlenght);
-  delay(freqlenght);
+  tone(SET_BUTTON,freq,frequency_length);
+  delay(frequency_length);
   noTone(SET_BUTTON);
   digitalWrite(SET_BUTTON, HIGH);
 
