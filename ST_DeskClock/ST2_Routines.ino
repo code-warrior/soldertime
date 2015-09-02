@@ -1,21 +1,20 @@
-//*******************************************************************************************************************
+//***********************************************************************************
 //                                                 Helper - State incrementor
-//*******************************************************************************************************************
+//***********************************************************************************
 // Increments the Main state to the next state up to MAX_STATE
 // If you add more States increase MAX_STATE to match.
 
 void NextState()
 {
-  state = state + 1;
-  sub_state = 0;
-  next_state_requested = false;
-  if(state > MAX_STATE)
-  {
-    state = 0;
-    sub_state = 0;
-  }
-}
+   state += 1;
+   sub_state = 0;
+   next_state_requested = false;
 
+   if (state > MAX_STATE) {
+      state = 0;
+      sub_state = 0;
+   }
+}
 
 //*******************************************************************************************************************
 //                                                             Beep the piezo
