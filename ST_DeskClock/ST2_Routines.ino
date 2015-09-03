@@ -26,22 +26,21 @@ void NextState()
 
 void beepsound(int freq, int frequency_length)
 {
-  // freq was 4000
-  // frequency_length was 100
-  pinMode(SET_BUTTON, OUTPUT);
-  tone(SET_BUTTON,freq,frequency_length);
-  delay(frequency_length);
-  noTone(SET_BUTTON);
-  digitalWrite(SET_BUTTON, HIGH);
+   // freq was 4000
+   // frequency_length was 100
+   pinMode(SET_BUTTON, OUTPUT);
+   tone(SET_BUTTON, freq, frequency_length);
+   delay(frequency_length);
+   noTone(SET_BUTTON);
+   digitalWrite(SET_BUTTON, HIGH);
 
-  #if ARDUINO >= 101
-  pinMode(SET_BUTTON, INPUT_PULLUP);
-//  digitalWrite(SET_BUTTON, HIGH);
-  #else
-//  digitalWrite(SET_BUTTON, HIGH);
-  pinMode(SET_BUTTON, INPUT);
-  #endif
-
+#if ARDUINO >= 101
+   pinMode(SET_BUTTON, INPUT_PULLUP);
+   // digitalWrite(SET_BUTTON, HIGH);
+#else
+   pinMode(SET_BUTTON, INPUT);
+   // digitalWrite(SET_BUTTON, HIGH);
+#endif
 }
 
 //*******************************************************************************************************************
