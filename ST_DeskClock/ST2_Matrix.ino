@@ -36,13 +36,14 @@ static void led_decoder_select(unsigned decoder)
 {
    uint8_t bits = B1100; // default to off
 
-   if (decoder == 1) {
+   // TODO: Convert this to a switch
+   if (1 == decoder) {
       bits = B0100;
    } else {
-      if (decoder == 2) {
+      if (2 == decoder) {
          bits = B1000;
       } else {
-         if (decoder == 3) {
+         if (3 == decoder) {
             bits = B0000;
          }
       }
@@ -95,7 +96,7 @@ void LEDupdateTHREE()
    static uint8_t row = 0;
    static uint8_t column = 0;
 
-   if (row_mask != 0) {
+   if (0 != row_mask) {
       // Read the pixel data for the current column and output the one pixel that
       // is currently high.
       row_mask >>= 1;
