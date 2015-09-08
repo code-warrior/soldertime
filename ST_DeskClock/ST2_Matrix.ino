@@ -106,7 +106,7 @@ void LEDupdateTHREE()
       row_mask >>= 1;
       uint8_t bright = led_matrix[column][--row];
 
-#define REVERSE_VIDEO 0
+      #define REVERSE_VIDEO 0
 
       if (REVERSE_VIDEO) {
          bright = 0xFF - bright;
