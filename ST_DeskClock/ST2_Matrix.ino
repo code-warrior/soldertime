@@ -36,17 +36,21 @@ static void led_decoder_select(unsigned decoder)
 {
    uint8_t bits = B1100; // default to off
 
-   // TODO: Convert this to a switch
-   if (1 == decoder) {
+   switch (decoder) {
+   case 1:
       bits = B0100;
-   } else {
-      if (2 == decoder) {
-         bits = B1000;
-      } else {
-         if (3 == decoder) {
-            bits = B0000;
-         }
-      }
+
+      break;
+
+   case 2:
+      bits = B1000;
+
+      break;
+
+   case 3:
+      bits = B0000;
+
+      break;
    }
 
    PORTC = (PORTC & B11110011) | bits;
