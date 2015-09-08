@@ -4,6 +4,8 @@
  * Run once at bootup.
  */
 
+#define ONE_SECOND 1000
+
 void setup()
 {
 #if ARDUINO >= 101
@@ -53,7 +55,7 @@ void setup()
 
    // Program specific inits
    //  fillmatrix();
-   delay(300);
+   delay(ONE_SECOND / 3);
 
    // if the set button is held at startup, run a lamp test
    if (!digitalRead(SET_BUTTON))
@@ -70,10 +72,10 @@ void setup()
          led_draw(col, row, LOGO[row][col]);
       }
    }
-   delay(1000);
+   delay(ONE_SECOND);
 
    displayString("v1.2");
-   delay(500);
+   delay(ONE_SECOND / 2);
    clear_clock_screen();
 
    set_alarm_time(); // for testing
