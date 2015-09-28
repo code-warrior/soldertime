@@ -14,7 +14,7 @@ static void check_sleep_timer(void)
       // New for ST Desk Clock - goto Time vs Sleep
       if (state == 1) {
          sub_state = 1;
-         blinkON = true;
+         blink_on_flag = true;
          blink_flag = false;
          blinkMin = false;
          blinkHour = false;
@@ -116,7 +116,7 @@ static void check_blink(void)
 {
    if (!blink_flag) {
       // Not blinking, just leave the LEDs lit
-      blinkON = true;
+      blink_on_flag = true;
 
       return;
    }
@@ -124,7 +124,7 @@ static void check_blink(void)
    blinkCounter++;
 
    if (blinkCounter >BLINK_TIME) { // was 150
-      blinkON = !blinkON;
+      blink_on_flag = !blink_on_flag;
       blinkCounter = 0;
    }
 }
@@ -176,7 +176,7 @@ void loop() {
       blink_flag = true;
       displayString("Beep");
 
-      if (blinkON) {
+      if (blink_on_flag) {
          pinMode(SET_BUTTON, OUTPUT);
          tone(SET_BUTTON,4000) ;
          delay(100);

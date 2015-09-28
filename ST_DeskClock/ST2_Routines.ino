@@ -77,7 +77,7 @@ void DisplayTimeSub()
   {
   case 0:                // Start Display Time
     sub_state = 1;
-    blinkON = true;
+    blink_on_flag = true;
     blink_flag = false;
     blinkMin = false;
     blinkHour = false;
@@ -453,7 +453,7 @@ void StopWatch()
     stop_watch_digit_2 = 0;
     stop_watch_digit_1 = 0;
 
-    blinkON = true;
+    blink_on_flag = true;
     blink_flag = false;
     blinkMin = false;
     blinkHour = false;
@@ -1079,7 +1079,7 @@ draw_small_digit(
       led_draw_col(
          column+i,
          LETTERS[digit+DIGITAL_OFFSET][i+1],
-         blinkON && blinking ? 0 : 0xFF
+         blink_on_flag && blinking ? 0 : 0xFF
       );
    }
 }
@@ -1101,7 +1101,7 @@ draw_char(
  */
 void displayMonth(int code)
 {
-   if (!blinkON)
+   if (!blink_on_flag)
    {
       clear_clock_screen();
       return;
@@ -1118,7 +1118,7 @@ void displayMonth(int code)
  */
 void displayStringDay(int day)
 {
-   if(!blinkON)
+   if(!blink_on_flag)
    {
       clear_clock_screen();
       return;
@@ -1135,7 +1135,7 @@ void displayStringDay(int day)
  */
 void displayDate()
 {
-   if (!blinkON)
+   if (!blink_on_flag)
    {
       clear_clock_screen();
       return;
