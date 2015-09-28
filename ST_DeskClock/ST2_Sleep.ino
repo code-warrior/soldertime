@@ -28,7 +28,7 @@ void GoToSleep()
 
     UltraPowerDown(true);
 
-    blinkFlag = false;                                                         // Incase sleep started during time set
+    blink_flag = false;                                                         // Incase sleep started during time set
 //    MODEOVERRIDEFLAG = false;
     next_state_flag = false;
 

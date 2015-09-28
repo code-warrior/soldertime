@@ -15,7 +15,7 @@ static void check_sleep_timer(void)
       if (state == 1) {
          sub_state = 1;
          blinkON = true;
-         blinkFlag = false;
+         blink_flag = false;
          blinkMin = false;
          blinkHour = false;
       } else {
@@ -114,7 +114,7 @@ static void check_set_button(void)
 // Running Blink counter
 static void check_blink(void)
 {
-   if (!blinkFlag) {
+   if (!blink_flag) {
       // Not blinking, just leave the LEDs lit
       blinkON = true;
 
@@ -173,7 +173,7 @@ void loop() {
       break;
 
    case 90: // Alarm Triggered
-      blinkFlag = true;
+      blink_flag = true;
       displayString("Beep");
 
       if (blinkON) {
@@ -198,7 +198,7 @@ void loop() {
          // next_state_flag = true;
          next_state_requested = false;
          next_sub_state_requested = false;
-         blinkFlag = false;
+         blink_flag = false;
       }
 
       break;

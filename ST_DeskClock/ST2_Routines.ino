@@ -78,7 +78,7 @@ void DisplayTimeSub()
   case 0:                // Start Display Time
     sub_state = 1;
     blinkON = true;
-    blinkFlag = false;
+    blink_flag = false;
     blinkMin = false;
     blinkHour = false;
 
@@ -154,7 +154,7 @@ void setTimeSub()
     {
       sub_state = 2;
       next_sub_state_requested = false;
-      blinkFlag = true;
+      blink_flag = true;
     }
 
     if(next_state_requested)
@@ -299,7 +299,7 @@ void setTimeSub()
     break;
 
   case 99:              // Exit Set Time
-    blinkFlag = false;
+    blink_flag = false;
     NextState();
     clear_clock_screen();
 
@@ -332,7 +332,7 @@ void setAlarmSub()
       //      alarm_is_on = true;
       sub_state = 2;
       next_sub_state_requested = false;
-      blinkFlag = true;
+      blink_flag = true;
     }
 
     if(next_state_requested)
@@ -425,7 +425,7 @@ void setAlarmSub()
     break;
 
   case 99:              // Exit Set Alarm
-    blinkFlag = false;
+    blink_flag = false;
     NextState();
     clear_clock_screen();
 
@@ -454,7 +454,7 @@ void StopWatch()
     stop_watch_digit_1 = 0;
 
     blinkON = true;
-    blinkFlag = false;
+    blink_flag = false;
     blinkMin = false;
     blinkHour = false;
 
