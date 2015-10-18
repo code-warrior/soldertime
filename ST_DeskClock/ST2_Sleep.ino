@@ -123,13 +123,6 @@ void MinuteUP()
   minute_up = true;
 }
 
-/*
-void MinuteDOWN()
-{
-
-}
-*/
-
 void ResetSleepCount()
 {
       sleep_timer = millis();
