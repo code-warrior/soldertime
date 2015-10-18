@@ -63,8 +63,8 @@ void setup()
    }
 
    // transpose the image data into the frame buffer
-   for (int row = 0 ; row < 7 ; row++) {
-      for (int col = 0 ; col < 20 ; col++) {
+   for (int row = 0; row < 7; row++) {
+      for (int col = 0; col < 20; col++) {
          //led_draw(col, row, col * 16 + row * 32);
          led_draw(col, row, LOGO[row][col]);
       }

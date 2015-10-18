@@ -57,7 +57,7 @@ void DisplayTimeSub()
   if(next_sub_state_requested)
   {
     sub_state = sub_state +1;
-    if(sub_state>4)
+    if(sub_state > 4)
     {
       sub_state =1;
     }
@@ -195,7 +195,7 @@ void setTimeSub()
     if(next_state_requested)
     {
       blinkHour = false;
-      sub_state =4;
+      sub_state = 4;
       next_state_requested = false;
     }
 
@@ -211,7 +211,7 @@ void setTimeSub()
 
     if(next_state_requested)
     {
-      sub_state =5;
+      sub_state = 5;
       next_state_requested = false;
     }
 
@@ -227,7 +227,7 @@ void setTimeSub()
 
     if(next_state_requested)
     {
-      sub_state =6;
+      sub_state = 6;
       next_state_requested = false;
     }
     break;
@@ -241,7 +241,7 @@ void setTimeSub()
     }
     if(next_state_requested)
     {
-      sub_state =8;
+      sub_state = 8;
       next_state_requested = false;
     }
     break;
@@ -266,7 +266,7 @@ void setTimeSub()
 
   case 8:
     new_time_format = TH_Not24_flag;                                // Pre-set before toggle
-    sub_state =9;
+    sub_state = 9;
     break;
 
 
@@ -292,7 +292,7 @@ void setTimeSub()
 
     if(next_state_requested)
     {
-      sub_state =99;
+      sub_state = 99;
       next_state_requested = false;
     }
 
@@ -341,7 +341,7 @@ void setAlarmSub()
       //      delay(500);
       //      enable_alarm_1(false);
       //      alarm_is_on = false;
-      sub_state =99;
+      sub_state = 99;
       next_state_requested = false;
     }
 
@@ -359,7 +359,7 @@ void setAlarmSub()
     if(next_state_requested)
     {
       blinkMin = false;
-      sub_state =3;
+      sub_state = 3;
       next_state_requested = false;
     }
     break;
@@ -376,7 +376,7 @@ void setAlarmSub()
     if(next_state_requested)
     {
       blinkMin = false;
-      sub_state =4;
+      sub_state = 4;
       next_state_requested = false;
       //      enable_alarm_1(true);
     }
@@ -410,7 +410,7 @@ void setAlarmSub()
     if(next_state_requested)
     {
       blinkMin = false;
-      sub_state =99;
+      sub_state = 99;
       next_state_requested = false;
       if(alarm_is_on)
       {
@@ -524,7 +524,7 @@ void StopWatch()
 
     if(next_state_requested)
     {
-      sub_state =99;
+      sub_state = 99;
       next_state_requested = false;
     }
     break;
@@ -587,7 +587,7 @@ void StopWatch()
 
 void DisplaySerialData()
 {
-  int temp =0;
+  int temp = 0;
   switch (sub_state)
   {
 
@@ -606,9 +606,9 @@ void DisplaySerialData()
     if(IncomingMessIndex == 0 || IncomingMessIndex > 27)
     {
       MessagePointer = 0;
-      sub_state =3;
+      sub_state = 3;
       char Str2[] = "SpikenzieLabs";
-      for(int i =0; i <= sizeof(Str2); i ++)                            // Show default Scrolling message
+      for(int i = 0; i <= sizeof(Str2); i++)                            // Show default Scrolling message
       {
         IncomingMessage[i] = Str2[i];
         IncomingMessIndex = i;
@@ -638,7 +638,7 @@ void DisplaySerialData()
 
     if(next_state_requested)
     {
-      sub_state =99;
+      sub_state = 99;
       next_state_requested = false;
     }
     break;
@@ -660,11 +660,11 @@ void DisplaySerialData()
 
 shortloop:
 
-    if(Serial.available()>0)
+    if(Serial.available() > 0)
     {
       MessageRead = Serial.read();
 
-      if(IncomingMessIndex<24)
+      if(IncomingMessIndex < 24)
       {
         IncomingMessage[IncomingMessIndex] = MessageRead;
         //  IncomingMessIndex = IncomingMessIndex + 1;
@@ -712,10 +712,10 @@ shortloop:
 
   case 3:
 
-    for(int i = 0;i<=IncomingMessIndex-1;i ++)
+    for(int i = 0; i <= IncomingMessIndex - 1; i++)
     {
       received_incoming_message = IncomingMessage[i] - ASCII_OFFSET;
-      for(int y =0;y<5;y++)
+      for(int y = 0; y < 5; y++)
       {
         Message[MessagePointer] = LETTERS[received_incoming_message][y];
         MessagePointer = MessagePointer +1;
@@ -727,7 +727,7 @@ shortloop:
     }
 
 
-    for(int i = 0;i<20;i ++)                                             // 20 spaces between phrases
+    for(int i = 0; i < 20; i++)                                             // 20 spaces between phrases
     {
       Message[MessagePointer] = 0;
       MessagePointer = MessagePointer +1;
@@ -746,7 +746,7 @@ shortloop:
   case 4:
 
     scroll_counter += 1;
-    if(scroll_counter>scroll_speed)
+    if(scroll_counter > scroll_speed)
     {
 
       if(ScrollLoops > 0)
@@ -755,7 +755,7 @@ shortloop:
       }
 
       IncomingIndex = StartWindow;
-      for(int i=0;i<20;i++)
+      for(int i = 0; i < 20; i++)
       {
    for (int bit = 0, mask = 1 ; bit < 7 ; bit++, mask <<= 1)
    {
@@ -792,13 +792,13 @@ shortloop:
 
     if(next_state_requested)
     {
-      sub_state =99;
+      sub_state = 99;
       next_state_requested = false;
     }
 
     if(option_mode_flag)
     {
-      sub_state =1;
+      sub_state = 1;
       displayString("NEW?");
       delay(250);
     }
@@ -829,12 +829,12 @@ void ResetScrollMessage()
   IncomingLoaded = 0;
   scroll_counter = 0;
 
-  for(int i =0;i<275;i++)
+  for(int i = 0; i < 275; i++)
   {
     Message[i] = 0;
   }
 
-  for(int i =0;i<24;i++)
+  for(int i = 0; i < 24; i++)
   {
     IncomingMessage[i] = 0;
   }
@@ -846,18 +846,18 @@ void ResetScrollMessage()
 void graphican()
 {
 
-  int temp =0;
+  int temp = 0;
   //  int rand = 0;
   switch (sub_state)
   {
 
   case 0:
-    sub_state =1;
+    sub_state = 1;
     scroll_counter = 0;
     scroll_speed = 200;
     //  sound_effect = false;
     y = 3;
-    target =  1;
+    target = 1;
     targdist = 0;
     displayString("Worm");
     delay(250);
@@ -865,11 +865,11 @@ void graphican()
 
   case 1:
 
-    if(scroll_counter>scroll_speed)
+    if(scroll_counter > scroll_speed)
     {
 
-      c= c +1;
-      if(c>19)
+      c += 1;
+      if(c > 19)
       {
         c = 0;
       }
@@ -949,7 +949,7 @@ void graphican()
 
     if(next_state_requested)
     {
-      sub_state =99;
+      sub_state = 99;
       next_state_requested = false;
     }
 
@@ -984,9 +984,9 @@ void lamptest()
     do
     {
       //    clear_clock_screen();
-      for(int i = 0; i<20;i++)
+      for(int i = 0; i < 20; i++)
       {
-        for(int y = 0; y<8;y++)
+        for(int y = 0; y < 8; y++)
         {
      led_draw(i, y, 0xFF);
           delay(lamptestspeed / 10);
@@ -1041,7 +1041,7 @@ void FILLEEPROM()                                                      // Normal
   for(int EEPadd=1; EEPadd < IncomingMessIndex+1; EEPadd++)
   {
 
-    EEPROM.write(EEPadd, IncomingMessage[EEPadd-1]);
+    EEPROM.write(EEPadd, IncomingMessage[EEPadd - 1]);
   }
   // EEPROM.write(25, 1);                                      // 1 is just a number we selected to show EEPROM was writen
 }
@@ -1052,7 +1052,7 @@ void FILLEEPROM()                                                      // Normal
  */
 void displayString(const char outText[])
 {
-   for (int i=0 ; i < 4 ; i++)
+   for (int i = 0 ; i < 4 ; i++)
       draw_char(5*i+1, outText[i]);
 }
 
@@ -1062,7 +1062,7 @@ void displayString(const char outText[])
  */
 void displayGraphic(int index, int pos, int len)
 {
-   for (int y=0 ; y<len ; y++)
+   for (int y = 0 ; y < len ; y++)
       led_draw_col(pos++, GRAPHIC[index][y], 0xFF);
 }
 
@@ -1074,7 +1074,7 @@ draw_small_digit(
    unsigned blinking
 )
 {
-   for (unsigned i=0 ; i < 4 ; i++)
+   for (unsigned i = 0 ; i < 4 ; i++)
    {
       led_draw_col(
          column+i,
@@ -1091,7 +1091,7 @@ draw_char(
    const char c
 )
 {
-   for (int y=0 ; y<5 ; y++)
+   for (int y = 0; y < 5; y++)
       led_draw_col(col++, LETTERS[c - ASCII_OFFSET][y], 0xFF);
 }
 
@@ -1151,7 +1151,7 @@ void displayDate()
  */
 void clear_clock_screen()
 {
-   for (int i = 0 ; i < WIDTH ; i++) {
+   for (int i = 0; i < WIDTH; i++) {
       led_draw_col(i, 0, 0);
    }
 }

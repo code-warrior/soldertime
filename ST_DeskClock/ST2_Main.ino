@@ -123,7 +123,7 @@ static void check_blink(void)
 
    blinkCounter++;
 
-   if (blinkCounter >BLINK_TIME) { // was 150
+   if (blinkCounter > BLINK_TIME) { // was 150
       blink_on_flag = !blink_on_flag;
       blinkCounter = 0;
    }
