@@ -116,10 +116,10 @@ void UltraPowerDown(boolean onoff)
 
 void MinuteUP()
 {
-  minute_up = true;
+   minute_up = true;
 }
 
 void ResetSleepCount()
 {
-      sleep_timer = millis();
+   sleep_timer = millis();
 }
