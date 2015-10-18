@@ -745,8 +745,8 @@ shortloop:
 
   case 4:
 
-    scrollCounter = scrollCounter +1;
-    if(scrollCounter>scroll_speed)
+    scroll_counter += 1;
+    if(scroll_counter>scroll_speed)
     {
 
       if(ScrollLoops > 0)
@@ -776,7 +776,7 @@ shortloop:
         ScrollLoops = ScrollLoops - 1;                  // Used to extend number of messages to scroll before sleep mode reqctivated
       }
 
-      scrollCounter= 0;
+      scroll_counter= 0;
     }
 
     if(next_sub_state_requested)
@@ -786,7 +786,7 @@ shortloop:
       {
         scroll_speed = 100;
       }
-      scrollCounter= 0;
+      scroll_counter= 0;
       next_sub_state_requested = false;
     }
 
@@ -827,7 +827,7 @@ void ResetScrollMessage()
   IncomingMessIndex =0;
   StartWindow = 0;
   IncomingLoaded = 0;
-  scrollCounter = 0;
+  scroll_counter = 0;
 
   for(int i =0;i<275;i++)
   {
@@ -853,7 +853,7 @@ void graphican()
 
   case 0:
     sub_state =1;
-    scrollCounter = 0;
+    scroll_counter = 0;
     scroll_speed = 200;
     //  sound_effect = false;
     y = 3;
@@ -865,7 +865,7 @@ void graphican()
 
   case 1:
 
-    if(scrollCounter>scroll_speed)
+    if(scroll_counter>scroll_speed)
     {
 
       c= c +1;
@@ -942,7 +942,7 @@ void graphican()
       {
         led_draw_col(c-worm_length, 0, 0);
       }
-      scrollCounter = 0;
+      scroll_counter = 0;
     }
 
 
@@ -958,7 +958,7 @@ void graphican()
       sound_effect = !sound_effect;
     }
 
-    scrollCounter = scrollCounter +1;
+    scroll_counter += 1;
     break;
 
 
