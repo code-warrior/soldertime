@@ -5,8 +5,6 @@
  * ********************************************************************************/
 void check_time()
 {
-   uint8_t temp = 0;
-
    receive(RTC_DS1337,RTC_SEC);
    SecOnes = data_received_on_i2c & B00001111;
 

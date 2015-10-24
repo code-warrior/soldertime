@@ -19,8 +19,6 @@ void receive(byte devicerx, byte regaddrx)
    Wire.endTransmission();
    Wire.requestFrom(int(devicerx), 1);
 
-   byte c = 0;
-
    if (Wire.available()) {
       data_received_on_i2c = Wire.read();
    }

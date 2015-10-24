@@ -587,7 +587,6 @@ void StopWatch()
 
 void DisplaySerialData()
 {
-  int temp = 0;
   switch (sub_state)
   {
 
@@ -1022,8 +1021,8 @@ void lamptest()
   //*******************************************************************************************************************
   void GETFROMEEPROM()
   {
-    int EEPadd;
     IncomingMessIndex = EEPROM.read(0);
+
     for(int EEPadd=1; EEPadd < 26; EEPadd++)
     {
       IncomingMessage[EEPadd-1] = EEPROM.read(EEPadd);
@@ -1035,7 +1034,6 @@ void lamptest()
 //*******************************************************************************************************************
 void FILLEEPROM()                                                      // Normally only run once if EEPROM is clear
 {
-  int EEPadd;
   EEPROM.write(0, IncomingMessIndex);                                  // Holds the message lenght
 
   for(int EEPadd=1; EEPadd < IncomingMessIndex+1; EEPadd++)
