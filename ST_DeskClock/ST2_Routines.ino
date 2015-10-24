@@ -607,7 +607,7 @@ void DisplaySerialData()
       MessagePointer = 0;
       sub_state = 3;
       char Str2[] = "SpikenzieLabs";
-      for(int i = 0; i <= sizeof(Str2); i++)                            // Show default Scrolling message
+      for(unsigned int i = 0; i <= sizeof(Str2); i++)                            // Show default Scrolling message
       {
         IncomingMessage[i] = Str2[i];
         IncomingMessIndex = i;
