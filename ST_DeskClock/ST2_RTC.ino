@@ -18,7 +18,7 @@ void check_time()
    MinTens = MinTens >> 4;
 
    receive(RTC_DS1337,RTC_HOUR);
-   HourOnes = data_received_on_i2c & B00001111;
+   hour_ones_place = data_received_on_i2c & B00001111;
 
    TH_Not24_flag = bitRead(data_received_on_i2c, 6); // False on RTC when 24 mode selected
    PM_NotAM_flag = bitRead(data_received_on_i2c, 5);
@@ -93,39 +93,39 @@ void set_time_new(uint8_t setselect)
       break;
 
    case 2:
-      HourOnes += 1;
+      hour_ones_place += 1;
 
       // 12 hours mode increment
       if (TH_Not24_flag) {
-         if(HourOnes > 9) {
-            HourOnes = 0;
+         if(hour_ones_place > 9) {
+            hour_ones_place = 0;
             hour_tens_place = 1;
          }
 
-      if ((2 == HourOnes) &&  (1 == hour_tens_place)) {
+      if ((2 == hour_ones_place) &&  (1 == hour_tens_place)) {
          PM_NotAM_flag = !PM_NotAM_flag;
       }
 
-      if ((HourOnes > 2) &&  (1 == hour_tens_place)) {
+      if ((hour_ones_place > 2) &&  (1 == hour_tens_place)) {
          // PM_NotAM_flag = !PM_NotAM_flag;
          hour_tens_place = 0;
-         HourOnes = 1;
+         hour_ones_place = 1;
       }
    } else { // 24 hours mode increment - S
-      if ((HourOnes > 9) && (hour_tens_place < 2)) {
-         HourOnes = 0;
+      if ((hour_ones_place > 9) && (hour_tens_place < 2)) {
+         hour_ones_place = 0;
          hour_tens_place += 1;
       }
 
-      if ((2 == hour_tens_place) && (4 == HourOnes)) {
-         HourOnes = 0;
+      if ((2 == hour_tens_place) && (4 == hour_ones_place)) {
+         hour_ones_place = 0;
          hour_tens_place = 0;
       }
     }
 
    // 24 hours mode increment - E
 
-   temp = (hour_tens_place << 4) + HourOnes;
+   temp = (hour_tens_place << 4) + hour_ones_place;
 
    if (TH_Not24_flag) {
       bitWrite(temp, 5, PM_NotAM_flag);
@@ -213,10 +213,10 @@ void set_start_time()
 {
    uint8_t temp = 0;
    hour_tens_place = 1;
-   HourOnes = 2;
+   hour_ones_place = 2;
    MinTens = 0;
    MinOnes = 0;
-   temp = (hour_tens_place << 4) + HourOnes;
+   temp = (hour_tens_place << 4) + hour_ones_place;
    bitWrite(temp, 5, PM_NotAM_flag);
    bitWrite(temp, 6, TH_Not24_flag);
    transmit(RTC_DS1337, RTC_HOUR, temp);
@@ -233,10 +233,10 @@ void set_alarm_time() // Just for testing set to 12:01 PM
 {
    uint8_t temp = 0;
    hour_tens_place = 1;
-   HourOnes = 2;
+   hour_ones_place = 2;
    MinTens = 0;
    MinOnes = 1;
-   temp = (hour_tens_place << 4) + HourOnes;
+   temp = (hour_tens_place << 4) + hour_ones_place;
    bitWrite(temp, 5, A_PM_NotAM_flag);
    bitWrite(temp, 6, A_TH_Not24_flag);
    transmit(RTC_DS1337,RTC_ALARM1HOUR,temp);
@@ -414,7 +414,7 @@ void twelve_twenty_four_convert()
 
    receive(RTC_DS1337, RTC_HOUR);
 
-   HourOnes = data_received_on_i2c & B00001111;
+   hour_ones_place = data_received_on_i2c & B00001111;
 
    // TH_Not24_flag = bitRead(data_received_on_i2c, 6); // False on RTC when 24 mode selected
    // PM_NotAM_flag = bitRead(data_received_on_i2c, 5);
@@ -427,7 +427,7 @@ void twelve_twenty_four_convert()
       hour_tens_place = hour_tens_place >> 4;
    }
 
-   temphours = HourOnes + (hour_tens_place * 10);// 12 .... 1.2.3...12 or 0 ..1.2.3. ...23
+   temphours = hour_ones_place + (hour_tens_place * 10);// 12 .... 1.2.3...12 or 0 ..1.2.3. ...23
 
    if (TH_Not24_flag != new_time_format) {
       // NewTimeFormat is same format as TH_Not24_flag where H is 12 and LOW is 24
@@ -467,10 +467,10 @@ void twelve_twenty_four_convert()
       TH_Not24_flag = new_time_format;
 
       hour_tens_place = temphours / 10;
-      HourOnes = temphours % 10;
+      hour_ones_place = temphours % 10;
 
       // ---
-      temp = (hour_tens_place << 4) + HourOnes;
+      temp = (hour_tens_place << 4) + hour_ones_place;
 
       if (TH_Not24_flag) {
          bitWrite(temp, 5, PM_NotAM_flag);

@@ -100,7 +100,7 @@ void DisplayTimeSub()
   case 1:              // Time
 
 //    check_time();
-    writeTime(hour_tens_place, HourOnes, MinTens, MinOnes);
+    writeTime(hour_tens_place, hour_ones_place, MinTens, MinOnes);
     break;
 
   case 2:              // Day
@@ -168,7 +168,7 @@ void setTimeSub()
   case 2:                                                          // Minute + one
     //    displayString("----");
     blinkMin = true;
-    writeTime(hour_tens_place, HourOnes, MinTens, MinOnes);
+    writeTime(hour_tens_place, hour_ones_place, MinTens, MinOnes);
     if(next_sub_state_requested)
     {
       set_time_new(1);
@@ -185,7 +185,7 @@ void setTimeSub()
 
   case 3:                                                          // Hours + one
     blinkHour = true;
-    writeTime(hour_tens_place, HourOnes, MinTens, MinOnes);
+    writeTime(hour_tens_place, hour_ones_place, MinTens, MinOnes);
     if(next_sub_state_requested)
     {
       set_time_new(2);

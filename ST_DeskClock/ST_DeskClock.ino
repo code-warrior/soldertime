@@ -136,7 +136,7 @@ char months[12][4] =
 
 // Time Variables
 uint8_t hour_tens_place = 1;
-uint8_t HourOnes = 2;
+uint8_t hour_ones_place = 2;
 uint8_t MinTens = 0;
 uint8_t MinOnes = 0;
 uint8_t SecTens = 0;
