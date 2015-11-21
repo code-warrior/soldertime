@@ -734,7 +734,7 @@ shortloop:
     }
 
     sub_state = 4;
-    ScrollLoops = 3;
+    scroll_loops = 3;
     sleep_enabled = true;
 
 
@@ -748,7 +748,7 @@ shortloop:
     if(scroll_counter > scroll_speed)
     {
 
-      if(ScrollLoops > 0)
+      if(scroll_loops > 0)
       {
         sleep_timer = millis();
       }
@@ -765,14 +765,14 @@ shortloop:
         if(IncomingIndex>IncomingMax)
         {
           IncomingIndex = 0;                            // Rolled over end of message
-    //      ScrollLoops = ScrollLoops - 1;                  // Used to extend number of messages to scroll before sleep mode reqctivated
+    //      scroll_loops = scroll_loops - 1;                  // Used to extend number of messages to scroll before sleep mode reqctivated
         }
       }
       StartWindow = StartWindow + 1;
       if(StartWindow>IncomingMax)
       {
         StartWindow = 0;
-        ScrollLoops = ScrollLoops - 1;                  // Used to extend number of messages to scroll before sleep mode reqctivated
+        scroll_loops = scroll_loops - 1;                  // Used to extend number of messages to scroll before sleep mode reqctivated
       }
 
       scroll_counter= 0;
