@@ -135,7 +135,7 @@ char months[12][4] =
    };
 
 // Time Variables
-uint8_t HourTens = 1;
+uint8_t hour_tens_place = 1;
 uint8_t HourOnes = 2;
 uint8_t MinTens = 0;
 uint8_t MinOnes = 0;
