@@ -7,7 +7,7 @@
 
 
 // Store a padded version of the array to avoid multiplies
-static volatile uint8_t led_matrix[WIDTH][8];
+static volatile uint8_t led_matrix[SCREEN_WIDTH][8];
 
 void led_draw(uint8_t col, uint8_t row, uint8_t bright)
 {

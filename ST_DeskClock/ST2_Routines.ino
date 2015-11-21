@@ -1149,7 +1149,7 @@ void displayDate()
  */
 void clear_clock_screen()
 {
-   for (int i = 0; i < WIDTH; i++) {
+   for (int i = 0; i < SCREEN_WIDTH; i++) {
       led_draw_col(i, 0, 0);
    }
 }

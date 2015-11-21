@@ -34,8 +34,8 @@
 #include <avr/wdt.h>
 
 // Overall width and height of the LED screen
-#define WIDTH 20
-#define HEIGHT 8
+#define SCREEN_WIDTH 20
+#define SCREEN_HEIGHT 8
 
 // Constants
 // DS1337+ Address locations
