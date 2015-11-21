@@ -96,7 +96,6 @@ boolean alarm_is_on = false;
 uint8_t received_incoming_message = 65;
 uint8_t data_received_on_i2c = 0;
 
-// Worm animation
 int c = 0;
 int y = 3;
 int target = 3;
